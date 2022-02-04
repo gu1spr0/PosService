@@ -8,6 +8,7 @@ import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.handler.codec.DelimiterBasedFrameDecoder;
+import io.netty.handler.codec.Delimiters;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -18,9 +19,8 @@ public class ServerInitializer extends ChannelInitializer<SocketChannel> {
     private final ServerHandler serverHandler = new ServerHandler();
     @Override
     protected void initChannel(SocketChannel socketChannel) throws Exception {
-        ByteBuf delimiter = Unpooled.copiedBuffer("$_".getBytes());
         ChannelPipeline pipeline = socketChannel.pipeline();
-        pipeline.addLast(new DelimiterBasedFrameDecoder(1024, delimiter));
+        pipeline.addLast(new DelimiterBasedFrameDecoder(1024 * 1024, Delimiters.lineDelimiter()));
         pipeline.addLast(serverDecode);
         pipeline.addLast(serverHandler);
     }
