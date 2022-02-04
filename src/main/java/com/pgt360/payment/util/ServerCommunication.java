@@ -17,6 +17,7 @@ public class ServerCommunication {
     }
     public static String sendConnectionChip(ChannelHandlerContext ctx){
         String msg = "02001736303030303030303030313030303030300323";
+        System.out.println("Codificado enviado para chip:"+msg);
         SendMessageToPOS(ctx, msg);
         return msg;
     }
@@ -57,6 +58,7 @@ public class ServerCommunication {
         return msg;
     }
     public static String sendDataToPos(String montobob, ChannelHandlerContext ctx){
+        log.info("Enviando datos de venta al POS");
         String inicio = "007736303030303030303030313030303030321C";
         String monto = "3430000C" + NettyUtil.asciiToHex(montobob)+"1C";
         String mpkh = "720"+"          ";

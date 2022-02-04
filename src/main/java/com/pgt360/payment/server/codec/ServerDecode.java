@@ -11,6 +11,7 @@ public class ServerDecode extends ByteToMessageDecoder {
 
     @Override
     protected void decode(ChannelHandlerContext ctx, ByteBuf in, List<Object> out) throws Exception {
+        System.out.println("Mensaje de entrada para de codificar:"+in.readInt());
         if(in.readableBytes()>0){
             byte[] data = new byte[in.readableBytes()];
             for(int i = 0; i < in.readableBytes(); i++){
@@ -19,6 +20,7 @@ public class ServerDecode extends ByteToMessageDecoder {
             //ByteBuffer buffer = ByteBuffer.wrap(data);
             String hex = NettyUtil.bytesToHex(data);
             out.add(hex);
+            System.out.println("Mensaje decodificado y enviado correctamente");
         }else{
             System.out.println("************No existe bytes legibles!**********");
         }

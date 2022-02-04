@@ -65,12 +65,14 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
 
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg){
-        log.info("Mensaje recibido:"+msg.toString());
+        log.info("Mensaje recibido desde Read-Handler:"+msg.toString());
         if(vRequestDto==null){
             log.error("Request nulo!");
         }else{
+            log.info("Continuando flujo..");
             vRequestDto.setTamaño(msg.toString().length());
             if(vRequestDto.getStrFlujo().equals(ConstantsUtil.FLOW_CHIP)){
+                log.info("Flujo:"+vRequestDto.getStrFlujo());
                 this.flujoChip(msg.toString(), ctx);
             }
         }
@@ -87,6 +89,7 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
     }
 
     public static void selectProcess(RequestDto vRequestDto){
+        System.out.println("Flujo:"+vRequestDto.getStrFlujo());
         switch (vRequestDto.getFlujo()){
             case ConstantsUtil.NUMBER_FLOW_INIT:
                 ServerCommunication.sendAck(ctx);
@@ -108,7 +111,8 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
     public void flujoChip(String resp, ChannelHandlerContext ctx){
         String reply = "";
         switch (this.paso){
-            case 1: if(isAck1 && this.tam == 40){
+            case 1: System.out.println("Paso 1");
+                if(isAck1 && this.tam == 40){
                     reply = ServerCommunication.sendAck(ctx);
                     reply = ServerCommunication.sendTransRevNo(ctx);
                     vRequestDto.setPaso(2);
@@ -119,7 +123,8 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
                     vRequestDto.setTamaño(0);
                     break;
             }
-            case 2: if(isAck2 && vRequestDto.getTamaño()== 36){
+            case 2: System.out.println("Paso 2");
+                if(isAck2 && vRequestDto.getTamaño()== 36){
                 reply = ServerCommunication.sendAck(ctx);
                 vRequestDto.setPaso(3);
                 vRequestDto.setTamaño(0);
@@ -129,14 +134,16 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
                 vRequestDto.setTamaño(0);
                 break;
             }
-            case 3: if(vRequestDto.getTamaño() == 29){
+            case 3: System.out.println("Paso 3");
+                if(vRequestDto.getTamaño() == 29){
                     reply = ServerCommunication.sendAck(ctx);
                     String tramaf = ServerCommunication.sendDataToPos(vRequestDto.getMonto(), ctx);
                     vRequestDto.setPaso(4);
                     vRequestDto.setTamaño(0);
                 }
                 break;
-            case 4: if(this.isAck4 && vRequestDto.getTamaño() == 36){
+            case 4: System.out.println("Paso 4");
+                if(this.isAck4 && vRequestDto.getTamaño() == 36){
                     reply = ServerCommunication.sendAck(ctx);
                     vRequestDto.setPaso(5);
                     vRequestDto.setTamaño(0);
@@ -146,7 +153,8 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
                 vRequestDto.setTamaño(0);
                 break;
             }
-            case 5: if(vRequestDto.getTamaño() >= 223){
+            case 5: System.out.println("Paso 5");
+                if(vRequestDto.getTamaño() >= 223){
                     reply = ServerCommunication.sendAck(ctx);
                     respHost = respHost + resp;
                     vRequestDto.setPaso(-1);
