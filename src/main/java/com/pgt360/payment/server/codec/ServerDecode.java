@@ -3,11 +3,14 @@ package com.pgt360.payment.server.codec;
 
 import com.pgt360.payment.util.NettyUtil;
 import io.netty.buffer.ByteBuf;
+import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
-import io.netty.handler.codec.ByteToMessageDecoder;
+import io.netty.handler.codec.bytes.ByteArrayDecoder;
+
 import java.util.List;
 
-public class ServerDecode extends ByteToMessageDecoder {
+@ChannelHandler.Sharable
+public class ServerDecode extends ByteArrayDecoder {
 
     @Override
     protected void decode(ChannelHandlerContext ctx, ByteBuf in, List<Object> out) throws Exception {
