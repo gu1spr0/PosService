@@ -5,12 +5,8 @@ import com.pgt360.payment.util.NettyUtil;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.ByteToMessageDecoder;
-import lombok.extern.slf4j.Slf4j;
-
-import java.nio.ByteBuffer;
 import java.util.List;
 
-@Slf4j
 public class ServerDecode extends ByteToMessageDecoder {
 
     @Override
@@ -24,7 +20,7 @@ public class ServerDecode extends ByteToMessageDecoder {
             String hex = NettyUtil.bytesToHex(data);
             out.add(hex);
         }else{
-            log.info("No existe bytes legibles!");
+            System.out.println("************No existe bytes legibles!**********");
         }
     }
 }
