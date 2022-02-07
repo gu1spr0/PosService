@@ -12,7 +12,8 @@ import java.util.List;
 public class ServerDecode extends ByteToMessageDecoder {
     @Override
     protected void decode(ChannelHandlerContext ctx, ByteBuf in, List<Object> out) throws Exception {
-        if(in.readableBytes()>0){
+        System.out.println("Tamaño de respuesta:"+in.readableBytes());
+        /*if(in.readableBytes()>0){
             byte[] data = new byte[in.readableBytes()];
             for(int i = 0; i < in.readableBytes(); i++){
                 data[i] = in.getByte(i);
@@ -23,6 +24,6 @@ public class ServerDecode extends ByteToMessageDecoder {
             System.out.println("Mensaje decodificado y enviado correctamente");
         }else{
             System.out.println("************No existe bytes legibles!**********");
-        }
+        }*/
     }
 }
