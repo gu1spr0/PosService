@@ -5,26 +5,34 @@ import com.pgt360.payment.server.handler.ServerHandler;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelInitializer;
-import io.netty.channel.ChannelPipeline;
 import io.netty.channel.socket.SocketChannel;
-import io.netty.handler.codec.DelimiterBasedFrameDecoder;
-import io.netty.handler.codec.Delimiters;
-import io.netty.handler.codec.string.StringDecoder;
-import io.netty.handler.codec.string.StringEncoder;
+import io.netty.handler.codec.bytes.ByteArrayDecoder;
+import io.netty.handler.codec.bytes.ByteArrayEncoder;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
 public class ServerInitializer extends ChannelInitializer<SocketChannel> {
-    //private final ServerDecode serverDecode = new ServerDecode();
-    private final ServerHandler serverHandler = new ServerHandler();
-    private final StringDecoder stringDecoder = new StringDecoder();
+    ByteBuf delimiter;
+    byte[] STX = {0x02};
+    byte[] ETX = {0x03};
+
+    /*private final ServerHandler serverHandler = new ServerHandler();
+    private final StringDecoder stringDecoder = new StringDecoder();*/
     @Override
     protected void initChannel(SocketChannel socketChannel) throws Exception {
-        ChannelPipeline pipeline = socketChannel.pipeline();
+        setupDelimiter();
+        socketChannel.pipeline().addLast(new ServerDecode(65*1024, false, delimiter));
+        socketChannel.pipeline().addLast(new ByteArrayDecoder());
+        socketChannel.pipeline().addLast(new ByteArrayEncoder());
+        socketChannel.pipeline().addLast(new ServerHandler());
+        /*ChannelPipeline pipeline = socketChannel.pipeline();
         pipeline.addLast(new DelimiterBasedFrameDecoder(1024 * 1024, Delimiters.lineDelimiter()));
         pipeline.addLast(stringDecoder);
-        pipeline.addLast(serverHandler);
+        pipeline.addLast(serverHandler);*/
+    }
+    private void setupDelimiter(){
+        delimiter = Unpooled.copiedBuffer(ETX);
     }
 }
