@@ -2,6 +2,7 @@ package com.pgt360.payment.server.handler;
 
 import com.pgt360.payment.service.dto.netty.RequestDto;
 import com.pgt360.payment.util.ConstantsUtil;
+import com.pgt360.payment.util.NettyUtil;
 import com.pgt360.payment.util.ServerCommunication;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandler;
@@ -66,6 +67,7 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg){
         log.info("Mensaje recibido desde Read-Handler:"+msg.toString());
+        System.out.println("Mensaje en el read:"+NettyUtil.hex2a((String) msg));
         if(vRequestDto==null){
             log.error("Request nulo!");
         }else{
