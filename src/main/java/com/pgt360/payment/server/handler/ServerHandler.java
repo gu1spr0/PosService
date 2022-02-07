@@ -101,7 +101,6 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
             case ConstantsUtil.NUMBER_FLOW_CHIP:
                 ServerCommunication.sendConnectionChip(ctx);
                 ServerHandler.vRequestDto = vRequestDto;
-                ctx.executor().schedule(() -> System.out.println("Espera..."),5, TimeUnit.SECONDS);
                 break;
             case ConstantsUtil.NUMBER_FLOW_CHIP_MULTI: break;
             case ConstantsUtil.NUMBER_FLOW_CTL: break;
