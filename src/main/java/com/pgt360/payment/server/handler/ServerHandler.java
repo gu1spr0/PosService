@@ -91,7 +91,7 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
     }
 
     public static void selectProcess(RequestDto vRequestDto){
-        System.out.println("Flujo:"+vRequestDto.getStrFlujo());
+        System.out.println("Flujo:"+vRequestDto.getStrFlujo()+"Numerico:"+vRequestDto.getFlujo());
         switch (vRequestDto.getFlujo()){
             case ConstantsUtil.NUMBER_FLOW_INIT:
                 ServerCommunication.sendAck(ctx);

@@ -76,9 +76,9 @@ public class ServerCommunication {
 
     }
     public static void SendMessageToPOS(ChannelHandlerContext ctx, String msg){
-        byte[] bytes = msg.getBytes();
-        String hex = NettyUtil.bytesToHex(bytes);
-        ByteBuffer buffer = ByteBuffer.wrap(hex.getBytes());
+        //byte[] bytes = msg.getBytes();
+        //String hex = NettyUtil.bytesToHex(bytes);
+        ByteBuffer buffer = ByteBuffer.wrap(msg.getBytes());
         System.out.println("Mensaje a enviar al POS: "+buffer);
         if (ctx == null)
             return;
