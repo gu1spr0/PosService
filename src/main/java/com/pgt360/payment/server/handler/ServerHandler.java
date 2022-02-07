@@ -90,7 +90,7 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
         log.info("Canal con id:"+ctx.channel().id()+" inactivo");
     }
 
-    public static void selectProcess(RequestDto vRequestDto) throws InterruptedException {
+    public static void selectProcess(RequestDto vRequestDto) {
         System.out.println("Flujo:"+vRequestDto.getStrFlujo()+"Numerico:"+vRequestDto.getFlujo());
         switch (vRequestDto.getFlujo()){
             case ConstantsUtil.NUMBER_FLOW_INIT:
@@ -98,7 +98,11 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
                 break;
             case ConstantsUtil.NUMBER_FLOW_CHIP:
                 ServerCommunication.sendConnectionChip(ctx);
-                Thread.sleep(300);
+                try {
+                    Thread.sleep(300);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
                 ServerHandler.vRequestDto = vRequestDto;
                 break;
             case ConstantsUtil.NUMBER_FLOW_CHIP_MULTI: break;
