@@ -15,6 +15,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
+import java.util.concurrent.TimeUnit;
+
 @Component
 @Slf4j
 @RequiredArgsConstructor
@@ -98,12 +100,8 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
                 break;
             case ConstantsUtil.NUMBER_FLOW_CHIP:
                 ServerCommunication.sendConnectionChip(ctx);
-                try {
-                    Thread.sleep(300);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
                 ServerHandler.vRequestDto = vRequestDto;
+                ctx.executor().schedule(() -> System.out.println("Espera..."),5, TimeUnit.SECONDS);
                 break;
             case ConstantsUtil.NUMBER_FLOW_CHIP_MULTI: break;
             case ConstantsUtil.NUMBER_FLOW_CTL: break;

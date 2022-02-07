@@ -6,6 +6,9 @@ import lombok.extern.slf4j.Slf4j;
 
 import java.nio.ByteBuffer;
 import java.nio.charset.Charset;
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.concurrent.TimeUnit;
 
 @Slf4j
 public class ServerCommunication {
@@ -75,9 +78,10 @@ public class ServerCommunication {
         return tramaFinal;
 
     }
-    public static void SendMessageToPOS(ChannelHandlerContext ctx, String msg){
+    public static void SendMessageToPOS(ChannelHandlerContext ctx, String msg) {
         //byte[] bytes = msg.getBytes();
         //String hex = NettyUtil.bytesToHex(bytes);
+        System.out.println("Despues de intervalo");
         ByteBuffer buffer = ByteBuffer.wrap(msg.getBytes());
         System.out.println("Mensaje a enviar al POS: "+buffer);
         if (ctx == null)
