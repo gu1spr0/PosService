@@ -22,7 +22,6 @@ public class ServerConfiguration {
         b.group(bossLoopGroup(), workerLoopGroup())
                 .channel(NioServerSocketChannel.class)
                 .option(ChannelOption.SO_BACKLOG, 1024)
-                .option(ChannelOption.TCP_NODELAY, true)
                 .childOption(ChannelOption.SO_KEEPALIVE, true)
                 .childHandler(serverInitializer);
         return b;

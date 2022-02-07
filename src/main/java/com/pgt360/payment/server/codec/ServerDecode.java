@@ -17,7 +17,7 @@ public class ServerDecode extends ByteToMessageDecoder {
             String msg = in.toString(CharsetUtil.UTF_8);
             in.readerIndex(in.readerIndex()+in.readableBytes());
             System.out.println("Decode:"+msg);
-            out.add(msg);
+            //out.add(msg);
         }else{
             System.out.println("No existe bytes para leer");
         }
