@@ -2,6 +2,7 @@ package com.pgt360.payment.util;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
+import io.netty.util.CharsetUtil;
 import lombok.extern.slf4j.Slf4j;
 
 import java.nio.ByteBuffer;
@@ -76,11 +77,11 @@ public class ServerCommunication {
 
     }
     public static void SendMessageToPOS(ChannelHandlerContext ctx, String msg) {
-        byte[] bytes = msg.getBytes();
-        String hex = NettyUtil.bytesToHex(bytes);
+        //byte[] bytes = msg.getBytes();
+        //String hex = NettyUtil.bytesToHex(bytes);
         System.out.println("Despues de intervalo");
         ByteBuffer buffer = ByteBuffer.wrap(msg.getBytes());
-        System.out.println("Mensaje a enviar al POS: "+buffer);
+        System.out.println("Mensaje a enviar al POS: TAMAÑO:"+buffer.array().length);
         if (ctx == null)
             return;
         ByteBuf buf = ctx.alloc().buffer();
