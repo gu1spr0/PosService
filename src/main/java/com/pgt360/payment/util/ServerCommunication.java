@@ -7,6 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 
 import java.nio.ByteBuffer;
 import java.nio.charset.Charset;
+import java.util.concurrent.TimeUnit;
 
 @Slf4j
 public class ServerCommunication {
@@ -89,5 +90,11 @@ public class ServerCommunication {
         ctx.write(buf);
         ctx.flush();
         log.info("<<<<<<<<<<MENSAJE ENVIADO>>>>>>>>>>>>>>");
+        ctx.executor().scheduleWithFixedDelay(new Runnable() {
+            @Override
+            public void run() {
+                System.out.println("Esperando respuesta...");
+            }
+        },3000,2000, TimeUnit.MILLISECONDS);
     }
 }
