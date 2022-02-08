@@ -4,17 +4,20 @@ import com.pgt360.payment.service.dto.netty.RequestDto;
 import com.pgt360.payment.util.ConstantsUtil;
 import com.pgt360.payment.util.NettyUtil;
 import com.pgt360.payment.util.ServerCommunication;
+import io.netty.buffer.ByteBuf;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 import io.netty.channel.group.ChannelGroup;
 import io.netty.channel.group.DefaultChannelGroup;
+import io.netty.util.CharsetUtil;
 import io.netty.util.concurrent.GlobalEventExecutor;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
+import java.nio.charset.Charset;
 import java.util.concurrent.TimeUnit;
 
 @Component
@@ -68,7 +71,9 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
 
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg){
-        log.info("Mensaje recibido desde Read-Handler:"+msg.toString());
+        ByteBuf in = (ByteBuf)msg;
+        System.out.println("Server received:"+in.toString(CharsetUtil.UTF_8));
+        /*log.info("Mensaje recibido desde Read-Handler:"+msg.toString());
         System.out.println("Mensaje en el read:"+NettyUtil.hex2a((String) msg));
         if(vRequestDto==null){
             log.error("Request nulo!");
@@ -79,7 +84,7 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
                 log.info("Flujo:"+vRequestDto.getStrFlujo());
                 this.flujoChip(msg.toString(), ctx);
             }
-        }
+        }*/
 
     }
 

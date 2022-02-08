@@ -14,17 +14,14 @@ import java.util.concurrent.TimeUnit;
 public class ServerDecode extends ByteToMessageDecoder {
     @Override
     protected void decode(ChannelHandlerContext ctx, ByteBuf in, List<Object> out) throws Exception {
-        System.out.println("Esperando..");
-        ctx.executor().schedule(() -> System.out.println("..."),5, TimeUnit.SECONDS);
-        System.out.println("Reading..");
-        if(in.readableBytes()>0){
+        /*if(in.readableBytes()>0){
             String msg = in.toString(CharsetUtil.UTF_8);
             in.readerIndex(in.readerIndex()+in.readableBytes());
             System.out.println("Decode:"+msg);
             //out.add(msg);
         }else{
             System.out.println("No existe bytes para leer");
-        }
+        }*/
 
         /*if(in.readableBytes()>0){
             byte[] data = new byte[in.readableBytes()];
