@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 public class ServerInitializer extends ChannelInitializer<SocketChannel> {
     @Override
     protected void initChannel(SocketChannel socketChannel) throws Exception {
-        //socketChannel.pipeline().addLast(new ServerDecode());
+        socketChannel.pipeline().addLast(new ServerDecode());
         socketChannel.pipeline().addLast(new ServerHandler());
     }
 }
