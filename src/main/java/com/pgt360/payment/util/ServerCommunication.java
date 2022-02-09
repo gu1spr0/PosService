@@ -5,8 +5,10 @@ import io.netty.channel.ChannelHandlerContext;
 import io.netty.util.CharsetUtil;
 import lombok.extern.slf4j.Slf4j;
 
+import java.math.BigInteger;
 import java.nio.ByteBuffer;
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.concurrent.TimeUnit;
 
 @Slf4j
@@ -78,15 +80,20 @@ public class ServerCommunication {
 
     }
     public static void SendMessageToPOS(ChannelHandlerContext ctx, String msg) {
-        //byte[] bytes = msg.getBytes();
-        //String hex = NettyUtil.bytesToHex(bytes);
-        System.out.println("Despues de intervalo");
-        ByteBuffer buffer = ByteBuffer.wrap(msg.getBytes());
-        System.out.println("Mensaje a enviar al POS: TAMAÑO:"+buffer.array().length);
+        /*byte[] bytes = msg.getBytes();
+        String hex = NettyUtil.bytesToHex(bytes);
+        System.out.println("Mensaje sin codificar:"+hex);
+        ByteBuffer buffer = ByteBuffer.wrap(hex.getBytes());
+        System.out.println("Mensaje codificado:"+new String(buffer.array()));*/
+        /*ByteBuffer buffer = ByteBuffer.wrap(msg.getBytes(CharsetUtil.UTF_8));
+        String st = String.format("%02X",buffer);
+        System.out.println("Mensaje codificado:"+st);*/
+        System.out.println("Antes:"+msg);
+        System.out.println("Despues:"+NettyUtil.hex2a(msg));
         if (ctx == null)
             return;
         ByteBuf buf = ctx.alloc().buffer();
-        buf.writeCharSequence(msg, Charset.defaultCharset());
+        buf.writeCharSequence(NettyUtil.hex2a(msg), Charset.defaultCharset());
         ctx.write(buf);
         ctx.flush();
         log.info("<<<<<<<<<<MENSAJE ENVIADO>>>>>>>>>>>>>>");
@@ -95,6 +102,6 @@ public class ServerCommunication {
             public void run() {
                 System.out.println("Esperando respuesta...");
             }
-        },3000,2000, TimeUnit.MILLISECONDS);
+        },5000,0, TimeUnit.MILLISECONDS);
     }
 }

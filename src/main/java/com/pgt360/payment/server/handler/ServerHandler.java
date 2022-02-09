@@ -101,7 +101,7 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
         System.out.println("Flujo:"+vRequestDto.getStrFlujo()+"Numerico:"+vRequestDto.getFlujo());
         switch (vRequestDto.getFlujo()){
             case ConstantsUtil.NUMBER_FLOW_INIT:
-                ServerCommunication.sendAck(ctx);
+                ServerCommunication.sendSolicitudInicializar(ctx);
                 break;
             case ConstantsUtil.NUMBER_FLOW_CHIP:
                 ServerCommunication.sendConnectionChip(ctx);
