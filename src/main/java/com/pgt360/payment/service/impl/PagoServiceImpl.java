@@ -6,7 +6,6 @@ import com.pgt360.payment.service.dto.netty.RequestDto;
 import com.pgt360.payment.service.dto.netty.ResponseDto;
 import com.pgt360.payment.util.ConstantsUtil;
 import com.pgt360.payment.util.NettyUtil;
-import com.pgt360.payment.util.ServerCommunication;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 

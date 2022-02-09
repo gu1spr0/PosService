@@ -80,28 +80,13 @@ public class ServerCommunication {
 
     }
     public static void SendMessageToPOS(ChannelHandlerContext ctx, String msg) {
-        /*byte[] bytes = msg.getBytes();
-        String hex = NettyUtil.bytesToHex(bytes);
-        System.out.println("Mensaje sin codificar:"+hex);
-        ByteBuffer buffer = ByteBuffer.wrap(hex.getBytes());
-        System.out.println("Mensaje codificado:"+new String(buffer.array()));*/
-        /*ByteBuffer buffer = ByteBuffer.wrap(msg.getBytes(CharsetUtil.UTF_8));
-        String st = String.format("%02X",buffer);
-        System.out.println("Mensaje codificado:"+st);*/
-        System.out.println("Antes:"+msg);
-        System.out.println("Despues:"+NettyUtil.hex2a(msg));
         if (ctx == null)
             return;
         ByteBuf buf = ctx.alloc().buffer();
-        buf.writeCharSequence(NettyUtil.hex2a(msg), Charset.defaultCharset());
+        String data = NettyUtil.hex2a(msg);
+        buf.writeCharSequence(data, CharsetUtil.UTF_8);
         ctx.write(buf);
         ctx.flush();
-        log.info("<<<<<<<<<<MENSAJE ENVIADO>>>>>>>>>>>>>>");
-        ctx.executor().scheduleWithFixedDelay(new Runnable() {
-            @Override
-            public void run() {
-                System.out.println("Esperando respuesta...");
-            }
-        },5000,0, TimeUnit.MILLISECONDS);
+        log.info("[MENSAJE:]<"+data+"> Enviado con exito!!");
     }
 }

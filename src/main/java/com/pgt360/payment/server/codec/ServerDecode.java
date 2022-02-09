@@ -5,11 +5,7 @@ import com.pgt360.payment.util.NettyUtil;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.ByteToMessageDecoder;
-import io.netty.util.CharsetUtil;
-
-
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 public class ServerDecode extends ByteToMessageDecoder {
     @Override
@@ -23,7 +19,7 @@ public class ServerDecode extends ByteToMessageDecoder {
             System.out.println("No existe bytes para leer");
         }*/
 
-        /*if(in.readableBytes()>0){
+        if(in.readableBytes()>0){
             byte[] data = new byte[in.readableBytes()];
             for(int i = 0; i < in.readableBytes(); i++){
                 data[i] = in.getByte(i);
@@ -34,6 +30,6 @@ public class ServerDecode extends ByteToMessageDecoder {
             System.out.println("Mensaje decodificado y enviado correctamente");
         }else{
             System.out.println("************No existe bytes legibles!**********");
-        }*/
+        }
     }
 }
