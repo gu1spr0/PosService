@@ -19,15 +19,8 @@ public class ServerDecode extends ByteToMessageDecoder {
             System.out.println("Cadena respuesta:"+respuesta);
             //String data = codRespuesta.substring(50,codRespuesta.length());
             String hex = NettyUtil.bytesToHex(respuesta.getBytes());
+            out.add(hex);
             System.out.println("Respuesta:"+hex);
-            ctx.executor().schedule(new Runnable() {
-                @Override
-                public void run() {
-                    int begin = 50;
-                    System.out.println("Respuesta del POS:"+NettyUtil.hex2a(hex.substring(begin, begin + 4)));
-                }
-            },5000,TimeUnit.MILLISECONDS);
-
 
         }
         /*if(in.readableBytes()>0){

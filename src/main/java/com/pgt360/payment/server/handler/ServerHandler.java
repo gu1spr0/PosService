@@ -72,12 +72,12 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
 
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg){
-        ByteBuf in = (ByteBuf) msg;
+        //ByteBuf in = (ByteBuf) msg;
         //String str = in.toString(CharsetUtil.UTF_8);
-        byte[] data = in.array();
-        System.out.println("Tamaño data:"+data.length);
-        String texto = new String(ByteBufUtil.getBytes(in), CharsetUtil.UTF_8);
-        System.out.println("RESULTADO:"+texto);
+        //byte[] data = in.array();
+        System.out.println("Tamaño data:"+msg.toString().length());
+        //String texto = new String(ByteBufUtil.getBytes(in), CharsetUtil.UTF_8);
+        System.out.println("RESULTADO:"+msg.toString());
         //for(int i = 0; i < data.length; i++){
             /*String texto = String.format("%02X", in.getByte(i));
             System.out.println("Mensaje recibido:"+texto);*/
