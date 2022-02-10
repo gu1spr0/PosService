@@ -17,8 +17,6 @@ public class ServerDecode extends ByteToMessageDecoder {
             System.out.println("Tamaño:"+in.readableBytes());
             //String data = codRespuesta.substring(50,codRespuesta.length());
             System.out.println("Respuesta:"+NettyUtil.hex2a(codRespuesta));
-
-
         }
         /*if(in.readableBytes()>0){
             String msg = in.toString(CharsetUtil.UTF_8);
@@ -29,7 +27,7 @@ public class ServerDecode extends ByteToMessageDecoder {
             System.out.println("No existe bytes para leer");
         }*/
 
-        if(in.readableBytes()>0){
+        /*if(in.readableBytes()>0){
             byte[] data = new byte[in.readableBytes()];
             for(int i = 0; i < in.readableBytes(); i++){
                 data[i] = in.getByte(i);
@@ -40,6 +38,6 @@ public class ServerDecode extends ByteToMessageDecoder {
             System.out.println("Mensaje decodificado y enviado correctamente");
         }else{
             System.out.println("************No existe bytes legibles!**********");
-        }
+        }*/
     }
 }

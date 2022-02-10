@@ -71,7 +71,10 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
 
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg){
-        System.out.println("[Mensaje recibido]"+msg);
+        ByteBuf in = (ByteBuf) msg;
+        System.out.println("Server received: " + in.toString(CharsetUtil.UTF_8));
+        ctx.write(in);
+        //System.out.println("[Mensaje recibido]"+msg);
         /*log.info("Mensaje recibido desde Read-Handler:"+msg.toString());
         System.out.println("Mensaje en el read:"+NettyUtil.hex2a((String) msg));
         if(vRequestDto==null){
