@@ -13,10 +13,10 @@ public class ServerDecode extends ByteToMessageDecoder {
     @Override
     protected void decode(ChannelHandlerContext ctx, ByteBuf in, List<Object> out) throws Exception {
         if(in.readableBytes()>0){
-            String codRespuesta = in.toString(CharsetUtil.UTF_8);
+            String respuesta = NettyUtil.hex2a(new String(in.array(),CharsetUtil.UTF_8));
             System.out.println("Tamaño:"+in.readableBytes());
             //String data = codRespuesta.substring(50,codRespuesta.length());
-            System.out.println("Respuesta:"+NettyUtil.hex2a(codRespuesta));
+            System.out.println("Respuesta:"+NettyUtil.bytesToHex(respuesta.getBytes()));
         }
         /*if(in.readableBytes()>0){
             String msg = in.toString(CharsetUtil.UTF_8);
