@@ -20,12 +20,12 @@ public class ServerDecode extends ByteToMessageDecoder {
             //String data = codRespuesta.substring(50,codRespuesta.length());
             String hex = NettyUtil.bytesToHex(respuesta.getBytes());
             System.out.println("Respuesta:"+hex);
-            ctx.executor().scheduleWithFixedDelay(new Runnable() {
+            ctx.executor().schedule(new Runnable() {
                 @Override
                 public void run() {
                     System.out.println("Esperando...");
                 }
-            },0,5000, TimeUnit.MILLISECONDS);
+            },5000,TimeUnit.MILLISECONDS);
             int begin = 50;
             System.out.println("Respuesta del POS:"+NettyUtil.hex2a(hex.substring(begin, begin + 4)));
 
