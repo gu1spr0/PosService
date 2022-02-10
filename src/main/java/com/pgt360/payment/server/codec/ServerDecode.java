@@ -8,28 +8,18 @@ import io.netty.handler.codec.ByteToMessageDecoder;
 import io.netty.util.CharsetUtil;
 
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 public class ServerDecode extends ByteToMessageDecoder {
     @Override
     protected void decode(ChannelHandlerContext ctx, ByteBuf in, List<Object> out) throws Exception {
-        if(in.readableBytes()>0){
+        byte size = in.readByte();
+        if(in.readableBytes()<size){
+            in.resetReaderIndex();
+            return;
+        }else{
             String respuesta = in.toString(CharsetUtil.UTF_8);
-            //System.out.println("Tamaño:"+in.readableBytes());
-            //System.out.println("Cadena respuesta:"+respuesta);
-            //String data = codRespuesta.substring(50,codRespuesta.length());
             String hex = NettyUtil.bytesToHex(respuesta.getBytes());
-            //System.out.println("Respuesta:"+hex);
-            /*ctx.executor().schedule(new Runnable() {
-                @Override
-                public void run() {
-                    int begin = 50;
-                    System.out.println("Respuesta del POS:"+NettyUtil.hex2a(hex.substring(begin, begin + 4)));
-                }
-            },5000,TimeUnit.MILLISECONDS);*/
             out.add(hex);
-
-
         }
     }
 }

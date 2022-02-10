@@ -73,11 +73,9 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg){
         System.out.println("DATA:"+msg);
-    }
+        if(this.isAck(msg.toString())){
 
-    @Override
-    public void channelReadComplete(ChannelHandlerContext ctx) throws Exception {
-        System.out.println("Terminado de leer");
+        }
     }
 
     @Override
