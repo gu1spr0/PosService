@@ -15,6 +15,7 @@ public class ServerDecode extends ByteToMessageDecoder {
         if(in.readableBytes()>0){
             String respuesta = in.toString(CharsetUtil.UTF_8);
             System.out.println("Tamaño:"+in.readableBytes());
+            System.out.println("Cadena respuesta:"+respuesta);
             //String data = codRespuesta.substring(50,codRespuesta.length());
             System.out.println("Respuesta:"+NettyUtil.bytesToHex(respuesta.getBytes()));
         }
