@@ -5,6 +5,7 @@ import com.pgt360.payment.util.ConstantsUtil;
 import com.pgt360.payment.util.NettyUtil;
 import com.pgt360.payment.util.ServerCommunication;
 import io.netty.buffer.ByteBuf;
+import io.netty.buffer.ByteBufUtil;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
@@ -75,10 +76,13 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
         //String str = in.toString(CharsetUtil.UTF_8);
         byte[] data = in.array();
         System.out.println("Tamaño data:"+data.length);
-        for(int i = 0; i < data.length; i++){
-            String texto = String.format("%02X", in.getByte(i));
-            System.out.println("Mensaje recibido:"+texto);
-        }
+        String texto = new String(ByteBufUtil.getBytes(in), CharsetUtil.UTF_8);
+        System.out.println("RESULTADO:"+texto);
+        //for(int i = 0; i < data.length; i++){
+            /*String texto = String.format("%02X", in.getByte(i));
+            System.out.println("Mensaje recibido:"+texto);*/
+
+        //}
         //System.out.println("Server received: " + NettyUtil.hex2a(str));
         //System.out.println("[Mensaje recibido]"+msg);
         /*log.info("Mensaje recibido desde Read-Handler:"+msg.toString());
