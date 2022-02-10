@@ -6,11 +6,12 @@ import lombok.Setter;
 @Setter
 @Getter
 public class RequestDto {
+    private int idComercio;
     private int flujo;
     private String strFlujo;
-    private String monto;
-    private int idComercio;
     private int confirm;
+    private String monto;
     private int paso;
     private int tamaño;
+    private String respuesta;
 }

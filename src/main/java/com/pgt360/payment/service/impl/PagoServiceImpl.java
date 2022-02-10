@@ -82,10 +82,12 @@ public class PagoServiceImpl implements PagoService {
             if((Integer)pCommerceId == null){
                 log.error("Id comercio nulo");
             }else{
-                RequestDto vRequestDto = new RequestDto();
+                this.vRequestDto = new RequestDto();
                 vRequestDto.setIdComercio(pCommerceId);
                 vRequestDto.setConfirm(pConfirm);
-                vRequestDto.setFlujo(1);
+                vRequestDto.setFlujo(ConstantsUtil.NUMBER_FLOW_INIT);
+                vRequestDto.setStrFlujo(ConstantsUtil.FLOW_INIT);
+                vRequestDto.setTamaño(0);
                 ServerHandler.selectProcess(vRequestDto);
             }
         }

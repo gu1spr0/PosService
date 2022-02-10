@@ -72,32 +72,7 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
 
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg){
-        ByteBuf in = (ByteBuf) msg;
-        //String str = in.toString(CharsetUtil.UTF_8);
-        byte[] data = in.array();
-        System.out.println("Tamaño data:"+data.length);
-        String texto = new String(ByteBufUtil.getBytes(in), CharsetUtil.UTF_8);
-        System.out.println("RESULTADO:"+texto);
-        //for(int i = 0; i < data.length; i++){
-            /*String texto = String.format("%02X", in.getByte(i));
-            System.out.println("Mensaje recibido:"+texto);*/
-
-        //}
-        //System.out.println("Server received: " + NettyUtil.hex2a(str));
-        //System.out.println("[Mensaje recibido]"+msg);
-        /*log.info("Mensaje recibido desde Read-Handler:"+msg.toString());
-        System.out.println("Mensaje en el read:"+NettyUtil.hex2a((String) msg));
-        if(vRequestDto==null){
-            log.error("Request nulo!");
-        }else{
-            log.info("Continuando flujo..");
-            vRequestDto.setTamaño(msg.toString().length());
-            if(vRequestDto.getStrFlujo().equals(ConstantsUtil.FLOW_CHIP)){
-                log.info("Flujo:"+vRequestDto.getStrFlujo());
-                this.flujoChip(msg.toString(), ctx);
-            }
-        }*/
-
+        System.out.println("DATA:"+msg);
     }
 
     @Override
@@ -119,6 +94,7 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
         switch (vRequestDto.getFlujo()){
             case ConstantsUtil.NUMBER_FLOW_INIT:
                 ServerCommunication.sendSolicitudInicializar(ctx);
+                ServerHandler.vRequestDto = vRequestDto;
                 break;
             case ConstantsUtil.NUMBER_FLOW_CHIP:
                 ServerCommunication.sendConnectionChip(ctx);
