@@ -10,14 +10,17 @@ import io.netty.util.CharsetUtil;
 import java.util.List;
 
 public class ServerDecode extends ByteToMessageDecoder {
+    int i = 0;
     @Override
     protected void decode(ChannelHandlerContext ctx, ByteBuf in, List<Object> out) throws Exception {
-        if(in.isReadable()){
-            return;
-        }else{
+        /*String response = "";
+        while(in.isReadable()){
             String respuesta = in.toString(CharsetUtil.UTF_8);
             String hex = NettyUtil.bytesToHex(respuesta.getBytes());
-            out.add(hex);
+            response = response + hex;
         }
+        out.add(response);*/
+        i++;
+        System.out.println(i);
     }
 }
