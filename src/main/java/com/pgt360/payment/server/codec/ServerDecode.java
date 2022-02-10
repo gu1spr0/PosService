@@ -13,14 +13,14 @@ public class ServerDecode extends ByteToMessageDecoder {
     int i = 0;
     @Override
     protected void decode(ChannelHandlerContext ctx, ByteBuf in, List<Object> out) throws Exception {
-        /*String response = "";
-        while(in.isReadable()){
+        String response = "";
+        if(in.readableBytes()>0){
             String respuesta = in.toString(CharsetUtil.UTF_8);
             String hex = NettyUtil.bytesToHex(respuesta.getBytes());
             response = response + hex;
+            System.out.println(response);
+        }else{
+            out.add(response);
         }
-        out.add(response);*/
-        i++;
-        System.out.println(i);
     }
 }
