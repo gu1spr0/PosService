@@ -101,6 +101,11 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
     }
 
     @Override
+    public void channelReadComplete(ChannelHandlerContext ctx) throws Exception {
+        System.out.println("Terminado de leer");
+    }
+
+    @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
         log.info("Canal con id:"+ctx.channel().id()+" activo");
     }
