@@ -19,8 +19,8 @@ public class ServerDecode extends ByteToMessageDecoder {
             String hex = NettyUtil.bytesToHex(respuesta.getBytes());
             response = response + hex;
             System.out.println(response);
-        }else{
-            out.add(response);
+            out.clear();
+            out.add(hex);
         }
     }
 }
