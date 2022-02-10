@@ -16,7 +16,7 @@ public class ServerDecode extends ByteToMessageDecoder {
             String respuesta = in.toString(CharsetUtil.UTF_8);
             String hex = NettyUtil.bytesToHex(respuesta.getBytes());
             out.add(hex);
-            //in.resetWriterIndex();
+            in.resetWriterIndex();
             System.out.println("Mensaje enviado al handler:"+hex);
         }
     }
