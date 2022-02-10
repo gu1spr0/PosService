@@ -12,9 +12,7 @@ import java.util.List;
 public class ServerDecode extends ByteToMessageDecoder {
     @Override
     protected void decode(ChannelHandlerContext ctx, ByteBuf in, List<Object> out) throws Exception {
-        byte size = in.readByte();
-        if(in.readableBytes()<size){
-            in.resetReaderIndex();
+        if(in.isReadable()){
             return;
         }else{
             String respuesta = in.toString(CharsetUtil.UTF_8);
