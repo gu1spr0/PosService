@@ -8,6 +8,7 @@ import io.netty.handler.codec.ByteToMessageDecoder;
 import io.netty.util.CharsetUtil;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class ServerDecode extends ByteToMessageDecoder {
     @Override
@@ -19,6 +20,12 @@ public class ServerDecode extends ByteToMessageDecoder {
             //String data = codRespuesta.substring(50,codRespuesta.length());
             String hex = NettyUtil.bytesToHex(respuesta.getBytes());
             System.out.println("Respuesta:"+hex);
+            ctx.executor().scheduleWithFixedDelay(new Runnable() {
+                @Override
+                public void run() {
+                    System.out.println("Esperando...");
+                }
+            },0,5000, TimeUnit.MILLISECONDS);
             int begin = 50;
             System.out.println("Respuesta del POS:"+NettyUtil.hex2a(hex.substring(begin, begin + 4)));
 
