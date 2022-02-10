@@ -23,11 +23,11 @@ public class ServerDecode extends ByteToMessageDecoder {
             ctx.executor().schedule(new Runnable() {
                 @Override
                 public void run() {
-                    System.out.println("Esperando...");
+                    int begin = 50;
+                    System.out.println("Respuesta del POS:"+NettyUtil.hex2a(hex.substring(begin, begin + 4)));
                 }
             },5000,TimeUnit.MILLISECONDS);
-            int begin = 50;
-            System.out.println("Respuesta del POS:"+NettyUtil.hex2a(hex.substring(begin, begin + 4)));
+
 
         }
         /*if(in.readableBytes()>0){
