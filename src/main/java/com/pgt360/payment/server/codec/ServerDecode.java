@@ -17,7 +17,11 @@ public class ServerDecode extends ByteToMessageDecoder {
             System.out.println("Tamaño:"+in.readableBytes());
             System.out.println("Cadena respuesta:"+respuesta);
             //String data = codRespuesta.substring(50,codRespuesta.length());
-            System.out.println("Respuesta:"+NettyUtil.bytesToHex(respuesta.getBytes()));
+            String hex = NettyUtil.bytesToHex(respuesta.getBytes());
+            System.out.println("Respuesta:"+hex);
+            int begin = 50;
+            System.out.println("Respuesta del POS:"+NettyUtil.hex2a(hex.substring(begin, begin + 4)));
+
         }
         /*if(in.readableBytes()>0){
             String msg = in.toString(CharsetUtil.UTF_8);
