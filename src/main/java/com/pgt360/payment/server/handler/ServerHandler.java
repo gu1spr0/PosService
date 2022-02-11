@@ -83,6 +83,7 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
         }catch (StringIndexOutOfBoundsException ex){
             ex.getMessage();
         }
+        this.flujoChip(msg.toString(),ctx);
 
 
     }
