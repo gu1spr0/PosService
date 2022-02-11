@@ -140,7 +140,7 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
         switch (this.paso){
             case 1:{
                 System.out.println("Paso 1");
-                if(isAck1 && this.tam == 40){
+                if(isAck1 && ServerHandler.vRequestDto.getTamaño() == 40){
                     reply = ServerCommunication.sendAck(ctx);
                     reply = ServerCommunication.sendTransRevNo(ctx);
                     ServerHandler.vRequestDto.setPaso(2);
