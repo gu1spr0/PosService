@@ -80,6 +80,8 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
                 ServerHandler.vRequestDto.setTamaño(ServerHandler.vRequestDto.getTamaño()+NettyUtil.hex2a(msg.toString()).length());
             }
             this.flujoChip(msg.toString(),ctx);
+            System.out.println("TAMAÑO:"+NettyUtil.hex2a(msg.toString()).length());
+            System.out.println("ACK1:"+this.isAck1);
             /*System.out.println("RESPUESTA HEXADECIMAL:"+msg.toString().substring(50,54));
             System.out.println("TAMAÑO:"+NettyUtil.hex2a(msg.toString()).length());
             ServerHandler.vRequestDto.setRespuesta(msg.toString());
