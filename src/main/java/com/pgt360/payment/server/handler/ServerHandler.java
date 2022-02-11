@@ -78,7 +78,7 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
             }else{
                 System.out.println("DATA:"+msg);
                 System.out.println("RESPUESTA HEXADECIMAL:"+msg.toString().substring(50,54));
-                System.out.println("TAMAÑO:"+msg.toString().length());
+                System.out.println("TAMAÑO:"+NettyUtil.hex2a(msg.toString()).length());
                 this.vRequestDto.setRespuesta(msg.toString());
                 this.vRequestDto.setTamaño(msg.toString().length());
             }
