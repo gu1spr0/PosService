@@ -122,7 +122,7 @@ public class NettyUtil {
         String[] n = montos.split("\\.");
         String num = n[0]+n[1];
         num = "000000000000"+num;
-        return num.substring(num.length()-12);
+        return num.substring(num.length()-12, num.length());
 
     }
     public static float redondearMonto(float numero){
