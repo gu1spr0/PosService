@@ -75,6 +75,7 @@ public class ServerCommunication {
         String trama = inicio+monto+numCaja+codresp+numTransac+tipoCuenta;
         String xo = NettyUtil.xor(NettyUtil.bytesToHex(trama.getBytes()));
         String tramaFinal = "02"+trama+xo;
+        System.out.println("<<<<<<"+tramaFinal+">>>>>>");
         SendMessageToPOS(ctx, tramaFinal);
         return tramaFinal;
 
