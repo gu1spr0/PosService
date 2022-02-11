@@ -21,7 +21,9 @@ public class PagoServiceImpl implements PagoService {
             vResponseDto.setMensaje("El monto debe ser numero mayor a cero");
             vResponseDto.setEstado(false);
         }else {
-            float montob = (float) ((Math.round(pAmount*100.0))/100.0);
+            //float montob = (float) ((Math.round(pAmount*100.0))/100.0);
+            float montob = NettyUtil.redondearMonto(pAmount);
+            System.out.println("MONTO:"+montob);
             String montoBoB = NettyUtil.validarMonto(montob);
             this.vRequestDto = new RequestDto();
             vRequestDto.setFlujo(ConstantsUtil.NUMBER_FLOW_CHIP);

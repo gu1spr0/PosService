@@ -4,6 +4,7 @@ import org.springframework.util.ObjectUtils;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Base64;
 import java.util.Date;
@@ -123,5 +124,9 @@ public class NettyUtil {
         num = "000000000000"+num;
         return num.substring(num.length()-12);
 
+    }
+    public static float redondearMonto(float numero){
+        String format = new DecimalFormat("##.##").format(numero);
+        return Float.parseFloat(format);
     }
 }
