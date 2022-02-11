@@ -106,8 +106,8 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
                 ServerHandler.vRequestDto = vRequestDto;
                 break;
             case ConstantsUtil.NUMBER_FLOW_CHIP:
-                ServerCommunication.sendConnectionChip(ctx);
                 ServerHandler.vRequestDto = vRequestDto;
+                ServerCommunication.sendConnectionChip(ctx);
                 break;
             case ConstantsUtil.NUMBER_FLOW_CHIP_MULTI: break;
             case ConstantsUtil.NUMBER_FLOW_CTL: break;
