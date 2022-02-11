@@ -78,7 +78,8 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
             }else{
                 System.out.println("DATA:"+msg);
                 System.out.println("Respuesta hexadecimal:"+msg.toString().substring(50,54));
-                System.out.println("Respuesta final:"+NettyUtil.hex2a(msg.toString()));
+                this.vRequestDto.setRespuesta(msg.toString());
+                this.vRequestDto.setTamaño(msg.toString().length());
             }
         }catch (StringIndexOutOfBoundsException ex){
             ex.getMessage();

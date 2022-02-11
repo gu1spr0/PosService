@@ -29,6 +29,7 @@ public class PagoServiceImpl implements PagoService {
             vRequestDto.setMonto(montoBoB);
             vRequestDto.setPaso(1);
             vRequestDto.setTamaño(0);
+            vRequestDto.setRespuesta("");
             ServerHandler.selectProcess(vRequestDto);
             vResponseDto.setData(null);
             vResponseDto.setMensaje("Pago con chip inicializado correctamente");
