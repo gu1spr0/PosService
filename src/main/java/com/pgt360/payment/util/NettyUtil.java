@@ -100,8 +100,8 @@ public class NettyUtil {
 
     }
     public static String xor(String str){
-        byte[] data = str.getBytes(StandardCharsets.US_ASCII);
-        byte x = data[0];
+        byte[] data = str.getBytes(StandardCharsets.UTF_8);
+        byte x = 0;
         int tamaño = data.length;
         for(int i = 0; i<tamaño; ++i){
             x ^= data[i];

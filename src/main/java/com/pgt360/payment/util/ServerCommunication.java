@@ -73,7 +73,8 @@ public class ServerCommunication {
         String numTransac = "3533000A"+ NettyUtil.asciiToHex(pnrh)+"1C";
         String tipoCuenta = "38380001" + "31" + "03";
         String trama = inicio+monto+numCaja+codresp+numTransac+tipoCuenta;
-        String xo = NettyUtil.xor(NettyUtil.bytesToHex(trama.getBytes()));
+        //String xo = NettyUtil.xor(NettyUtil.bytesToHex(trama.getBytes()));
+        String xo = NettyUtil.xor(NettyUtil.hex2a(trama));
         String tramaFinal = "02"+trama+xo;
         System.out.println("<<<<<<"+tramaFinal+">>>>>>");
         SendMessageToPOS(ctx, tramaFinal);
