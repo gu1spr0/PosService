@@ -26,21 +26,21 @@ public class Base {
 
     @NotNull(message = "El usuario que dió de alta el registro no debe ser nula")
     @Column(name = "usuario_alta")
-    private int usuarioAlta;
+    private Integer usuarioAlta;
 
     @Column(name = "fecha_baja")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaBaja;
 
     @Column(name = "usuario_baja")
-    private int usuarioBaja;
+    private Integer usuarioBaja;
 
     @Column(name = "fecha_modificacion", nullable = true)
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaModificacion;
 
     @Column(name = "usuario_modificacion", nullable = true)
-    private int usuarioModificacion;
+    private Integer usuarioModificacion;
 
     @NotNull(message = "El estado no puede ser nulo")
     @Column(name = "estado")
