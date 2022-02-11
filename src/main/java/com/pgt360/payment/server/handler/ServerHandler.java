@@ -77,10 +77,11 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
             System.out.println("RESPUESTA HEXADECIMAL:"+msg.toString().substring(50,54));
             System.out.println("TAMAÑO:"+NettyUtil.hex2a(msg.toString()).length());
             ServerHandler.vRequestDto.setRespuesta(msg.toString());
-            if(!msg.toString().equals(this.ack)){
+            if(!(msg.toString().equals(this.ack))){
                 ServerHandler.vRequestDto.setTamaño(ServerHandler.vRequestDto.getTamaño()+NettyUtil.hex2a(msg.toString()).length());
+                this.flujoChip(msg.toString(),ctx);
             }
-            this.flujoChip(msg.toString(),ctx);
+
         }catch (StringIndexOutOfBoundsException ex){
             ex.getMessage();
         }
