@@ -78,9 +78,11 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
             System.out.println("TAMAÑO:"+NettyUtil.hex2a(msg.toString()).length());
             ServerHandler.vRequestDto.setRespuesta(msg.toString());
             if(!(msg.toString().equals(this.ack))){
+                System.out.println("Ingreso al if ACK");
                 ServerHandler.vRequestDto.setTamaño(ServerHandler.vRequestDto.getTamaño()+NettyUtil.hex2a(msg.toString()).length());
-                this.flujoChip(msg.toString(),ctx);
+                System.out.println("[OBJETO]:"+ServerHandler.vRequestDto.getTamaño()+" [CONFIRMACION]:"+this.isAck1);
             }
+            this.flujoChip(msg.toString(),ctx);
 
         }catch (StringIndexOutOfBoundsException ex){
             ex.getMessage();
@@ -124,50 +126,59 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
     public void flujoChip(String resp, ChannelHandlerContext ctx){
         String reply = "";
         switch (this.paso){
-            case 1: System.out.println("Paso 1");
+            case 1:{
+                System.out.println("Paso 1");
                 if(isAck1 && this.tam == 40){
                     reply = ServerCommunication.sendAck(ctx);
                     reply = ServerCommunication.sendTransRevNo(ctx);
                     ServerHandler.vRequestDto.setPaso(2);
                     ServerHandler.vRequestDto.setTamaño(0);
                     break;
-            } else if(this.isAck(resp)){
+                } else if(this.isAck(resp)){
                     this.isAck1 = true;
                     ServerHandler.vRequestDto.setTamaño(0);
                     break;
+                }
             }
-            case 2: System.out.println("Paso 2");
-                if(isAck2 && ServerHandler.vRequestDto.getTamaño()== 36){
-                reply = ServerCommunication.sendAck(ctx);
-                ServerHandler.vRequestDto.setPaso(3);
-                ServerHandler.vRequestDto.setTamaño(0);
-                break;
-            } else if (this.isAck(resp)){
-                this.isAck2 = true;
-                ServerHandler.vRequestDto.setTamaño(0);
-                break;
+            case 2: {
+                System.out.println("Paso 2");
+                if (isAck2 && ServerHandler.vRequestDto.getTamaño() == 36) {
+                    reply = ServerCommunication.sendAck(ctx);
+                    ServerHandler.vRequestDto.setPaso(3);
+                    ServerHandler.vRequestDto.setTamaño(0);
+                    break;
+                } else if (this.isAck(resp)) {
+                    this.isAck2 = true;
+                    ServerHandler.vRequestDto.setTamaño(0);
+                    break;
+                }
             }
-            case 3: System.out.println("Paso 3");
-                if(ServerHandler.vRequestDto.getTamaño() == 29){
+            case 3: {
+                System.out.println("Paso 3");
+                if (ServerHandler.vRequestDto.getTamaño() == 29) {
                     reply = ServerCommunication.sendAck(ctx);
                     String tramaf = ServerCommunication.sendDataToPos(ServerHandler.vRequestDto.getMonto(), ctx);
                     ServerHandler.vRequestDto.setPaso(4);
                     ServerHandler.vRequestDto.setTamaño(0);
                 }
+            }
                 break;
-            case 4: System.out.println("Paso 4");
-                if(this.isAck4 && ServerHandler.vRequestDto.getTamaño() == 36){
+            case 4: {
+                System.out.println("Paso 4");
+                if (this.isAck4 && ServerHandler.vRequestDto.getTamaño() == 36) {
                     reply = ServerCommunication.sendAck(ctx);
                     ServerHandler.vRequestDto.setPaso(5);
                     ServerHandler.vRequestDto.setTamaño(0);
                     break;
-                } else if(this.isAck(resp)){
-                this.isAck4 = true;
-                ServerHandler.vRequestDto.setTamaño(0);
-                break;
+                } else if (this.isAck(resp)) {
+                    this.isAck4 = true;
+                    ServerHandler.vRequestDto.setTamaño(0);
+                    break;
+                }
             }
-            case 5: System.out.println("Paso 5");
-                if(ServerHandler.vRequestDto.getTamaño() >= 223){
+            case 5: {
+                System.out.println("Paso 5");
+                if (ServerHandler.vRequestDto.getTamaño() >= 223) {
                     reply = ServerCommunication.sendAck(ctx);
                     respHost = respHost + resp;
                     ServerHandler.vRequestDto.setPaso(-1);
@@ -179,8 +190,9 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
                     ServerHandler.vRequestDto.setFlujo(ConstantsUtil.NUMBER_FLOW_NONE);
                     ServerHandler.vRequestDto.setStrFlujo(ConstantsUtil.FLOW_NONE);
                     break;
-            }else{
-                log.info(resp);
+                } else {
+                    log.info(resp);
+                }
             }
             default:
                 break;
