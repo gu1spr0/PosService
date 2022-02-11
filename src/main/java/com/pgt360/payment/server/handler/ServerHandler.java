@@ -73,7 +73,7 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg){
         try{
-            System.out.println("DATA:"+msg);
+            System.out.println("RECIVIDO DEL DECODIFICADOR:"+msg);
             /*System.out.println("RESPUESTA HEXADECIMAL:"+msg.toString().substring(50,54));
             System.out.println("TAMAÑO:"+NettyUtil.hex2a(msg.toString()).length());
             ServerHandler.vRequestDto.setRespuesta(msg.toString());

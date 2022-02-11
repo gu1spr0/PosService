@@ -15,11 +15,8 @@ public class ServerDecode extends ByteToMessageDecoder {
         if(in.readableBytes()>0){
             String respuesta = in.toString(CharsetUtil.UTF_8);
             String hex = NettyUtil.bytesToHex(respuesta.getBytes());
-            if(!(hex.equals("06"))){
-                out.add(hex);
-            }
+            out.add(hex);
             in.resetWriterIndex();
-            System.out.println("Mensaje enviado al handler:"+hex);
         }
     }
 }
