@@ -72,13 +72,18 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
 
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg){
-        if(this.isAck(msg.toString())){
-            System.out.println("OK!-"+msg.toString());
-        }else{
-            System.out.println("DATA:"+msg);
-            System.out.println("Respuesta hexadecimal:"+msg.toString().substring(50,54));
-            System.out.println("Respuesta final:"+NettyUtil.hex2a(msg.toString()));
+        try{
+            if(this.isAck(NettyUtil.hex2a(msg.toString()))){
+                System.out.println("OK!-"+msg.toString());
+            }else{
+                System.out.println("DATA:"+msg);
+                System.out.println("Respuesta hexadecimal:"+msg.toString().substring(50,54));
+                System.out.println("Respuesta final:"+NettyUtil.hex2a(msg.toString()));
+            }
+        }catch (StringIndexOutOfBoundsException ex){
+            ex.getMessage();
         }
+
 
     }
 
