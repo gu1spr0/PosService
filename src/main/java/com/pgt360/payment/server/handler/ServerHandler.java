@@ -30,23 +30,8 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
 
     ChannelGroup clients = new DefaultChannelGroup(GlobalEventExecutor.INSTANCE);
     public static  ChannelHandlerContext ctx;
-    int paso = 1;
-    int tam = 0;
-    String flujo = "";
     String ack = "06";
-    Double montoBOB = 0.00;
-    String reciboTRA = "";
     String respHost = "";
-    String respHostJson = "";
-    boolean pagoChip = false;
-    boolean pagoChipMulti = false;
-    boolean pagoCtl = false;
-    boolean pagoCtlMulti = false;
-    boolean anulacionTrans = false;
-    boolean anulacionTransMulti = false;
-    boolean cierrePos = false;
-    boolean cierrePosMulti = false;
-    boolean inicializarPos = false;
     boolean isAck1 = false;
     boolean isAck2 = false;
     boolean isAck3 = false;
