@@ -137,7 +137,7 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
 
     public void flujoChip(String resp, ChannelHandlerContext ctx){
         String reply = "";
-        switch (this.paso){
+        switch (ServerHandler.vRequestDto.getPaso()){
             case 1:{
                 System.out.println("Paso 1");
                 if(isAck1 && ServerHandler.vRequestDto.getTamaño() == 40){
