@@ -80,7 +80,7 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
                 System.out.println("RESPUESTA HEXADECIMAL:"+msg.toString().substring(50,54));
                 System.out.println("TAMAÑO:"+NettyUtil.hex2a(msg.toString()).length());
                 this.vRequestDto.setRespuesta(msg.toString());
-                this.vRequestDto.setTamaño(msg.toString().length());
+                this.vRequestDto.setTamaño(NettyUtil.hex2a(msg.toString()).length());
             }
         }catch (StringIndexOutOfBoundsException ex){
             ex.getMessage();
