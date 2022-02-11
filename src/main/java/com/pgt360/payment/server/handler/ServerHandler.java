@@ -73,7 +73,13 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg){
         try{
-            System.out.println("RECIVIDO DEL DECODIFICADOR:"+msg);
+            System.out.println("RECIBIDO DEL DECODIFICADOR:"+msg);
+            if(this.isAck(msg.toString())){
+                System.out.println("POS:OK!");
+            }else{
+                ServerHandler.vRequestDto.setTamaño(ServerHandler.vRequestDto.getTamaño()+NettyUtil.hex2a(msg.toString()).length());
+            }
+            this.flujoChip(msg.toString(),ctx);
             /*System.out.println("RESPUESTA HEXADECIMAL:"+msg.toString().substring(50,54));
             System.out.println("TAMAÑO:"+NettyUtil.hex2a(msg.toString()).length());
             ServerHandler.vRequestDto.setRespuesta(msg.toString());
@@ -103,7 +109,11 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
     }
 
     public static void selectProcess(RequestDto vRequestDto) {
-        System.out.println("Flujo:"+vRequestDto.getStrFlujo()+"Numerico:"+vRequestDto.getFlujo());
+        System.out.println("**************************************");
+        System.out.println("********GENERANDO FLUJO********");
+        System.out.println("**************************************");
+        System.out.println("FLUJO STR:"+vRequestDto.getStrFlujo());
+        System.out.println("FLUJO NUM:"+vRequestDto.getFlujo());
         switch (vRequestDto.getFlujo()){
             case ConstantsUtil.NUMBER_FLOW_INIT:
                 ServerCommunication.sendSolicitudInicializar(ctx);
