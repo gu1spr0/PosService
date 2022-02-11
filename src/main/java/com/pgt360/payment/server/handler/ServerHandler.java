@@ -73,19 +73,19 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg){
         try{
-            if(this.isAck(msg.toString())){
-                System.out.println("OK!-"+msg.toString());
-            }else{
-                System.out.println("DATA:"+msg);
-                System.out.println("RESPUESTA HEXADECIMAL:"+msg.toString().substring(50,54));
-                System.out.println("TAMAÑO:"+NettyUtil.hex2a(msg.toString()).length());
-                this.vRequestDto.setRespuesta(msg.toString());
-                this.vRequestDto.setTamaño(NettyUtil.hex2a(msg.toString()).length());
+            System.out.println("DATA:"+msg);
+            System.out.println("RESPUESTA HEXADECIMAL:"+msg.toString().substring(50,54));
+            System.out.println("TAMAÑO:"+NettyUtil.hex2a(msg.toString()).length());
+            this.vRequestDto.setRespuesta(msg.toString());
+            if(!msg.toString().equals(this.ack)){
+                this.vRequestDto.setTamaño(this.vRequestDto.getTamaño()+NettyUtil.hex2a(msg.toString()).length());
             }
+            this.flujoChip(msg.toString(),ctx);
         }catch (StringIndexOutOfBoundsException ex){
             ex.getMessage();
         }
-        this.flujoChip(msg.toString(),ctx);
+
+
 
 
     }
@@ -187,7 +187,7 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
         }
     }
     public boolean isAck(String pStr){
-        if(pStr == this.ack){
+        if(pStr.equals(this.ack)){
             return true;
         } else {
             return  false;
