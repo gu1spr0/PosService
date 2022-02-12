@@ -48,7 +48,29 @@ public class PagoServiceImpl implements PagoService {
 
     @Override
     public ResponseDto payContactlessSingleCommerce(float pAmount) {
-        return null;
+        ResponseDto vResponseDto = new ResponseDto();
+        if(NettyUtil.isNaN(pAmount)){
+            vResponseDto.setData(null);
+            vResponseDto.setMensaje("El monto debe ser número mayor a cero");
+            vResponseDto.setEstado(false);
+        }else{
+            float montob = NettyUtil.redondearMonto(pAmount);
+            System.out.println("MONTO:"+montob);
+            String montoBoB = NettyUtil.validarMonto(montob);
+            System.out.println("MONTO VALIDADO:"+montoBoB);
+            this.vRequestDto = new RequestDto();
+            vRequestDto.setFlujo(Constants.NUMBER_FLOW_CTL);
+            vRequestDto.setStrFlujo(Constants.FLOW_CTL);
+            vRequestDto.setMonto(montoBoB);
+            vRequestDto.setPaso(1);
+            vRequestDto.setTamaño(0);
+            vRequestDto.setRespuesta("");
+            ServerHandler.selectProcess(vRequestDto);
+            vResponseDto.setData(ServerHandler.vRequestDto.getRespuesta());
+            vResponseDto.setMensaje("Pago contactless realizado con exito!");
+            vResponseDto.setEstado(true);
+        }
+        return vResponseDto;
     }
 
     @Override
