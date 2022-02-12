@@ -3,7 +3,6 @@ package com.pgt360.payment.security.filter;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.pgt360.payment.model.entity.Usuario;
 import com.pgt360.payment.security.service.JWTService;
 import com.pgt360.payment.security.service.JWTServiceImpl;
 import com.pgt360.payment.service.UsuarioService;
@@ -24,9 +23,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
-    private AuthenticationManager authenticationManager;
-    private JWTService jwtService;
-    private UsuarioService usuarioService;
+    private final AuthenticationManager authenticationManager;
+    private final JWTService jwtService;
+    private final UsuarioService usuarioService;
     public JWTAuthenticationFilter(AuthenticationManager authenticationManager,
                                    JWTService jwtService,
                                    UsuarioService usuarioService){
