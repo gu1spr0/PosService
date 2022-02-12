@@ -3,6 +3,7 @@ package com.pgt360.payment.server.handler;
 import com.pgt360.payment.service.dto.netty.RequestDto;
 import com.pgt360.payment.service.dto.netty.ResponseDto;
 import com.pgt360.payment.util.Constants;
+import com.pgt360.payment.util.NettyUtil;
 import com.pgt360.payment.util.ProcesoUtil;
 import com.pgt360.payment.util.ServerCommunication;
 import io.netty.channel.Channel;
@@ -47,12 +48,12 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg){
         try{
-            /*System.out.println("RECIBIDO DEL DECODIFICADOR:"+msg);
-            if(this.isAck(msg.toString())){
-                System.out.println("POS:OK!");
+            System.out.println("RECIBIDO DEL DECODIFICADOR:"+msg);
+            if(ProcesoUtil.isAck(msg.toString())){
+                log.info("POS:OK!");
             }else{
-                ServerHandler.vRequestDto.setTamaño(ServerHandler.vRequestDto.getTamaño()+NettyUtil.hex2a(msg.toString()).length());
-            }*/
+                ServerHandler.vRequestDto.setTamaño(ServerHandler.vRequestDto.getTamaño()+ NettyUtil.hex2a(msg.toString()).length());
+            }
             if(ServerHandler.vRequestDto.getFlujo() == Constants.NUMBER_FLOW_INIT){
                 ServerHandler.vResponseDto = ProcesoUtil.flujoInicializar(msg.toString(), ServerHandler.ctx);
             } else if(ServerHandler.vRequestDto.getFlujo() == Constants.NUMBER_FLOW_CHIP){
