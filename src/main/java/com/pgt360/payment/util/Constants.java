@@ -60,6 +60,16 @@ public class Constants {
     public static final int TAM_MSG_ERROR = 138;
     public static final int TAM_BIN_TARJETA = 12;
 
+    //MENSAJES
+    public static final String RES_1 = "Proceso en paso 1";
+    public static final String RES_2 = "Proceso en paso 2";
+    public static final String RES_3 = "Proceso en paso 3";
+    public static final String RES_4 = "Proceso en paso 4";
+    public static final String RES_5 = "Proceso en paso 5";
+    public static final String RES_FINAL = "Proceso finalizado!";
+    public static final String RES_INCOMPLETE = "Datos incompletos";
+    public static final String RES_NOT_VALID = "Paso no válido";
+
 
 
 }

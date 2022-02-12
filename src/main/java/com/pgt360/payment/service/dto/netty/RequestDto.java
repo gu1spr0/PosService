@@ -13,5 +13,4 @@ public class RequestDto {
     private String monto;
     private int paso;
     private int tamaño;
-    private String respuesta;
 }

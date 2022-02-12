@@ -20,8 +20,8 @@ public class PagoServiceImpl implements PagoService {
             vResponseDto.setData(null);
             vResponseDto.setMensaje("El monto debe ser numero mayor a cero");
             vResponseDto.setEstado(false);
+            ServerHandler.vResponseDto = vResponseDto;
         }else {
-            //float montob = (float) ((Math.round(pAmount*100.0))/100.0);
             float montob = NettyUtil.redondearMonto(pAmount);
             System.out.println("MONTO:"+montob);
             String montoBoB = NettyUtil.validarMonto(montob);
@@ -32,13 +32,9 @@ public class PagoServiceImpl implements PagoService {
             vRequestDto.setMonto(montoBoB);
             vRequestDto.setPaso(1);
             vRequestDto.setTamaño(0);
-            vRequestDto.setRespuesta("");
             ServerHandler.selectProcess(vRequestDto);
-            vResponseDto.setData(ServerHandler.vRequestDto.getRespuesta());
-            vResponseDto.setMensaje("Pago con chip realizado con exito!");
-            vResponseDto.setEstado(true);
         }
-        return vResponseDto;
+        return ServerHandler.vResponseDto;
     }
 
     @Override
@@ -53,6 +49,7 @@ public class PagoServiceImpl implements PagoService {
             vResponseDto.setData(null);
             vResponseDto.setMensaje("El monto debe ser número mayor a cero");
             vResponseDto.setEstado(false);
+            ServerHandler.vResponseDto = vResponseDto;
         }else{
             float montob = NettyUtil.redondearMonto(pAmount);
             System.out.println("MONTO:"+montob);
@@ -64,13 +61,9 @@ public class PagoServiceImpl implements PagoService {
             vRequestDto.setMonto(montoBoB);
             vRequestDto.setPaso(1);
             vRequestDto.setTamaño(0);
-            vRequestDto.setRespuesta("");
             ServerHandler.selectProcess(vRequestDto);
-            vResponseDto.setData(ServerHandler.vRequestDto.getRespuesta());
-            vResponseDto.setMensaje("Pago contactless realizado con exito!");
-            vResponseDto.setEstado(true);
         }
-        return vResponseDto;
+        return ServerHandler.vResponseDto;
     }
 
     @Override

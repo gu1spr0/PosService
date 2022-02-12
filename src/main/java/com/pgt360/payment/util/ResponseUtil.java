@@ -7,7 +7,7 @@ import lombok.Setter;
 @Setter
 @Getter
 public class ResponseUtil {
-    public VentaDto getRespuestaHostVenta(String pRespuestaHost){
+    public static VentaDto getRespuestaHostVenta(String pRespuestaHost){
         VentaDto vVentaDto = new VentaDto();
         String vCodigoAutorizacion = pRespuestaHost.substring(Constants.BEGIN_COD_AUTORIZACION, Constants.BEGIN_COD_AUTORIZACION+Constants.TAM_COD_AUTORIZACION);
         String vMontoCompra = pRespuestaHost.substring(Constants.BEGIN_MONTO_COMPRA, Constants.BEGIN_MONTO_COMPRA+Constants.TAM_MONTO_COMPRA);

@@ -5,12 +5,6 @@ import io.netty.channel.ChannelHandlerContext;
 import io.netty.util.CharsetUtil;
 import lombok.extern.slf4j.Slf4j;
 
-import java.math.BigInteger;
-import java.nio.ByteBuffer;
-import java.nio.charset.Charset;
-import java.nio.charset.StandardCharsets;
-import java.util.concurrent.TimeUnit;
-
 @Slf4j
 public class ServerCommunication {
     public static String sendAck(ChannelHandlerContext ctx){
