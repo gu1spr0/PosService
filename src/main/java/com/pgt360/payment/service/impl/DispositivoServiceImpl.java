@@ -6,7 +6,7 @@ import com.pgt360.payment.model.entity.Dispositivo;
 import com.pgt360.payment.model.repository.DispositivoRepository;
 import com.pgt360.payment.service.DispositivoService;
 import com.pgt360.payment.service.dto.dispositivo.DispositivoQueryDto;
-import com.pgt360.payment.util.ConstantsUtil;
+import com.pgt360.payment.util.Constants;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
@@ -24,7 +24,7 @@ public class DispositivoServiceImpl implements DispositivoService {
             Object[] obj = {"Id:"+pDispositivoId};
             throw Message.GetBadRequest(MessageDescription.objectNull, obj);
         }
-        Dispositivo vDispositivo = dispositivoRepository.getDispositivoByIdAndState(pDispositivoId, ConstantsUtil.STATE_ACTIVE).orElse(null);
+        Dispositivo vDispositivo = dispositivoRepository.getDispositivoByIdAndState(pDispositivoId, Constants.STATE_ACTIVE).orElse(null);
         if(vDispositivo == null){
             Object[] obj = {vDispositivo};
             throw Message.GetBadRequest(MessageDescription.objectNull, obj);

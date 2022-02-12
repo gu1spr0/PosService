@@ -1,6 +1,6 @@
 package com.pgt360.payment.model.entity;
 
-import com.pgt360.payment.util.ConstantsUtil;
+import com.pgt360.payment.util.Constants;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -52,7 +52,7 @@ public class Base {
         if (fechaAlta == null) {
             fechaAlta = now;
             usuarioAlta = 0;
-            estado = ConstantsUtil.STATE_ACTIVE;
+            estado = Constants.STATE_ACTIVE;
         }
     }
 
@@ -63,7 +63,7 @@ public class Base {
         fechaModificacion = new Date();
         if  (fechaBaja != null){
             usuarioBaja = 0;
-            estado = ConstantsUtil.STATE_DELETED;
+            estado = Constants.STATE_DELETED;
         }
     }
 }

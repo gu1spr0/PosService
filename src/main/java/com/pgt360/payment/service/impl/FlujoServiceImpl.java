@@ -11,7 +11,7 @@ import com.pgt360.payment.service.dto.caja.CajaQueryDto;
 import com.pgt360.payment.service.dto.flujo.FlujoAddDto;
 import com.pgt360.payment.service.dto.flujo.FlujoQueryDto;
 import com.pgt360.payment.service.dto.flujo.FlujoUpdateDto;
-import com.pgt360.payment.util.ConstantsUtil;
+import com.pgt360.payment.util.Constants;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
@@ -57,7 +57,7 @@ public class FlujoServiceImpl implements FlujoService {
             Object[] obj = {"Id Flujo"};
             throw Message.GetBadRequest(MessageDescription.objectNull, obj);
         }
-        Flujo vFlujo = flujoRepository.getFlujoByIdAndState(pFlujoId, ConstantsUtil.STATE_ACTIVE).orElse(null);
+        Flujo vFlujo = flujoRepository.getFlujoByIdAndState(pFlujoId, Constants.STATE_ACTIVE).orElse(null);
         if(vFlujo == null){
             Object[] obj = {"Consulta objet Flujo"};
             throw Message.GetBadRequest(MessageDescription.objectNull, obj);
@@ -109,7 +109,7 @@ public class FlujoServiceImpl implements FlujoService {
         }
         Flujo vFlujo = new Flujo();
         BeanUtils.copyProperties(vFlujoQueryDto, vFlujo);
-        vFlujo.setEstado(ConstantsUtil.STATE_INACTIVE);
+        vFlujo.setEstado(Constants.STATE_INACTIVE);
         flujoRepository.save(vFlujo);
 
     }

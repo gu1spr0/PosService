@@ -11,7 +11,7 @@ import com.pgt360.payment.service.dto.conexion.ConexionAddDto;
 import com.pgt360.payment.service.dto.conexion.ConexionQueryDto;
 import com.pgt360.payment.service.dto.conexion.ConexionUpdateDto;
 import com.pgt360.payment.service.dto.dispositivo.DispositivoQueryDto;
-import com.pgt360.payment.util.ConstantsUtil;
+import com.pgt360.payment.util.Constants;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
@@ -77,7 +77,7 @@ public class ConexionServiceImpl implements ConexionService {
             Object[] obj = {"Id Conexion"};
             throw Message.GetBadRequest(MessageDescription.objectNull, obj);
         }
-        Conexion vConexion = conexionRepository.getConexionByIdAndState(pConexionId, ConstantsUtil.STATE_ACTIVE).orElse(null);
+        Conexion vConexion = conexionRepository.getConexionByIdAndState(pConexionId, Constants.STATE_ACTIVE).orElse(null);
         if(vConexion == null){
             Object[] obj = {"Objeto consulta Conexion"};
             throw Message.GetBadRequest(MessageDescription.objectNull, obj);
@@ -93,7 +93,7 @@ public class ConexionServiceImpl implements ConexionService {
             Object[] obj = {"Id de Canal"};
             throw Message.GetBadRequest(MessageDescription.objectNull, obj);
         }
-        Conexion vConexion = conexionRepository.getConexioByIdCanalAndEstado(pCanalId, ConstantsUtil.STATE_ACTIVE).orElse(null);
+        Conexion vConexion = conexionRepository.getConexioByIdCanalAndEstado(pCanalId, Constants.STATE_ACTIVE).orElse(null);
         if(vConexion == null){
             Object[] obj = {"Objeto consulta Conexion"};
             throw Message.GetBadRequest(MessageDescription.objectNull, obj);
@@ -112,7 +112,7 @@ public class ConexionServiceImpl implements ConexionService {
         ConexionQueryDto vConexionQueryDto = this.buscarConexion(pConexionId);
         Conexion vConexion = new Conexion();
         BeanUtils.copyProperties(vConexionQueryDto, vConexion);
-        vConexion.setEstado(ConstantsUtil.STATE_INACTIVE);
+        vConexion.setEstado(Constants.STATE_INACTIVE);
         conexionRepository.save(vConexion);
     }
 }

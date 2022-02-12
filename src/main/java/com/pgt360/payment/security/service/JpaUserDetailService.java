@@ -3,7 +3,6 @@ package com.pgt360.payment.security.service;
 import com.pgt360.payment.exception.Message;
 import com.pgt360.payment.exception.MessageDescription;
 import com.pgt360.payment.service.UsuarioService;
-import com.pgt360.payment.util.ConstantsUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

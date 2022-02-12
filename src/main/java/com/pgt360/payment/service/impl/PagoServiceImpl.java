@@ -4,7 +4,7 @@ import com.pgt360.payment.server.handler.ServerHandler;
 import com.pgt360.payment.service.PagoService;
 import com.pgt360.payment.service.dto.netty.RequestDto;
 import com.pgt360.payment.service.dto.netty.ResponseDto;
-import com.pgt360.payment.util.ConstantsUtil;
+import com.pgt360.payment.util.Constants;
 import com.pgt360.payment.util.NettyUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -25,16 +25,17 @@ public class PagoServiceImpl implements PagoService {
             float montob = NettyUtil.redondearMonto(pAmount);
             System.out.println("MONTO:"+montob);
             String montoBoB = NettyUtil.validarMonto(montob);
+            System.out.println("MONTO VALIDADO:"+montoBoB);
             this.vRequestDto = new RequestDto();
-            vRequestDto.setFlujo(ConstantsUtil.NUMBER_FLOW_CHIP);
-            vRequestDto.setStrFlujo(ConstantsUtil.FLOW_CHIP);
+            vRequestDto.setFlujo(Constants.NUMBER_FLOW_CHIP);
+            vRequestDto.setStrFlujo(Constants.FLOW_CHIP);
             vRequestDto.setMonto(montoBoB);
             vRequestDto.setPaso(1);
             vRequestDto.setTamaño(0);
             vRequestDto.setRespuesta("");
             ServerHandler.selectProcess(vRequestDto);
-            vResponseDto.setData(null);
-            vResponseDto.setMensaje("Pago con chip inicializado correctamente");
+            vResponseDto.setData(ServerHandler.vRequestDto.getRespuesta());
+            vResponseDto.setMensaje("Pago con chip realizado con exito!");
             vResponseDto.setEstado(true);
         }
         return vResponseDto;
@@ -88,8 +89,8 @@ public class PagoServiceImpl implements PagoService {
                 this.vRequestDto = new RequestDto();
                 vRequestDto.setIdComercio(pCommerceId);
                 vRequestDto.setConfirm(pConfirm);
-                vRequestDto.setFlujo(ConstantsUtil.NUMBER_FLOW_INIT);
-                vRequestDto.setStrFlujo(ConstantsUtil.FLOW_INIT);
+                vRequestDto.setFlujo(Constants.NUMBER_FLOW_INIT);
+                vRequestDto.setStrFlujo(Constants.FLOW_INIT);
                 vRequestDto.setTamaño(0);
                 ServerHandler.selectProcess(vRequestDto);
             }

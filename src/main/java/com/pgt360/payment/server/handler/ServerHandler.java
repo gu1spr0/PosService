@@ -1,32 +1,26 @@
 package com.pgt360.payment.server.handler;
 
 import com.pgt360.payment.service.dto.netty.RequestDto;
-import com.pgt360.payment.util.ConstantsUtil;
+import com.pgt360.payment.util.Constants;
 import com.pgt360.payment.util.NettyUtil;
 import com.pgt360.payment.util.ServerCommunication;
-import io.netty.buffer.ByteBuf;
-import io.netty.buffer.ByteBufUtil;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 import io.netty.channel.group.ChannelGroup;
 import io.netty.channel.group.DefaultChannelGroup;
-import io.netty.util.CharsetUtil;
 import io.netty.util.concurrent.GlobalEventExecutor;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
-
-import java.nio.charset.Charset;
-import java.util.concurrent.TimeUnit;
 
 @Component
 @Slf4j
 @RequiredArgsConstructor
 @ChannelHandler.Sharable
 public class ServerHandler extends ChannelInboundHandlerAdapter {
-    private static RequestDto vRequestDto=null;
+    public static RequestDto vRequestDto=null;
 
     ChannelGroup clients = new DefaultChannelGroup(GlobalEventExecutor.INSTANCE);
     public static  ChannelHandlerContext ctx;
@@ -88,21 +82,21 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
         System.out.println("FLUJO STR:"+vRequestDto.getStrFlujo());
         System.out.println("FLUJO NUM:"+vRequestDto.getFlujo());
         switch (vRequestDto.getFlujo()){
-            case ConstantsUtil.NUMBER_FLOW_INIT:
+            case Constants.NUMBER_FLOW_INIT:
                 ServerCommunication.sendSolicitudInicializar(ctx);
                 ServerHandler.vRequestDto = vRequestDto;
                 break;
-            case ConstantsUtil.NUMBER_FLOW_CHIP:
+            case Constants.NUMBER_FLOW_CHIP:
                 ServerHandler.vRequestDto = vRequestDto;
                 ServerCommunication.sendConnectionChip(ctx);
                 break;
-            case ConstantsUtil.NUMBER_FLOW_CHIP_MULTI: break;
-            case ConstantsUtil.NUMBER_FLOW_CTL: break;
-            case ConstantsUtil.NUMBER_FLOW_CTL_MULTI: break;
-            case ConstantsUtil.NUMBER_FLOW_DELETED: break;
-            case ConstantsUtil.NUMBER_FLOW_DELETED_MULTI: break;
-            case ConstantsUtil.NUMBER_FLOW_CLOSE: break;
-            case ConstantsUtil.NUMBER_FLOW_CLOSE_MULTI: break;
+            case Constants.NUMBER_FLOW_CHIP_MULTI: break;
+            case Constants.NUMBER_FLOW_CTL: break;
+            case Constants.NUMBER_FLOW_CTL_MULTI: break;
+            case Constants.NUMBER_FLOW_DELETED: break;
+            case Constants.NUMBER_FLOW_DELETED_MULTI: break;
+            case Constants.NUMBER_FLOW_CLOSE: break;
+            case Constants.NUMBER_FLOW_CLOSE_MULTI: break;
         }
     }
 
@@ -170,8 +164,9 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
                     this.isAck2 = false;
                     this.isAck3 = false;
                     this.isAck4 = false;
-                    ServerHandler.vRequestDto.setFlujo(ConstantsUtil.NUMBER_FLOW_NONE);
-                    ServerHandler.vRequestDto.setStrFlujo(ConstantsUtil.FLOW_NONE);
+                    ServerHandler.vRequestDto.setFlujo(Constants.NUMBER_FLOW_NONE);
+                    ServerHandler.vRequestDto.setStrFlujo(Constants.FLOW_NONE);
+                    ServerHandler.vRequestDto.setRespuesta(respHost);
                     break;
                 } else {
                     log.info(resp);
