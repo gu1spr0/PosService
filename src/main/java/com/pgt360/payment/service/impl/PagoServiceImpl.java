@@ -7,12 +7,14 @@ import com.pgt360.payment.service.dto.netty.ResponseDto;
 import com.pgt360.payment.util.Constants;
 import com.pgt360.payment.util.NettyUtil;
 import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
-@Slf4j
 @Service
 public class PagoServiceImpl implements PagoService {
-    RequestDto vRequestDto = new RequestDto();
+    Logger log = LoggerFactory.getLogger(PagoServiceImpl.class);
+    RequestDto vRequestDto = null;
     @Override
     public ResponseDto payChipSingleCommerce(float pAmount) {
         ResponseDto vResponseDto = new ResponseDto();
@@ -94,22 +96,18 @@ public class PagoServiceImpl implements PagoService {
     @Override
     public ResponseDto initDevice(int pCommerceId, int pConfirm) {
         log.info("Inicialización de Pos");
-        ResponseDto vResponseDto = new ResponseDto();
-        if(pConfirm != 1 && (Integer)pConfirm == null) {
+        if(pConfirm != 1) {
             log.error("Inicialización no autorizada");
         } else {
-            if((Integer)pCommerceId == null){
-                log.error("Id comercio nulo");
-            }else{
-                this.vRequestDto = new RequestDto();
-                vRequestDto.setIdComercio(pCommerceId);
-                vRequestDto.setConfirm(pConfirm);
-                vRequestDto.setFlujo(Constants.NUMBER_FLOW_INIT);
-                vRequestDto.setStrFlujo(Constants.FLOW_INIT);
-                vRequestDto.setTamaño(0);
-                ServerHandler.selectProcess(vRequestDto);
-            }
+            this.vRequestDto = new RequestDto();
+            this.vRequestDto.setIdComercio(pCommerceId);
+            this.vRequestDto.setConfirm(pConfirm);
+            this.vRequestDto.setFlujo(Constants.NUMBER_FLOW_INIT);
+            this.vRequestDto.setStrFlujo(Constants.FLOW_INIT);
+            this.vRequestDto.setTamaño(0);
+            this.vRequestDto.setPaso(1);
+            ServerHandler.selectProcess(this.vRequestDto);
         }
-        return vResponseDto;
+        return ServerHandler.vResponseDto;
     }
 }

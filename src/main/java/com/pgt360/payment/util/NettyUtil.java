@@ -80,41 +80,41 @@ public class NettyUtil {
             hexChars[j * 2] = HEX_ARRAY[v >>> 4];
             hexChars[j * 2 + 1] = HEX_ARRAY[v & 0x0F];
         }
+        log.info("[TAREA]: Conversion BYTES a HEX = "+new String(hexChars));
         return new String(hexChars);
     }
 
     public static String hex2a(String hexx){
-        String result = new String();
+        String result = "";
         char[] charArray = hexx.toCharArray();
         for(int i = 0; i<charArray.length; i=i+2){
             String st = ""+charArray[i]+""+charArray[i+1];
             char ch = (char)Integer.parseInt(st, 16);
             result = result + ch;
         }
+        log.info("[TAREA]: Conversion HEXA a CADENA = "+result);
         return result;
     }
     public static String asciiToHex(String str){
         char[] ch = str.toCharArray();
         StringBuilder builder = new StringBuilder();
         for(char c : ch){
-            int i = (int)c;
-            builder.append(Integer.toHexString(i).toUpperCase());
+            builder.append(Integer.toHexString((int)c).toUpperCase());
         }
+        log.info("[TAREA]: Conversion ASCII a HEXA = "+builder.toString());
         return builder.toString();
 
     }
     public static String xor(String str){
         byte[] data = str.getBytes(StandardCharsets.UTF_8);
         byte x = 0;
-        int tamaño = data.length;
-        for(int i = 0; i<tamaño; ++i){
-            x ^= data[i];
+        int tam = data.length;
+        for (byte datum : data) {
+            x ^= datum;
         }
         String hex = "0"+Integer.toHexString(x);
         String xo = hex.substring(hex.length()-2, hex.length());
-        log.info("****************************");
-        log.info("*****Resultado xor: "+xo+"*****");
-        log.info("****************************");
+        log.info("[TAREA]: Valor xor = "+xo);
         return xo;
     }
     public static boolean isNaN(float v) {
@@ -125,11 +125,21 @@ public class NettyUtil {
         String[] n = montos.split("\\.");
         String num = n[0]+n[1];
         num = "000000000000"+num;
-        return num.substring(num.length()-12, num.length());
+        final String substring = num.substring(num.length() - 12);
+        log.info("[TAREA]: Validando monto = "+ substring);
+        return substring;
 
+    }
+    public static String validarRef(String pId){
+        String recibo = pId.toString();
+        recibo = "000000" + recibo;
+        final String substring = recibo.substring(recibo.length() - 6);
+        log.info("[TAREA]: Validando referencia para anulacion = "+ substring);
+        return substring;
     }
     public static float redondearMonto(float numero){
         String format = new DecimalFormat("##.##").format(numero);
+        log.info("[TAREA]: Monto redondeado = "+format);
         return Float.parseFloat(format);
     }
 }

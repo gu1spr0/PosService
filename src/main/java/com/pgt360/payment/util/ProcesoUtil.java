@@ -7,7 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class ProcesoUtil {
-    Logger log = LoggerFactory.getLogger(ProcesoUtil.class);
+    public static Logger log = LoggerFactory.getLogger(ProcesoUtil.class);
     public static String ack = "06";
     public static String respHost = "";
     public static boolean isAck1 = false;
@@ -112,7 +112,6 @@ public class ProcesoUtil {
     public static ResponseDto flujoChipMulti(String pStrReply, ChannelHandlerContext pCtx) {
         return null;
     }
-
     public static ResponseDto flujoCtl(String pStrReply, ChannelHandlerContext pCtx) {
         return null;
     }
@@ -138,7 +137,43 @@ public class ProcesoUtil {
     }
 
     public static ResponseDto flujoInicializar(String pStrReply, ChannelHandlerContext pCtx) {
-        return null;
+        ResponseDto vResponseDto = new ResponseDto();
+        switch (ServerHandler.vRequestDto.getPaso()){
+            case 1:{
+                if(isAck1 && ServerHandler.vRequestDto.getTamaño()==29){
+                    ServerCommunication.sendAck(pCtx);
+                    vResponseDto.setMensaje(Constants.RES_FINAL);
+                    vResponseDto.setEstado(true);
+                    vResponseDto.setData(ResponseUtil.getRespuestaInicializacion(pStrReply));
+                    ServerHandler.vRequestDto.setTamaño(0);
+                    ServerHandler.vRequestDto.setPaso(-1);
+                    isAck1 = false;
+                    isAck2 = false;
+                    ServerHandler.vRequestDto.setFlujo(Constants.NUMBER_FLOW_NONE);
+                    ServerHandler.vRequestDto.setStrFlujo(Constants.FLOW_NONE);
+                    break;
+                } else if(isAck(pStrReply)){
+                    isAck1 = true;
+                    ServerHandler.vRequestDto.setTamaño(0);
+                    vResponseDto.setMensaje(Constants.RES_INCOMPLETE);
+                    vResponseDto.setEstado(false);
+                    vResponseDto.setData(null);
+                    break;
+                } else {
+                    vResponseDto.setMensaje(Constants.RES_NOT_VALID);
+                    vResponseDto.setEstado(false);
+                    vResponseDto.setData(null);
+                    break;
+                }
+            }
+            default:{
+                vResponseDto.setMensaje(Constants.RES_NOT_VALID);
+                vResponseDto.setEstado(false);
+                vResponseDto.setData(null);
+                break;
+            }
+        }
+        return vResponseDto;
     }
 
     public static boolean isAck(String pStr){
