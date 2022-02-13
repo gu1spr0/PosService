@@ -89,8 +89,8 @@ public class PagoServiceImpl implements PagoService {
             log.error("cierre no autorizada");
         }else{
             this.vRequestDto = new RequestDto();
-            this.vRequestDto.setFlujo(Constants.NUMBER_FLOW_INIT);
-            this.vRequestDto.setStrFlujo(Constants.FLOW_INIT);
+            this.vRequestDto.setFlujo(Constants.NUMBER_FLOW_CLOSE);
+            this.vRequestDto.setStrFlujo(Constants.FLOW_CLOSE);
             this.vRequestDto.setTamaño(0);
             this.vRequestDto.setPaso(1);
             this.vRequestDto.setConfirm(pConfirm);

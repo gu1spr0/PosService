@@ -11,9 +11,9 @@ import org.slf4j.LoggerFactory;
 public class ServerCommunication {
     private static final Logger log = LoggerFactory.getLogger(ServerCommunication.class);
     public static String sendAck(ChannelHandlerContext ctx){
-        log.info("*******************");
-        log.info("***ENVIANDO ACK***");
-        log.info("*******************");
+        log.info("*********************");
+        log.info("*****ENVIANDO ACK****");
+        log.info("*********************");
         String msg = "06";
         sendMessageToPOS(ctx, msg);
         return msg;
