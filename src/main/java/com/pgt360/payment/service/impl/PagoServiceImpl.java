@@ -105,7 +105,7 @@ public class PagoServiceImpl implements PagoService {
     }
 
     @Override
-    public synchronized ResponseDto initDevice(int pCommerceId, int pConfirm) {
+    public ResponseDto initDevice(int pCommerceId, int pConfirm) {
         if(pConfirm != 1) {
             log.error("Inicialización no autorizada");
         } else {
@@ -118,13 +118,9 @@ public class PagoServiceImpl implements PagoService {
             this.vRequestDto.setPaso(1);
             ServerHandler.selectProcess(this.vRequestDto);
         }
-        try {
-            ServerHandler.vResponseDto.wait();
-        } catch (InterruptedException ex) {
-            //Thread.currentThread().interrupt();
-            log.info("Error en la espera de datos");
+        while (ServerHandler.vResponseDto.getMensaje().isEmpty()){
+            log.info("Esperando tarea a completar..");
         }
-
         return ServerHandler.vResponseDto;
     }
 }
