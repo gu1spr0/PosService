@@ -1,5 +1,7 @@
 package com.pgt360.payment.util;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.util.ObjectUtils;
 
 import java.io.*;
@@ -10,6 +12,7 @@ import java.util.Base64;
 import java.util.Date;
 
 public class NettyUtil {
+    public static Logger log = LoggerFactory.getLogger(NettyUtil.class);
     public static byte[] convertObjectToByteArray(Object obj) throws IOException {
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         ObjectOutputStream os = new ObjectOutputStream(out);
@@ -109,9 +112,9 @@ public class NettyUtil {
         }
         String hex = "0"+Integer.toHexString(x);
         String xo = hex.substring(hex.length()-2, hex.length());
-        System.out.println("**************************");
-        System.out.println("*****Resultado xor: "+xo+"****");
-        System.out.println("**************************");
+        log.info("****************************");
+        log.info("*****Resultado xor: "+xo+"*****");
+        log.info("****************************");
         return xo;
     }
     public static boolean isNaN(float v) {

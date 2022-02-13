@@ -16,11 +16,11 @@ public class ServerCommunication {
         return msg;
     }
     public static String sendConnectionChip(ChannelHandlerContext ctx){
-        log.info("******************");
-        log.info("**ENVIANDO CHIP**");
-        log.info("******************");
+        log.info("*******************");
+        log.info("***ENVIANDO CHIP***");
+        log.info("*******************");
         String msg = "02001736303030303030303030313030303030300323";
-        System.out.println("Codificado enviado para chip:"+msg);
+        log.info("[KIOSCO]:"+msg);
         SendMessageToPOS(ctx, msg);
         return msg;
     }
@@ -61,7 +61,7 @@ public class ServerCommunication {
         return msg;
     }
     public static String sendDataToPos(String montobob, ChannelHandlerContext ctx){
-        log.info("Enviando datos de venta al POS");
+        log.info("[KIOSCO]:Enviando datos de venta");
         String inicio = "007736303030303030303030313030303030321C";
         String monto = "3430000C" + NettyUtil.asciiToHex(montobob)+"1C";
         String mpkh = "720"+"          ";
@@ -73,10 +73,9 @@ public class ServerCommunication {
         String numTransac = "3533000A"+ NettyUtil.asciiToHex(pnrh)+"1C";
         String tipoCuenta = "38380001" + "31" + "03";
         String trama = inicio+monto+numCaja+codresp+numTransac+tipoCuenta;
-        //String xo = NettyUtil.xor(NettyUtil.bytesToHex(trama.getBytes()));
         String xo = NettyUtil.xor(NettyUtil.hex2a(trama));
         String tramaFinal = "02"+trama+xo;
-        System.out.println("<<<<<<"+tramaFinal+">>>>>>");
+        log.info("<<<<<<"+tramaFinal+">>>>>>");
         SendMessageToPOS(ctx, tramaFinal);
         return tramaFinal;
 

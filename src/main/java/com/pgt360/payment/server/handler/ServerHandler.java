@@ -48,7 +48,7 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg){
         try{
-            System.out.println("RECIBIDO DEL DECODIFICADOR:"+msg);
+            System.out.println("[POS DEVICE]:"+msg);
             if(ProcesoUtil.isAck(msg.toString())){
                 log.info("POS:OK!");
             }else{
