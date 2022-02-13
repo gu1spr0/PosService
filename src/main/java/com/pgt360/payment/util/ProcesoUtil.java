@@ -221,6 +221,7 @@ public class ProcesoUtil {
                     isAck2 = false;
                     ServerHandler.vRequestDto.setFlujo(Constants.NUMBER_FLOW_NONE);
                     ServerHandler.vRequestDto.setStrFlujo(Constants.FLOW_NONE);
+                    ServerHandler.vResponseDto.notify();
                     break;
                 } else if(isAck(pStrReply)){
                     isAck1 = true;

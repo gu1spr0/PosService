@@ -119,7 +119,7 @@ public class PagoServiceImpl implements PagoService {
             ServerHandler.selectProcess(this.vRequestDto);
         }
         try {
-            ServerHandler.vRequestDto.wait();
+            ServerHandler.vResponseDto.wait();
         } catch (InterruptedException ex) {
             //Thread.currentThread().interrupt();
             log.info("Error en la espera de datos");
