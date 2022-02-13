@@ -103,24 +103,24 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
         log.info("FLUJO NUM:"+vRequestDto.getFlujo());
         switch (vRequestDto.getFlujo()){
             case Constants.NUMBER_FLOW_INIT:
-                ServerCommunication.sendSolicitudInicializar(ctx);
+                ServerCommunication.sendSolicitudInicializar(ServerHandler.ctx);
                 ServerHandler.vRequestDto = vRequestDto;
                 break;
             case Constants.NUMBER_FLOW_CHIP:
                 ServerHandler.vRequestDto = vRequestDto;
-                ServerCommunication.sendConnectionChip(ctx);
+                ServerCommunication.sendConnectionChip(ServerHandler.ctx);
                 break;
             case Constants.NUMBER_FLOW_CHIP_MULTI: break;
             case Constants.NUMBER_FLOW_CTL:
                 ServerHandler.vRequestDto = vRequestDto;
-                ServerCommunication.sendConnectionCtl(ctx);
+                ServerCommunication.sendConnectionCtl(ServerHandler.ctx);
                 break;
             case Constants.NUMBER_FLOW_CTL_MULTI: break;
             case Constants.NUMBER_FLOW_DELETED: break;
             case Constants.NUMBER_FLOW_DELETED_MULTI: break;
             case Constants.NUMBER_FLOW_CLOSE:
                 ServerHandler.vRequestDto = vRequestDto;
-                ServerCommunication.sendSolicitudCierre(ctx);
+                ServerCommunication.sendSolicitudCierre(ServerHandler.ctx);
                 break;
             case Constants.NUMBER_FLOW_CLOSE_MULTI: break;
         }
