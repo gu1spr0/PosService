@@ -96,9 +96,9 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
     }
 
     public static void selectProcess(RequestDto vRequestDto) {
-        log.info("**************************************");
+        log.info("*******************************");
         log.info("********GENERANDO FLUJO********");
-        log.info("**************************************");
+        log.info("*******************************");
         log.info("FLUJO STR:"+vRequestDto.getStrFlujo());
         log.info("FLUJO NUM:"+vRequestDto.getFlujo());
         switch (vRequestDto.getFlujo()){
