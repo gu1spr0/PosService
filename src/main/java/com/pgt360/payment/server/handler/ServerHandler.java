@@ -118,7 +118,10 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
             case Constants.NUMBER_FLOW_CTL_MULTI: break;
             case Constants.NUMBER_FLOW_DELETED: break;
             case Constants.NUMBER_FLOW_DELETED_MULTI: break;
-            case Constants.NUMBER_FLOW_CLOSE: break;
+            case Constants.NUMBER_FLOW_CLOSE:
+                ServerHandler.vRequestDto = vRequestDto;
+                ServerCommunication.sendSolicitudCierre(ctx);
+                break;
             case Constants.NUMBER_FLOW_CLOSE_MULTI: break;
         }
     }

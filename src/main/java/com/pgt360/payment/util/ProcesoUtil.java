@@ -129,7 +129,77 @@ public class ProcesoUtil {
     }
 
     public static ResponseDto flujoCierre(String pStrReply, ChannelHandlerContext pCtx) {
-        return null;
+        ResponseDto vResponseDto = new ResponseDto();
+        switch (ServerHandler.vRequestDto.getPaso()){
+            case 1:{
+                if(isAck1 && ServerHandler.vRequestDto.getTamaño() == 38){
+                    ServerCommunication.sendAck(pCtx);
+                    String codr = pStrReply.substring(50,54);
+                    if(codr.equals("5858")){
+                        ServerHandler.vRequestDto.setPaso(-1);
+                        isAck1 = false;
+                        isAck2 = false;
+                        vResponseDto.setData(ResponseUtil.getRespuestaCierre(pStrReply));
+                        vResponseDto.setMensaje(Constants.RES_FINAL);
+                        vResponseDto.setEstado(true);
+                    } else {
+                        ServerHandler.vRequestDto.setPaso(2);
+                        ServerHandler.vRequestDto.setTamaño(0);
+                        vResponseDto.setData(null);
+                        vResponseDto.setMensaje(Constants.RES_INCOMPLETE);
+                        vResponseDto.setEstado(false);
+                    }
+                    break;
+                } else if (isAck(pStrReply)){
+                    isAck1 = true;
+                    ServerHandler.vRequestDto.setTamaño(0);
+                    vResponseDto.setData(null);
+                    vResponseDto.setMensaje(Constants.RES_INCOMPLETE);
+                    vResponseDto.setEstado(false);
+                    break;
+                } else {
+                    vResponseDto.setMensaje(Constants.RES_INCOMPLETE);
+                    vResponseDto.setEstado(false);
+                    vResponseDto.setData(null);
+                    break;
+                }
+            }
+            case 2:{
+                if(ServerHandler.vRequestDto.getTamaño() > 140){
+                    ServerCommunication.sendAck(pCtx);
+                    ServerHandler.vRequestDto.setTamaño(0);
+                    vResponseDto.setData(null);
+                    vResponseDto.setMensaje(Constants.RES_NOT_VALID);
+                    vResponseDto.setEstado(false);
+                    break;
+                } else if (ServerHandler.vRequestDto.getTamaño() == 40){
+                    ServerCommunication.sendAck(pCtx);
+                    vResponseDto.setData(ResponseUtil.getRespuestaCierreTransaccion(pStrReply));
+                    vResponseDto.setMensaje(Constants.RES_FINAL);
+                    vResponseDto.setEstado(true);
+                    ServerHandler.vRequestDto.setTamaño(0);
+                    ServerHandler.vRequestDto.setPaso(-1);
+                    isAck1 = false;
+                    isAck2 = false;
+                    ServerHandler.vRequestDto.setFlujo(Constants.NUMBER_FLOW_NONE);
+                    ServerHandler.vRequestDto.setStrFlujo(Constants.FLOW_NONE);
+                    break;
+                } else {
+                    vResponseDto.setMensaje(Constants.RES_INCOMPLETE);
+                    vResponseDto.setEstado(false);
+                    vResponseDto.setData(null);
+                    break;
+                }
+            }
+            default:{
+                vResponseDto.setMensaje(Constants.RES_NOT_VALID);
+                vResponseDto.setEstado(false);
+                vResponseDto.setData(null);
+                break;
+            }
+
+        }
+        return vResponseDto;
     }
 
     public static ResponseDto flujoCierreMulti(String pStrReply, ChannelHandlerContext pCtx) {

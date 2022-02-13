@@ -177,6 +177,6 @@ public class ServerCommunication {
         buf.writeCharSequence(data, CharsetUtil.UTF_8);
         ctx.write(buf);
         ctx.flush();
-        log.info("[KIOSCO - SEND OK]:"+msg);
+        log.info("[KIOSCO]:"+msg);
     }
 }

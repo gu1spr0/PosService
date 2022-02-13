@@ -25,9 +25,9 @@ public class PagoServiceImpl implements PagoService {
             ServerHandler.vResponseDto = vResponseDto;
         }else {
             float montob = NettyUtil.redondearMonto(pAmount);
-            System.out.println("MONTO:"+montob);
+            log.info("MONTO:"+montob);
             String montoBoB = NettyUtil.validarMonto(montob);
-            System.out.println("MONTO VALIDADO:"+montoBoB);
+            log.info("MONTO VALIDADO:"+montoBoB);
             this.vRequestDto = new RequestDto();
             vRequestDto.setFlujo(Constants.NUMBER_FLOW_CHIP);
             vRequestDto.setStrFlujo(Constants.FLOW_CHIP);
@@ -85,7 +85,18 @@ public class PagoServiceImpl implements PagoService {
 
     @Override
     public ResponseDto closeSingleCommerce(int pConfirm) {
-        return null;
+        if(pConfirm != 1){
+            log.error("cierre no autorizada");
+        }else{
+            this.vRequestDto = new RequestDto();
+            this.vRequestDto.setFlujo(Constants.NUMBER_FLOW_INIT);
+            this.vRequestDto.setStrFlujo(Constants.FLOW_INIT);
+            this.vRequestDto.setTamaño(0);
+            this.vRequestDto.setPaso(1);
+            this.vRequestDto.setConfirm(pConfirm);
+            ServerHandler.selectProcess(this.vRequestDto);
+        }
+        return ServerHandler.vResponseDto;
     }
 
     @Override
@@ -95,7 +106,6 @@ public class PagoServiceImpl implements PagoService {
 
     @Override
     public ResponseDto initDevice(int pCommerceId, int pConfirm) {
-        log.info("Inicialización de Pos");
         if(pConfirm != 1) {
             log.error("Inicialización no autorizada");
         } else {
