@@ -4,15 +4,21 @@ import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.util.CharsetUtil;
 import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-@Slf4j
+
 public class ServerCommunication {
+    private static Logger log = LoggerFactory.getLogger(ServerCommunication.class);
     public static String sendAck(ChannelHandlerContext ctx){
         String msg = "06";
         SendMessageToPOS(ctx, msg);
         return msg;
     }
     public static String sendConnectionChip(ChannelHandlerContext ctx){
+        log.info("******************");
+        log.info("**ENVIANDO CHIP**");
+        log.info("******************");
         String msg = "02001736303030303030303030313030303030300323";
         System.out.println("Codificado enviado para chip:"+msg);
         SendMessageToPOS(ctx, msg);
