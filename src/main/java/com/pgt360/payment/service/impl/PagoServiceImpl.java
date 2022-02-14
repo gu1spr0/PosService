@@ -60,6 +60,7 @@ public class PagoServiceImpl implements PagoService {
             this.vRequestDto.setMonto(montoBoB);
             this.vRequestDto.setPaso(1);
             this.vRequestDto.setTamaño(0);
+            this.vRequestDto.setIdComercio(pCommerceId);
             ServerHandler.selectProcess(this.vRequestDto);
         }
         return ServerHandler.vResponseDto;
@@ -152,6 +153,7 @@ public class PagoServiceImpl implements PagoService {
             this.vRequestDto.setTamaño(0);
             this.vRequestDto.setPaso(1);
             this.vRequestDto.setConfirm(pConfirm);
+            this.vRequestDto.setIdComercio(pCommerceId);
             ServerHandler.selectProcess(this.vRequestDto);
         }
         return ServerHandler.vResponseDto;
