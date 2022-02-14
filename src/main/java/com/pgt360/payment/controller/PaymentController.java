@@ -27,7 +27,7 @@ public class PaymentController {
     @GetMapping(path = "/chip/{amount}/{commerceId}")
     @ResponseStatus(HttpStatus.OK)
     public ResponseDto payChipMultiCommerce(@PathVariable(value = "amount", required = true) float amount,
-                                            @PathVariable(value = "commerceId", required = true) Integer commerceId){
+                                            @PathVariable(value = "commerceId", required = true) int commerceId){
         return this.pagoService.payChipMultiCommerce(amount, commerceId);
     }
 
@@ -42,7 +42,7 @@ public class PaymentController {
     @GetMapping(path = "/ctl/{amount}/{commerceId}")
     @ResponseStatus(HttpStatus.OK)
     public ResponseDto payContactlessMultiCommerce(@PathVariable(value = "amount", required = true) float amount,
-                                                   @PathVariable(value = "commerceId", required = true) Integer commerceId){
+                                                   @PathVariable(value = "commerceId", required = true) int commerceId){
         return this.pagoService.payContactlessMultiCommerce(amount, commerceId);
     }
 
@@ -57,7 +57,7 @@ public class PaymentController {
     @GetMapping(path = "/cancel/{transaction}/{commerceId}")
     @ResponseStatus(HttpStatus.OK)
     public ResponseDto cancelTransactionMultiCommerce(@PathVariable(value = "transaction", required = true) String transaction,
-                                                      @PathVariable(value = "commerceId", required = true) Integer commerceId){
+                                                      @PathVariable(value = "commerceId", required = true) int commerceId){
         return this.pagoService.cancelTransactionMultiCommerce(transaction, commerceId);
     }
 
@@ -71,8 +71,8 @@ public class PaymentController {
     @ApiOperation(value = "Realizar cierre de multicomercio", authorizations = @Authorization(value = "Bearer"))
     @GetMapping(path = "/close/{confirm}/{commerceId}")
     @ResponseStatus(HttpStatus.OK)
-    public ResponseDto closeMultiCommerce(@PathVariable(value = "confirm", required = true) Integer confirm,
-                                          @PathVariable(value = "commerceId", required = true) Integer commerceId){
+    public ResponseDto closeMultiCommerce(@PathVariable(value = "confirm", required = true) int confirm,
+                                          @PathVariable(value = "commerceId", required = true) int commerceId){
         return this.pagoService.closeMultiCommerce(confirm, commerceId);
     }
 

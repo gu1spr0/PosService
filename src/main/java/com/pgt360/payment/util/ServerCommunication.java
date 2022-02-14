@@ -18,6 +18,7 @@ public class ServerCommunication {
         sendMessageToPOS(ctx, msg);
         return msg;
     }
+
     public static String sendConnectionChip(ChannelHandlerContext pCtx){
         log.info("*******************");
         log.info("***ENVIANDO CHIP***");
@@ -26,7 +27,71 @@ public class ServerCommunication {
         sendMessageToPOS(pCtx, msg);
         return msg;
     }
-    public static String sendConnectionChipMulticom(ChannelHandlerContext pCtx, String pComercioId){
+
+    public static String sendConnectionCtl(ChannelHandlerContext pCtx){
+        log.info("**************************");
+        log.info("***ENVIANDO CONTACTLESS***");
+        log.info("**************************");
+        String msg = "02001736303030303030303030313030363030300325";
+        sendMessageToPOS(pCtx, msg);
+        return msg;
+    }
+
+    public static String sendTransRevNo(ChannelHandlerContext pCtx){
+        log.info("***************************");
+        log.info("***ENVIANDO TRANS.REV.NO***");
+        log.info("***************************");
+        String msg = "02002436303030303030303030313030303030311C3438000258580303";
+        sendMessageToPOS(pCtx, msg);
+        return msg;
+    }
+
+    public static String sendTipoTarjetaCtl(ChannelHandlerContext pCtx){
+        log.info("**************************");
+        log.info("***ENVIANDO CONTACTLESS***");
+        log.info("**************************");
+        String msg = "02001736303030303030303030313030363030310324";
+        sendMessageToPOS(pCtx, msg);
+        return msg;
+    }
+
+    public static String sendSolicitudCierre(ChannelHandlerContext pCtx){
+        log.info("*******************************");
+        log.info("***ENVIANDO SOLICITUD CIERRE***");
+        log.info("*******************************");
+        String msg = "02001736303030303030303030313030313030300322";
+        sendMessageToPOS(pCtx, msg);
+        return msg;
+    }
+
+    public static String sendSolicitudAnulacion(ChannelHandlerContext pCtx){
+        log.info("**********************************");
+        log.info("***ENVIANDO SOLICITUD ANULACION***");
+        log.info("**********************************");
+        String msg = "02001736303030303030303030313030353030300326";
+        sendMessageToPOS(pCtx, msg);
+        return msg;
+    }
+
+    public static String sendConfirmarAnulacion(ChannelHandlerContext pCtx){
+        log.info("**********************************");
+        log.info("***ENVIANDO SOLICITUD ANULACION***");
+        log.info("**********************************");
+        String msg = "02002436303030303030303030313030353030321C3438000230300305";
+        sendMessageToPOS(pCtx, msg);
+        return msg;
+    }
+
+    public static String sendSolicitudInicializar(ChannelHandlerContext pCtx){
+        log.info("**************************");
+        log.info("***ENVIANDO INICIALIZAR***");
+        log.info("**************************");
+        String msg = "02001736303030303030303030313030323030300321";
+        sendMessageToPOS(pCtx, msg);
+        return msg;
+    }
+
+    public static String sendConnectionChipMulticom(ChannelHandlerContext pCtx, int pComercioId){
         log.info("****************************");
         log.info("***ENVIANDO CHIP MULTICOM***");
         log.info("****************************");
@@ -40,14 +105,7 @@ public class ServerCommunication {
         sendMessageToPOS(pCtx, tramaFinal);
         return tramaFinal;
     }
-    public static String sendConnectionCtl(ChannelHandlerContext pCtx){
-        log.info("**************************");
-        log.info("***ENVIANDO CONTACTLESS***");
-        log.info("**************************");
-        String msg = "02001736303030303030303030313030363030300325";
-        sendMessageToPOS(pCtx, msg);
-        return msg;
-    }
+
     public static String sendConnectionCtlMulticom(ChannelHandlerContext pCtx, String pComercioId){
         log.info("***********************************");
         log.info("***ENVIANDO CONTACTLESS MULTICOM***");
@@ -62,6 +120,7 @@ public class ServerCommunication {
         sendMessageToPOS(pCtx, tramaFinal);
         return tramaFinal;
     }
+
     public static String sendSolicitudAnulacionMulticom(ChannelHandlerContext pCtx, String pComercioId){
         log.info("*********************************");
         log.info("***ENVIANDO ANULACION MULTICOM***");
@@ -76,6 +135,7 @@ public class ServerCommunication {
         sendMessageToPOS(pCtx, tramaFinal);
         return tramaFinal;
     }
+
     public static String sendSolicitudCierreMulticom(ChannelHandlerContext pCtx, String pComercioId){
         log.info("******************************");
         log.info("***ENVIANDO CIERRE MULTICOM***");
@@ -91,54 +151,7 @@ public class ServerCommunication {
         return tramaFinal;
 
     }
-    public static String sendTransRevNo(ChannelHandlerContext pCtx){
-        log.info("***************************");
-        log.info("***ENVIANDO TRANS.REV.NO***");
-        log.info("***************************");
-        String msg = "02002436303030303030303030313030303030311C3438000258580303";
-        sendMessageToPOS(pCtx, msg);
-        return msg;
-    }
-    public static String sendTipoTarjetaCtl(ChannelHandlerContext pCtx){
-        log.info("**************************");
-        log.info("***ENVIANDO CONTACTLESS***");
-        log.info("**************************");
-        String msg = "02001736303030303030303030313030363030310324";
-        sendMessageToPOS(pCtx, msg);
-        return msg;
-    }
-    public static String sendSolicitudCierre(ChannelHandlerContext pCtx){
-        log.info("*******************************");
-        log.info("***ENVIANDO SOLICITUD CIERRE***");
-        log.info("*******************************");
-        String msg = "02001736303030303030303030313030313030300322";
-        sendMessageToPOS(pCtx, msg);
-        return msg;
-    }
-    public static String sendSolicitudAnulacion(ChannelHandlerContext pCtx){
-        log.info("**********************************");
-        log.info("***ENVIANDO SOLICITUD ANULACION***");
-        log.info("**********************************");
-        String msg = "02001736303030303030303030313030353030300326";
-        sendMessageToPOS(pCtx, msg);
-        return msg;
-    }
-    public static String sendConfirmarAnulacion(ChannelHandlerContext pCtx){
-        log.info("**********************************");
-        log.info("***ENVIANDO SOLICITUD ANULACION***");
-        log.info("**********************************");
-        String msg = "02002436303030303030303030313030353030321C3438000230300305";
-        sendMessageToPOS(pCtx, msg);
-        return msg;
-    }
-    public static String sendSolicitudInicializar(ChannelHandlerContext pCtx){
-        log.info("**************************");
-        log.info("***ENVIANDO INICIALIZAR***");
-        log.info("**************************");
-        String msg = "02001736303030303030303030313030323030300321";
-        sendMessageToPOS(pCtx, msg);
-        return msg;
-    }
+
     public static String sendDataToPos(String pMontoBob, ChannelHandlerContext pCtx){
         log.info("[KIOSCO]:Enviando datos de venta");
         String inicio = "007736303030303030303030313030303030321C";
@@ -158,6 +171,7 @@ public class ServerCommunication {
         return tramaFinal;
 
     }
+
     public static String sendAnulacionToPos(String pId, ChannelHandlerContext pCtx){
         log.info("[KIOSCO]:Enviando datos para anulación");
         String inicio = "003536303030303030303030313030353030311C";
@@ -169,6 +183,7 @@ public class ServerCommunication {
         sendMessageToPOS(pCtx, tramaFinal);
         return  tramaFinal;
     }
+
     public static void sendMessageToPOS(ChannelHandlerContext ctx, String msg) {
         if (ctx == null)
             return;
