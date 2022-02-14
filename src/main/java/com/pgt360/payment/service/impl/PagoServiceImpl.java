@@ -6,6 +6,7 @@ import com.pgt360.payment.service.dto.netty.RequestDto;
 import com.pgt360.payment.service.dto.netty.ResponseDto;
 import com.pgt360.payment.util.Constants;
 import com.pgt360.payment.util.NettyUtil;
+import io.netty.util.internal.StringUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,56 +15,76 @@ import org.springframework.stereotype.Service;
 @Service
 public class PagoServiceImpl implements PagoService {
     Logger log = LoggerFactory.getLogger(PagoServiceImpl.class);
-    RequestDto vRequestDto = null;
+    RequestDto vRequestDto;
+    ResponseDto vResponseDto;
     @Override
     public ResponseDto payChipSingleCommerce(float pAmount) {
-        ResponseDto vResponseDto = new ResponseDto();
+        this.vResponseDto = new ResponseDto();
         if(NettyUtil.isNaN(pAmount)){
-            vResponseDto.setData(null);
-            vResponseDto.setMensaje("El monto debe ser numero mayor a cero");
-            vResponseDto.setEstado(false);
-            ServerHandler.vResponseDto = vResponseDto;
+            this.vResponseDto.setData(null);
+            this.vResponseDto.setMensaje("El monto debe ser numero mayor a cero");
+            this.vResponseDto.setEstado(false);
+            ServerHandler.vResponseDto = this.vResponseDto;
         }else {
             float montob = NettyUtil.redondearMonto(pAmount);
             log.info("MONTO:"+montob);
             String montoBoB = NettyUtil.validarMonto(montob);
             log.info("MONTO VALIDADO:"+montoBoB);
             this.vRequestDto = new RequestDto();
-            vRequestDto.setFlujo(Constants.NUMBER_FLOW_CHIP);
-            vRequestDto.setStrFlujo(Constants.FLOW_CHIP);
-            vRequestDto.setMonto(montoBoB);
-            vRequestDto.setPaso(1);
-            vRequestDto.setTamaño(0);
-            ServerHandler.selectProcess(vRequestDto);
+            this.vRequestDto.setFlujo(Constants.NUMBER_FLOW_CHIP);
+            this.vRequestDto.setStrFlujo(Constants.FLOW_CHIP);
+            this.vRequestDto.setMonto(montoBoB);
+            this.vRequestDto.setPaso(1);
+            this.vRequestDto.setTamaño(0);
+            ServerHandler.selectProcess(this.vRequestDto);
         }
         return ServerHandler.vResponseDto;
     }
 
     @Override
     public ResponseDto payChipMultiCommerce(float pAmount, int pCommerceId) {
-        return null;
+        this.vResponseDto = new ResponseDto();
+        if(NettyUtil.isNaN(pAmount)){
+            this.vResponseDto.setData(null);
+            this.vResponseDto.setMensaje("El monto debe ser numero mayor a cero");
+            this.vResponseDto.setEstado(false);
+            ServerHandler.vResponseDto = this.vResponseDto;
+        }else {
+            float montob = NettyUtil.redondearMonto(pAmount);
+            log.info("MONTO:"+montob);
+            String montoBoB = NettyUtil.validarMonto(montob);
+            log.info("MONTO VALIDADO:"+montoBoB);
+            this.vRequestDto = new RequestDto();
+            this.vRequestDto.setFlujo(Constants.NUMBER_FLOW_CHIP_MULTI);
+            this.vRequestDto.setStrFlujo(Constants.FLOW_CHIP_MULTI);
+            this.vRequestDto.setMonto(montoBoB);
+            this.vRequestDto.setPaso(1);
+            this.vRequestDto.setTamaño(0);
+            ServerHandler.selectProcess(this.vRequestDto);
+        }
+        return ServerHandler.vResponseDto;
     }
 
     @Override
     public ResponseDto payContactlessSingleCommerce(float pAmount) {
-        ResponseDto vResponseDto = new ResponseDto();
+        this.vResponseDto = new ResponseDto();
         if(NettyUtil.isNaN(pAmount)){
-            vResponseDto.setData(null);
-            vResponseDto.setMensaje("El monto debe ser número mayor a cero");
-            vResponseDto.setEstado(false);
-            ServerHandler.vResponseDto = vResponseDto;
+            this.vResponseDto.setData(null);
+            this.vResponseDto.setMensaje("El monto debe ser número mayor a cero");
+            this.vResponseDto.setEstado(false);
+            ServerHandler.vResponseDto = this.vResponseDto;
         }else{
             float montob = NettyUtil.redondearMonto(pAmount);
-            System.out.println("MONTO:"+montob);
+            log.info("MONTO:"+montob);
             String montoBoB = NettyUtil.validarMonto(montob);
-            System.out.println("MONTO VALIDADO:"+montoBoB);
+            log.info("MONTO VALIDADO:"+montoBoB);
             this.vRequestDto = new RequestDto();
-            vRequestDto.setFlujo(Constants.NUMBER_FLOW_CTL);
-            vRequestDto.setStrFlujo(Constants.FLOW_CTL);
-            vRequestDto.setMonto(montoBoB);
-            vRequestDto.setPaso(1);
-            vRequestDto.setTamaño(0);
-            ServerHandler.selectProcess(vRequestDto);
+            this.vRequestDto.setFlujo(Constants.NUMBER_FLOW_CTL);
+            this.vRequestDto.setStrFlujo(Constants.FLOW_CTL);
+            this.vRequestDto.setMonto(montoBoB);
+            this.vRequestDto.setPaso(1);
+            this.vRequestDto.setTamaño(0);
+            ServerHandler.selectProcess(this.vRequestDto);
         }
         return ServerHandler.vResponseDto;
     }
@@ -75,7 +96,22 @@ public class PagoServiceImpl implements PagoService {
 
     @Override
     public ResponseDto cancelTransactionSingleCommerce(String pTransaction) {
-        return null;
+        this.vResponseDto = new ResponseDto();
+        if(StringUtil.isNullOrEmpty(pTransaction)){
+            this.vResponseDto.setData(null);
+            this.vResponseDto.setMensaje("El identificador de transacción no es válido");
+            this.vResponseDto.setEstado(false);
+            ServerHandler.vResponseDto = this.vResponseDto;
+        }else{
+            this.vRequestDto = new RequestDto();
+            this.vRequestDto.setFlujo(Constants.NUMBER_FLOW_DELETED);
+            this.vRequestDto.setStrFlujo(Constants.FLOW_CTL);
+            this.vRequestDto.setReferenciaAnulacion(pTransaction);
+            this.vRequestDto.setPaso(1);
+            this.vRequestDto.setTamaño(0);
+            ServerHandler.selectProcess(this.vRequestDto);
+        }
+        return ServerHandler.vResponseDto;
     }
 
     @Override
@@ -85,10 +121,13 @@ public class PagoServiceImpl implements PagoService {
 
     @Override
     public ResponseDto closeSingleCommerce(int pConfirm) {
+        this.vResponseDto = new ResponseDto();
         if(pConfirm != 1){
-            log.error("cierre no autorizada");
+            this.vResponseDto.setData(null);
+            this.vResponseDto.setMensaje("El valor de confirmación no válido");
+            this.vResponseDto.setEstado(false);
+            ServerHandler.vResponseDto = this.vResponseDto;
         }else{
-            this.vRequestDto = new RequestDto();
             this.vRequestDto.setFlujo(Constants.NUMBER_FLOW_CLOSE);
             this.vRequestDto.setStrFlujo(Constants.FLOW_CLOSE);
             this.vRequestDto.setTamaño(0);
@@ -101,7 +140,21 @@ public class PagoServiceImpl implements PagoService {
 
     @Override
     public ResponseDto closeMultiCommerce(int pConfirm, int pCommerceId) {
-        return null;
+        this.vResponseDto = new ResponseDto();
+        if(pConfirm != 1){
+            this.vResponseDto.setData(null);
+            this.vResponseDto.setMensaje("El valor de confirmación no válido");
+            this.vResponseDto.setEstado(false);
+            ServerHandler.vResponseDto = this.vResponseDto;
+        }else{
+            this.vRequestDto.setFlujo(Constants.NUMBER_FLOW_CLOSE_MULTI);
+            this.vRequestDto.setStrFlujo(Constants.FLOW_CLOSE_MULTI);
+            this.vRequestDto.setTamaño(0);
+            this.vRequestDto.setPaso(1);
+            this.vRequestDto.setConfirm(pConfirm);
+            ServerHandler.selectProcess(this.vRequestDto);
+        }
+        return ServerHandler.vResponseDto;
     }
 
     @Override
