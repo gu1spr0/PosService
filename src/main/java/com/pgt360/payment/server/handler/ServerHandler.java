@@ -101,31 +101,29 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
         log.info("*******************************");
         log.info("FLUJO STR:"+vRequestDto.getStrFlujo());
         log.info("FLUJO NUM:"+vRequestDto.getFlujo());
+        ServerHandler.vRequestDto = vRequestDto;
         switch (vRequestDto.getFlujo()){
             case Constants.NUMBER_FLOW_INIT:
                 ServerCommunication.sendSolicitudInicializar(ServerHandler.ctx);
-                ServerHandler.vRequestDto = vRequestDto;
                 break;
             case Constants.NUMBER_FLOW_CHIP:
-                ServerHandler.vRequestDto = vRequestDto;
                 ServerCommunication.sendConnectionChip(ServerHandler.ctx);
                 break;
             case Constants.NUMBER_FLOW_CHIP_MULTI:
-                ServerHandler.vRequestDto= vRequestDto;
                 ServerCommunication.sendConnectionChipMulticom(ServerHandler.ctx, ServerHandler.vRequestDto.getIdComercio());
                 break;
             case Constants.NUMBER_FLOW_CTL:
-                ServerHandler.vRequestDto = vRequestDto;
                 ServerCommunication.sendConnectionCtl(ServerHandler.ctx);
                 break;
             case Constants.NUMBER_FLOW_CTL_MULTI: break;
             case Constants.NUMBER_FLOW_DELETED: break;
             case Constants.NUMBER_FLOW_DELETED_MULTI: break;
             case Constants.NUMBER_FLOW_CLOSE:
-                ServerHandler.vRequestDto = vRequestDto;
                 ServerCommunication.sendSolicitudCierre(ServerHandler.ctx);
                 break;
-            case Constants.NUMBER_FLOW_CLOSE_MULTI: break;
+            case Constants.NUMBER_FLOW_CLOSE_MULTI:
+                ServerCommunication.sendSolicitudCierreMulticom(ServerHandler.ctx, ServerHandler.vRequestDto.getIdComercio());
+                break;
         }
     }
 }
