@@ -112,7 +112,7 @@ public class ProcesoUtil {
         ResponseDto vResponseDto = new ResponseDto();
         switch (ServerHandler.vRequestDto.getPaso()){
             case 1:{
-                if(isAck1 && ServerHandler.vRequestDto.getTamaño()==81){
+                if(isAck1 && ServerHandler.vRequestDto.getTamaño() == 81){
                     ServerCommunication.sendAck(pCtx);
                     ServerCommunication.sendTransRevNo(pCtx);
                     ServerHandler.vRequestDto.setPaso(2);
@@ -128,7 +128,7 @@ public class ProcesoUtil {
                 vResponseDto.setData(null);
             }
             case 2:{
-                if(isAck2 && ServerHandler.vRequestDto.getTamaño()==36){
+                if(isAck2 && ServerHandler.vRequestDto.getTamaño() == 36){
                     ServerCommunication.sendAck(pCtx);
                     ServerHandler.vRequestDto.setPaso(3);
                     ServerHandler.vRequestDto.setTamaño(0);
@@ -160,7 +160,7 @@ public class ProcesoUtil {
                 }
             }
             case 4:{
-                if(isAck4 && ServerHandler.vRequestDto.getTamaño()==36){
+                if(isAck4 && ServerHandler.vRequestDto.getTamaño() == 36){
                     ServerCommunication.sendAck(pCtx);
                     ServerHandler.vRequestDto.setPaso(5);
                     ServerHandler.vRequestDto.setTamaño(0);
@@ -184,7 +184,7 @@ public class ProcesoUtil {
                     isAck4 = false;
                     ServerHandler.vRequestDto.setStrFlujo(Constants.FLOW_NONE);
                     ServerHandler.vRequestDto.setFlujo(Constants.NUMBER_FLOW_NONE);
-                    //vResponseDto.setData(ResponseUtil.getRespuestaHostVenta(pStrReply));
+                    vResponseDto.setData(ResponseUtil.getRespuestaHostVenta(pStrReply));
                     vResponseDto.setEstado(true);
                     vResponseDto.setMensaje(Constants.RES_FINAL);
                     break;

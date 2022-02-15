@@ -95,8 +95,10 @@ public class ServerCommunication {
         log.info("****************************");
         log.info("***ENVIANDO CHIP MULTICOM***");
         log.info("****************************");
-        String vComercioId = "00" + String.valueOf(pComercioId);
+        String vComercioId = "00" + pComercioId;
+        log.info("[TAREA]: Id comercio = "+vComercioId);
         vComercioId = vComercioId.substring(vComercioId.length()-2);
+        log.info("[TAREA]: Id comercio completado = "+vComercioId);
         String inicio = "002436303030303030303030313030303030301C";
         String comercio = "37390002" + NettyUtil.asciiToHex(vComercioId);
         String trama = inicio + comercio + "03";
@@ -110,7 +112,7 @@ public class ServerCommunication {
         log.info("***********************************");
         log.info("***ENVIANDO CONTACTLESS MULTICOM***");
         log.info("***********************************");
-        String vComercioId = "00" + String.valueOf(pComercioId);;
+        String vComercioId = "00" + pComercioId;;
         vComercioId = vComercioId.substring(vComercioId.length() - 2);
         String inicio = "002436303030303030303030313030363030301C";
         String comercio = "37390002" + NettyUtil.asciiToHex(vComercioId);
@@ -125,7 +127,7 @@ public class ServerCommunication {
         log.info("*********************************");
         log.info("***ENVIANDO ANULACION MULTICOM***");
         log.info("*********************************");
-        String vComercioId = "00" + String.valueOf(pComercioId);;
+        String vComercioId = "00" + pComercioId;
         vComercioId = vComercioId.substring(vComercioId.length() - 2);
         String inicio = "002436303030303030303030313030353030301C";
         String comercio = "37390002" + NettyUtil.asciiToHex(vComercioId);
@@ -140,7 +142,7 @@ public class ServerCommunication {
         log.info("******************************");
         log.info("***ENVIANDO CIERRE MULTICOM***");
         log.info("******************************");
-        String vComercioId = "00" + String.valueOf(pComercioId);;
+        String vComercioId = "00" + pComercioId;;
         vComercioId = vComercioId.substring(vComercioId.length() - 2);
         String inicio = "002436303030303030303030313030313030301C";
         String comercio = "37390002" + NettyUtil.asciiToHex(vComercioId);
