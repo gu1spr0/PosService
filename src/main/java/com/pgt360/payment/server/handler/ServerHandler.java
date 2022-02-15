@@ -115,14 +115,23 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
             case Constants.NUMBER_FLOW_CTL:
                 ServerCommunication.sendConnectionCtl(ServerHandler.ctx);
                 break;
-            case Constants.NUMBER_FLOW_CTL_MULTI: break;
-            case Constants.NUMBER_FLOW_DELETED: break;
-            case Constants.NUMBER_FLOW_DELETED_MULTI: break;
+            case Constants.NUMBER_FLOW_CTL_MULTI:
+                ServerCommunication.sendConnectionCtlMulticom(ServerHandler.ctx, ServerHandler.vRequestDto.getIdComercio());
+                break;
+            case Constants.NUMBER_FLOW_DELETED:
+                ServerCommunication.sendSolicitudAnulacion(ServerHandler.ctx);
+                break;
+            case Constants.NUMBER_FLOW_DELETED_MULTI:
+                ServerCommunication.sendSolicitudAnulacionMulticom(ServerHandler.ctx, ServerHandler.vRequestDto.getIdComercio());
+                break;
             case Constants.NUMBER_FLOW_CLOSE:
                 ServerCommunication.sendSolicitudCierre(ServerHandler.ctx);
                 break;
             case Constants.NUMBER_FLOW_CLOSE_MULTI:
                 ServerCommunication.sendSolicitudCierreMulticom(ServerHandler.ctx, ServerHandler.vRequestDto.getIdComercio());
+                break;
+            default:
+                log.info("[KIOSKO]: Flujo no definido!");
                 break;
         }
     }

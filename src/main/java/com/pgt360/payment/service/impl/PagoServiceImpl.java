@@ -92,7 +92,27 @@ public class PagoServiceImpl implements PagoService {
 
     @Override
     public ResponseDto payContactlessMultiCommerce(float pAmount, int pCommerceId) {
-        return null;
+        this.vResponseDto = new ResponseDto();
+        if(NettyUtil.isNaN(pAmount)){
+            this.vResponseDto.setData(null);
+            this.vResponseDto.setMensaje("El monto debe ser número mayor a cero");
+            this.vResponseDto.setEstado(false);
+            ServerHandler.vResponseDto = this.vResponseDto;
+        }else{
+            float montob = NettyUtil.redondearMonto(pAmount);
+            log.info("MONTO:"+montob);
+            String montoBoB = NettyUtil.validarMonto(montob);
+            log.info("MONTO VALIDADO:"+montoBoB);
+            this.vRequestDto = new RequestDto();
+            this.vRequestDto.setFlujo(Constants.NUMBER_FLOW_CTL_MULTI);
+            this.vRequestDto.setStrFlujo(Constants.FLOW_CTL_MULTI);
+            this.vRequestDto.setMonto(montoBoB);
+            this.vRequestDto.setPaso(1);
+            this.vRequestDto.setTamaño(0);
+            this.vRequestDto.setIdComercio(pCommerceId);
+            ServerHandler.selectProcess(this.vRequestDto);
+        }
+        return ServerHandler.vResponseDto;
     }
 
     @Override
@@ -106,7 +126,7 @@ public class PagoServiceImpl implements PagoService {
         }else{
             this.vRequestDto = new RequestDto();
             this.vRequestDto.setFlujo(Constants.NUMBER_FLOW_DELETED);
-            this.vRequestDto.setStrFlujo(Constants.FLOW_CTL);
+            this.vRequestDto.setStrFlujo(Constants.FLOW_DELETED);
             this.vRequestDto.setReferenciaAnulacion(pTransaction);
             this.vRequestDto.setPaso(1);
             this.vRequestDto.setTamaño(0);
@@ -117,7 +137,23 @@ public class PagoServiceImpl implements PagoService {
 
     @Override
     public ResponseDto cancelTransactionMultiCommerce(String pTransaction, int pCommerceId) {
-        return null;
+        this.vResponseDto = new ResponseDto();
+        if(StringUtil.isNullOrEmpty(pTransaction)){
+            this.vResponseDto.setData(null);
+            this.vResponseDto.setMensaje("El identificador de transacción no es válido");
+            this.vResponseDto.setEstado(false);
+            ServerHandler.vResponseDto = this.vResponseDto;
+        }else{
+            this.vRequestDto = new RequestDto();
+            this.vRequestDto.setFlujo(Constants.NUMBER_FLOW_DELETED_MULTI);
+            this.vRequestDto.setStrFlujo(Constants.FLOW_DELETED_MULTI);
+            this.vRequestDto.setReferenciaAnulacion(pTransaction);
+            this.vRequestDto.setPaso(1);
+            this.vRequestDto.setTamaño(0);
+            this.vRequestDto.setIdComercio(pCommerceId);
+            ServerHandler.selectProcess(this.vRequestDto);
+        }
+        return ServerHandler.vResponseDto;
     }
 
     @Override
