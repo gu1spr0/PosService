@@ -184,7 +184,7 @@ public class ProcesoUtil {
                     isAck4 = false;
                     ServerHandler.vRequestDto.setStrFlujo(Constants.FLOW_NONE);
                     ServerHandler.vRequestDto.setFlujo(Constants.NUMBER_FLOW_NONE);
-                    vResponseDto.setData(ResponseUtil.getRespuestaHostVenta(pStrReply));
+                    //vResponseDto.setData(ResponseUtil.getRespuestaHostVenta(pStrReply));
                     vResponseDto.setEstado(true);
                     vResponseDto.setMensaje(Constants.RES_FINAL);
                     break;
