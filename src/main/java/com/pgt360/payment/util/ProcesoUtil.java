@@ -133,30 +133,36 @@ public class ProcesoUtil {
                     ServerCommunication.sendTransRevNo(pCtx);
                     ServerHandler.vRequestDto.setPaso(2);
                     ServerHandler.vRequestDto.setTamaño(0);
+                    vResponseDto.setEstado(true);
+                    vResponseDto.setMensaje(Constants.RES_1);
+                    vResponseDto.setData(pStrReply);
                     break;
                 } else if(isAck(pStrReply)){
                     isAck1 = true;
                     ServerHandler.vRequestDto.setTamaño(0);
+                    vResponseDto.setEstado(false);
+                    vResponseDto.setMensaje(Constants.RES_INCOMPLETE);
+                    vResponseDto.setData(pStrReply);
                     break;
                 }
-                vResponseDto.setEstado(false);
-                vResponseDto.setMensaje(Constants.RES_1);
-                vResponseDto.setData(null);
             }
             case 2:{
                 if(isAck2 && ServerHandler.vRequestDto.getTamaño() == 36){
                     ServerCommunication.sendAck(pCtx);
                     ServerHandler.vRequestDto.setPaso(3);
                     ServerHandler.vRequestDto.setTamaño(0);
+                    vResponseDto.setEstado(true);
+                    vResponseDto.setMensaje(Constants.RES_2);
+                    vResponseDto.setData(pStrReply);
                     break;
                 } else if(isAck(pStrReply)){
                     isAck2 = true;
                     ServerHandler.vRequestDto.setTamaño(0);
+                    vResponseDto.setEstado(false);
+                    vResponseDto.setMensaje(Constants.RES_INCOMPLETE);
+                    vResponseDto.setData(pStrReply);
                     break;
                 }
-                vResponseDto.setEstado(false);
-                vResponseDto.setMensaje(Constants.RES_2);
-                vResponseDto.setData(null);
             }
             case 3:{
                 if(ServerHandler.vRequestDto.getTamaño()==29){
@@ -180,18 +186,26 @@ public class ProcesoUtil {
                     ServerCommunication.sendAck(pCtx);
                     ServerHandler.vRequestDto.setPaso(5);
                     ServerHandler.vRequestDto.setTamaño(0);
+                    vResponseDto.setEstado(true);
+                    vResponseDto.setMensaje(Constants.RES_4);
+                    vResponseDto.setData(pStrReply);
                     break;
                 } else if(isAck(pStrReply)){
                     isAck4 = true;
                     ServerHandler.vRequestDto.setTamaño(0);
+                    vResponseDto.setEstado(false);
+                    vResponseDto.setMensaje(Constants.RES_INCOMPLETE);
+                    vResponseDto.setData(pStrReply);
+                    break;
                 }
-                vResponseDto.setEstado(false);
-                vResponseDto.setMensaje(Constants.RES_4);
-                vResponseDto.setData(null);
+
             }
             case 5:{
                 if(ServerHandler.vRequestDto.getTamaño() >= 223){
                     ServerCommunication.sendAck(pCtx);
+                    vResponseDto.setData(ResponseUtil.getRespuestaHostVenta(pStrReply));
+                    vResponseDto.setEstado(true);
+                    vResponseDto.setMensaje(Constants.RES_FINAL);
                     ServerHandler.vRequestDto.setPaso(-1);
                     ServerHandler.vRequestDto.setTamaño(0);
                     isAck1 = false;
@@ -200,9 +214,6 @@ public class ProcesoUtil {
                     isAck4 = false;
                     ServerHandler.vRequestDto.setStrFlujo(Constants.FLOW_NONE);
                     ServerHandler.vRequestDto.setFlujo(Constants.NUMBER_FLOW_NONE);
-                    vResponseDto.setData(ResponseUtil.getRespuestaHostVenta(pStrReply));
-                    vResponseDto.setEstado(true);
-                    vResponseDto.setMensaje(Constants.RES_FINAL);
                     break;
                 } else {
                     vResponseDto.setData(pStrReply);
@@ -230,16 +241,18 @@ public class ProcesoUtil {
                     ServerCommunication.sendTransRevNo(pCtx);
                     ServerHandler.vRequestDto.setPaso(2);
                     ServerHandler.vRequestDto.setTamaño(0);
+                    vResponseDto.setEstado(true);
+                    vResponseDto.setMensaje(Constants.RES_1);
+                    vResponseDto.setData(pStrReply);
                     break;
                 } else if (isAck(pStrReply)){
                     isAck1 = true;
                     ServerHandler.vRequestDto.setTamaño(0);
+                    vResponseDto.setEstado(false);
+                    vResponseDto.setMensaje(Constants.RES_INCOMPLETE);
+                    vResponseDto.setData(pStrReply);
                     break;
                 }
-                vResponseDto.setEstado(true);
-                vResponseDto.setMensaje(Constants.RES_1);
-                vResponseDto.setData(pStrReply);
-
             }
             case 2:{
                 if(isAck2 && ServerHandler.vRequestDto.getTamaño() == 29){
@@ -247,15 +260,18 @@ public class ProcesoUtil {
                     String tramaf = ServerCommunication.sendDataToPos(ServerHandler.vRequestDto.getMonto(), pCtx);
                     ServerHandler.vRequestDto.setPaso(3);
                     ServerHandler.vRequestDto.setTamaño(0);
+                    vResponseDto.setEstado(true);
+                    vResponseDto.setMensaje(Constants.RES_2);
+                    vResponseDto.setData(pStrReply);
                     break;
                 } else if(isAck(pStrReply)){
                     isAck2 = true;
                     ServerHandler.vRequestDto.setTamaño(0);
+                    vResponseDto.setEstado(false);
+                    vResponseDto.setMensaje(Constants.RES_INCOMPLETE);
+                    vResponseDto.setData(pStrReply);
                     break;
                 }
-                vResponseDto.setEstado(true);
-                vResponseDto.setMensaje(Constants.RES_2);
-                vResponseDto.setData(pStrReply);
             }
             case 3:{
                 if(isAck3 && ServerHandler.vRequestDto.getTamaño()==36){
@@ -263,15 +279,18 @@ public class ProcesoUtil {
                     ServerCommunication.sendTipoTarjetaCtl(pCtx);
                     ServerHandler.vRequestDto.setPaso(4);
                     ServerHandler.vRequestDto.setTamaño(0);
+                    vResponseDto.setEstado(true);
+                    vResponseDto.setMensaje(Constants.RES_3);
+                    vResponseDto.setData(pStrReply);
                     break;
                 } else if (isAck(pStrReply)){
                     isAck3 = true;
                     ServerHandler.vRequestDto.setTamaño(0);
+                    vResponseDto.setEstado(false);
+                    vResponseDto.setMensaje(Constants.RES_3);
+                    vResponseDto.setData(pStrReply);
                     break;
                 }
-                vResponseDto.setEstado(true);
-                vResponseDto.setMensaje(Constants.RES_3);
-                vResponseDto.setData(pStrReply);
             }
 
             case 4:{
@@ -279,19 +298,25 @@ public class ProcesoUtil {
                     ServerCommunication.sendAck(pCtx);
                     ServerHandler.vRequestDto.setPaso(5);
                     ServerHandler.vRequestDto.setTamaño(0);
+                    vResponseDto.setEstado(true);
+                    vResponseDto.setMensaje(Constants.RES_4);
+                    vResponseDto.setData(pStrReply);
                     break;
                 } else if (isAck(pStrReply)){
                     isAck4 = true;
                     ServerHandler.vRequestDto.setTamaño(0);
+                    vResponseDto.setEstado(false);
+                    vResponseDto.setMensaje(Constants.RES_INCOMPLETE);
+                    vResponseDto.setData(pStrReply);
                     break;
                 }
-                vResponseDto.setEstado(true);
-                vResponseDto.setMensaje(Constants.RES_4);
-                vResponseDto.setData(pStrReply);
             }
             case 5:{
                 if(ServerHandler.vRequestDto.getTamaño() >= 222){
                     ServerCommunication.sendAck(pCtx);
+                    vResponseDto.setEstado(true);
+                    vResponseDto.setMensaje(Constants.RES_FINAL);
+                    vResponseDto.setData(ResponseUtil.getRespuestaHostVenta(pStrReply));
                     ServerHandler.vRequestDto.setPaso(-1);
                     ServerHandler.vRequestDto.setTamaño(0);
                     isAck1 = false;
@@ -300,9 +325,6 @@ public class ProcesoUtil {
                     isAck4 = false;
                     ServerHandler.vRequestDto.setStrFlujo(Constants.FLOW_NONE);
                     ServerHandler.vRequestDto.setFlujo(Constants.NUMBER_FLOW_NONE);
-                    vResponseDto.setEstado(true);
-                    vResponseDto.setMensaje(Constants.RES_INCOMPLETE);
-                    vResponseDto.setData(pStrReply);
                     break;
                 } else {
                     vResponseDto.setEstado(false);
@@ -312,6 +334,11 @@ public class ProcesoUtil {
                 }
 
             }
+            default:
+                vResponseDto.setEstado(false);
+                vResponseDto.setMensaje(Constants.RES_NOT_VALID);
+                vResponseDto.setData(pStrReply);
+                break;
 
         }
         return vResponseDto;
@@ -326,32 +353,37 @@ public class ProcesoUtil {
                     ServerCommunication.sendTransRevNo(pCtx);
                     ServerHandler.vRequestDto.setPaso(2);
                     ServerHandler.vRequestDto.setTamaño(0);
+                    vResponseDto.setEstado(true);
+                    vResponseDto.setMensaje(Constants.RES_1);
+                    vResponseDto.setData(pStrReply);
                     break;
                 } else if (isAck(pStrReply)){
                     isAck1 = true;
                     ServerHandler.vRequestDto.setTamaño(0);
+                    vResponseDto.setEstado(false);
+                    vResponseDto.setMensaje(Constants.RES_INCOMPLETE);
+                    vResponseDto.setData(pStrReply);
                     break;
                 }
-                vResponseDto.setEstado(true);
-                vResponseDto.setMensaje(Constants.RES_1);
-                vResponseDto.setData(pStrReply);
-
             }
             case 2:{
                 if(isAck2 && ServerHandler.vRequestDto.getTamaño() == 29){
                     ServerCommunication.sendAck(pCtx);
-                    String tramaf = ServerCommunication.sendDataToPos(ServerHandler.vRequestDto.getMonto(), pCtx);
+                    ServerCommunication.sendDataToPos(ServerHandler.vRequestDto.getMonto(), pCtx);
                     ServerHandler.vRequestDto.setPaso(3);
                     ServerHandler.vRequestDto.setTamaño(0);
+                    vResponseDto.setEstado(true);
+                    vResponseDto.setMensaje(Constants.RES_2);
+                    vResponseDto.setData(pStrReply);
                     break;
                 } else if(isAck(pStrReply)){
                     isAck2 = true;
                     ServerHandler.vRequestDto.setTamaño(0);
+                    vResponseDto.setEstado(false);
+                    vResponseDto.setMensaje(Constants.RES_INCOMPLETE);
+                    vResponseDto.setData(pStrReply);
                     break;
                 }
-                vResponseDto.setEstado(true);
-                vResponseDto.setMensaje(Constants.RES_2);
-                vResponseDto.setData(pStrReply);
             }
             case 3:{
                 if(isAck3 && ServerHandler.vRequestDto.getTamaño() == 36){
@@ -359,15 +391,18 @@ public class ProcesoUtil {
                     ServerCommunication.sendTipoTarjetaCtl(pCtx);
                     ServerHandler.vRequestDto.setPaso(4);
                     ServerHandler.vRequestDto.setTamaño(0);
+                    vResponseDto.setEstado(true);
+                    vResponseDto.setMensaje(Constants.RES_3);
+                    vResponseDto.setData(pStrReply);
                     break;
                 } else if (isAck(pStrReply)){
                     isAck3 = true;
                     ServerHandler.vRequestDto.setTamaño(0);
+                    vResponseDto.setEstado(false);
+                    vResponseDto.setMensaje(Constants.RES_INCOMPLETE);
+                    vResponseDto.setData(pStrReply);
                     break;
                 }
-                vResponseDto.setEstado(true);
-                vResponseDto.setMensaje(Constants.RES_3);
-                vResponseDto.setData(pStrReply);
             }
 
             case 4:{
@@ -375,19 +410,25 @@ public class ProcesoUtil {
                     ServerCommunication.sendAck(pCtx);
                     ServerHandler.vRequestDto.setPaso(5);
                     ServerHandler.vRequestDto.setTamaño(0);
+                    vResponseDto.setEstado(true);
+                    vResponseDto.setMensaje(Constants.RES_4);
+                    vResponseDto.setData(pStrReply);
                     break;
                 } else if (isAck(pStrReply)){
                     isAck4 = true;
                     ServerHandler.vRequestDto.setTamaño(0);
+                    vResponseDto.setEstado(false);
+                    vResponseDto.setMensaje(Constants.RES_INCOMPLETE);
+                    vResponseDto.setData(pStrReply);
                     break;
                 }
-                vResponseDto.setEstado(true);
-                vResponseDto.setMensaje(Constants.RES_4);
-                vResponseDto.setData(pStrReply);
             }
             case 5:{
                 if(ServerHandler.vRequestDto.getTamaño() >= 222){
                     ServerCommunication.sendAck(pCtx);
+                    vResponseDto.setEstado(true);
+                    vResponseDto.setMensaje(Constants.RES_FINAL);
+                    vResponseDto.setData(ResponseUtil.getRespuestaHostVenta(pStrReply));
                     ServerHandler.vRequestDto.setPaso(-1);
                     ServerHandler.vRequestDto.setTamaño(0);
                     isAck1 = false;
@@ -396,9 +437,6 @@ public class ProcesoUtil {
                     isAck4 = false;
                     ServerHandler.vRequestDto.setStrFlujo(Constants.FLOW_NONE);
                     ServerHandler.vRequestDto.setFlujo(Constants.NUMBER_FLOW_NONE);
-                    vResponseDto.setEstado(true);
-                    vResponseDto.setMensaje(Constants.RES_INCOMPLETE);
-                    vResponseDto.setData(ResponseUtil.getRespuestaHostVenta(pStrReply));
                     break;
                 } else {
                     vResponseDto.setEstado(false);
@@ -408,6 +446,11 @@ public class ProcesoUtil {
                 }
 
             }
+            default:
+                vResponseDto.setEstado(false);
+                vResponseDto.setMensaje(Constants.RES_NOT_VALID);
+                vResponseDto.setData(pStrReply);
+                break;
 
         }
         return vResponseDto;
@@ -417,19 +460,23 @@ public class ProcesoUtil {
         ResponseDto vResponseDto = new ResponseDto();
         switch (ServerHandler.vRequestDto.getPaso()){
             case 1:{
-                if(isAck1 && ServerHandler.vRequestDto.getTamaño() >= 70){
+                if(isAck1 && ServerHandler.vRequestDto.getTamaño() >= 29){
                     ServerCommunication.sendAck(pCtx);
                     ServerCommunication.sendAnulacionToPos(ServerHandler.vRequestDto.getReferenciaAnulacion(), pCtx);
-                    ServerHandler.vRequestDto.setPaso(0);
-                    ServerHandler.vRequestDto.setTamaño(2);
+                    ServerHandler.vRequestDto.setPaso(2);
+                    ServerHandler.vRequestDto.setTamaño(0);
+                    vResponseDto.setData(pStrReply);
+                    vResponseDto.setEstado(true);
+                    vResponseDto.setMensaje(Constants.RES_1);
+                    break;
                 } else {
                     isAck1 = true;
                     ServerHandler.vRequestDto.setTamaño(0);
+                    vResponseDto.setData(pStrReply);
+                    vResponseDto.setEstado(false);
+                    vResponseDto.setMensaje(Constants.RES_INCOMPLETE);
+                    break;
                 }
-                vResponseDto.setData(pStrReply);
-                vResponseDto.setEstado(true);
-                vResponseDto.setMensaje(Constants.RES_1);
-                break;
             }
             case 2:{
                 if(isAck2 && ServerHandler.vRequestDto.getTamaño() == 29){
@@ -437,14 +484,18 @@ public class ProcesoUtil {
                     ServerCommunication.sendConfirmarAnulacion(pCtx);
                     ServerHandler.vRequestDto.setPaso(3);
                     ServerHandler.vRequestDto.setTamaño(0);
+                    vResponseDto.setData(pStrReply);
+                    vResponseDto.setEstado(true);
+                    vResponseDto.setMensaje(Constants.RES_2);
+                    break;
                 } else if (isAck(pStrReply)){
                     isAck2 = true;
                     ServerHandler.vRequestDto.setTamaño(0);
+                    vResponseDto.setData(pStrReply);
+                    vResponseDto.setEstado(false);
+                    vResponseDto.setMensaje(Constants.RES_INCOMPLETE);
+                    break;
                 }
-                vResponseDto.setData(pStrReply);
-                vResponseDto.setEstado(true);
-                vResponseDto.setMensaje(Constants.RES_2);
-                break;
             }
             case 3:{
                 if(ServerHandler.vRequestDto.getTamaño() >= 210){
@@ -460,15 +511,19 @@ public class ProcesoUtil {
                     isAck4 = false;
                     ServerHandler.vRequestDto.setStrFlujo(Constants.FLOW_NONE);
                     ServerHandler.vRequestDto.setFlujo(Constants.NUMBER_FLOW_NONE);
+                    vResponseDto.setData(pStrReply);
+                    vResponseDto.setEstado(true);
+                    vResponseDto.setMensaje(Constants.RES_FINAL);
+                    break;
                 } else {
                     vResponseDto.setData(pStrReply);
                     vResponseDto.setEstado(false);
                     vResponseDto.setMensaje(Constants.RES_INCOMPLETE);
+                    break;
                 }
-                break;
             }
             default: {
-                vResponseDto.setData(null);
+                vResponseDto.setData(pStrReply);
                 vResponseDto.setEstado(false);
                 vResponseDto.setMensaje(Constants.RES_NOT_VALID);
                 break;
@@ -486,14 +541,18 @@ public class ProcesoUtil {
                     ServerCommunication.sendAnulacionToPos(ServerHandler.vRequestDto.getReferenciaAnulacion(), pCtx);
                     ServerHandler.vRequestDto.setPaso(2);
                     ServerHandler.vRequestDto.setTamaño(0);
+                    vResponseDto.setData(pStrReply);
+                    vResponseDto.setEstado(true);
+                    vResponseDto.setMensaje(Constants.RES_1);
+                    break;
                 } else if(isAck(pStrReply)) {
                     isAck1 = true;
                     ServerHandler.vRequestDto.setTamaño(0);
+                    vResponseDto.setData(pStrReply);
+                    vResponseDto.setEstado(false);
+                    vResponseDto.setMensaje(Constants.RES_INCOMPLETE);
+                    break;
                 }
-                vResponseDto.setData(pStrReply);
-                vResponseDto.setEstado(true);
-                vResponseDto.setMensaje(Constants.RES_1);
-                break;
             }
             case 2:{
                 if(isAck2 && ServerHandler.vRequestDto.getTamaño() == 29){
@@ -501,14 +560,18 @@ public class ProcesoUtil {
                     ServerCommunication.sendConfirmarAnulacion(pCtx);
                     ServerHandler.vRequestDto.setPaso(3);
                     ServerHandler.vRequestDto.setTamaño(0);
+                    vResponseDto.setData(pStrReply);
+                    vResponseDto.setEstado(true);
+                    vResponseDto.setMensaje(Constants.RES_2);
+                    break;
                 } else if (isAck(pStrReply)){
                     isAck2 = true;
                     ServerHandler.vRequestDto.setTamaño(0);
+                    vResponseDto.setData(pStrReply);
+                    vResponseDto.setEstado(false);
+                    vResponseDto.setMensaje(Constants.RES_INCOMPLETE);
+                    break;
                 }
-                vResponseDto.setData(pStrReply);
-                vResponseDto.setEstado(true);
-                vResponseDto.setMensaje(Constants.RES_2);
-                break;
             }
             case 3:{
                 if(ServerHandler.vRequestDto.getTamaño() >= 210){
@@ -524,12 +587,13 @@ public class ProcesoUtil {
                     isAck4 = false;
                     ServerHandler.vRequestDto.setStrFlujo(Constants.FLOW_NONE);
                     ServerHandler.vRequestDto.setFlujo(Constants.NUMBER_FLOW_NONE);
+                    break;
                 } else {
                     vResponseDto.setData(pStrReply);
                     vResponseDto.setEstado(false);
                     vResponseDto.setMensaje(Constants.RES_INCOMPLETE);
+                    break;
                 }
-                break;
             }
             default: {
                 vResponseDto.setData(null);
@@ -555,14 +619,14 @@ public class ProcesoUtil {
                         vResponseDto.setData(ResponseUtil.getRespuestaCierre(pStrReply));
                         vResponseDto.setMensaje(Constants.RES_FINAL);
                         vResponseDto.setEstado(true);
+                        break;
                     } else {
                         ServerHandler.vRequestDto.setPaso(2);
                         ServerHandler.vRequestDto.setTamaño(0);
-                        vResponseDto.setData(null);
+                        vResponseDto.setData(pStrReply);
                         vResponseDto.setMensaje(Constants.RES_INCOMPLETE);
-                        vResponseDto.setEstado(false);
+                        vResponseDto.setEstado(false);break;
                     }
-                    break;
                 } else if (isAck(pStrReply)){
                     isAck1 = true;
                     ServerHandler.vRequestDto.setTamaño(0);
@@ -581,9 +645,9 @@ public class ProcesoUtil {
                 if(ServerHandler.vRequestDto.getTamaño() > 140){
                     ServerCommunication.sendAck(pCtx);
                     ServerHandler.vRequestDto.setTamaño(0);
-                    vResponseDto.setData(null);
-                    vResponseDto.setMensaje(Constants.RES_NOT_VALID);
-                    vResponseDto.setEstado(false);
+                    vResponseDto.setData(pStrReply);
+                    vResponseDto.setMensaje(Constants.RES_2);
+                    vResponseDto.setEstado(true);
                     break;
                 } else if (ServerHandler.vRequestDto.getTamaño() == 40){
                     ServerCommunication.sendAck(pCtx);
@@ -600,14 +664,14 @@ public class ProcesoUtil {
                 } else {
                     vResponseDto.setMensaje(Constants.RES_INCOMPLETE);
                     vResponseDto.setEstado(false);
-                    vResponseDto.setData(null);
+                    vResponseDto.setData(pStrReply);
                     break;
                 }
             }
             default:{
                 vResponseDto.setMensaje(Constants.RES_NOT_VALID);
                 vResponseDto.setEstado(false);
-                vResponseDto.setData(null);
+                vResponseDto.setData(pStrReply);
                 break;
             }
 
@@ -626,14 +690,13 @@ public class ProcesoUtil {
                         ServerHandler.vRequestDto.setPaso(-1);
                         isAck1 = false;
                         isAck2 = false;
-                        ResponseUtil.getRespuestaCierre(pStrReply);
                         vResponseDto.setData(ResponseUtil.getRespuestaCierre(pStrReply));
                         vResponseDto.setMensaje(Constants.RES_FINAL);
                         vResponseDto.setEstado(true);
                     } else {
                         ServerHandler.vRequestDto.setPaso(2);
                         ServerHandler.vRequestDto.setTamaño(0);
-                        vResponseDto.setData(null);
+                        vResponseDto.setData(pStrReply);
                         vResponseDto.setMensaje(Constants.RES_INCOMPLETE);
                         vResponseDto.setEstado(false);
                     }
@@ -641,14 +704,14 @@ public class ProcesoUtil {
                 } else if (isAck(pStrReply)){
                     isAck1 = true;
                     ServerHandler.vRequestDto.setTamaño(0);
-                    vResponseDto.setData(null);
+                    vResponseDto.setData(pStrReply);
                     vResponseDto.setMensaje(Constants.RES_INCOMPLETE);
-                    vResponseDto.setEstado(false);
+                    vResponseDto.setEstado(true);
                     break;
                 } else {
                     vResponseDto.setMensaje(Constants.RES_INCOMPLETE);
                     vResponseDto.setEstado(false);
-                    vResponseDto.setData(null);
+                    vResponseDto.setData(pStrReply);
                     break;
                 }
             }
@@ -656,13 +719,12 @@ public class ProcesoUtil {
                 if (ServerHandler.vRequestDto.getTamaño()>140){
                     ServerCommunication.sendAck(pCtx);
                     ServerHandler.vRequestDto.setTamaño(0);
-                    vResponseDto.setData(null);
+                    vResponseDto.setData(pStrReply);
                     vResponseDto.setMensaje(Constants.RES_NOT_VALID);
                     vResponseDto.setEstado(false);
                     break;
                 } else if (ServerHandler.vRequestDto.getTamaño() == 40){
                     ServerCommunication.sendAck(pCtx);
-                    ResponseUtil.getRespuestaCierreTransaccion(pStrReply);
                     vResponseDto.setData(ResponseUtil.getRespuestaCierreTransaccion(pStrReply));
                     vResponseDto.setMensaje(Constants.RES_FINAL);
                     vResponseDto.setEstado(true);
@@ -676,14 +738,14 @@ public class ProcesoUtil {
                 } else {
                     vResponseDto.setMensaje(Constants.RES_INCOMPLETE);
                     vResponseDto.setEstado(false);
-                    vResponseDto.setData(null);
+                    vResponseDto.setData(pStrReply);
                     break;
                 }
             }
             default:
                 vResponseDto.setMensaje(Constants.RES_NOT_VALID);
                 vResponseDto.setEstado(false);
-                vResponseDto.setData(null);
+                vResponseDto.setData(pStrReply);
                 break;
 
         }
@@ -711,19 +773,19 @@ public class ProcesoUtil {
                     ServerHandler.vRequestDto.setTamaño(0);
                     vResponseDto.setMensaje(Constants.RES_INCOMPLETE);
                     vResponseDto.setEstado(false);
-                    vResponseDto.setData(null);
+                    vResponseDto.setData(pStrReply);
                     break;
                 } else {
-                    vResponseDto.setMensaje(Constants.RES_NOT_VALID);
+                    vResponseDto.setMensaje(Constants.RES_INCOMPLETE);
                     vResponseDto.setEstado(false);
-                    vResponseDto.setData(null);
+                    vResponseDto.setData(pStrReply);
                     break;
                 }
             }
             default:{
                 vResponseDto.setMensaje(Constants.RES_NOT_VALID);
                 vResponseDto.setEstado(false);
-                vResponseDto.setData(null);
+                vResponseDto.setData(pStrReply);
                 break;
             }
         }

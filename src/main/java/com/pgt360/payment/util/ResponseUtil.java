@@ -59,16 +59,19 @@ public class ResponseUtil {
         String vBinTarjeta = pRespuestaHost.substring(Constants.BEGIN_BIN_TARJETA, Constants.BEGIN_BIN_TARJETA+Constants.TAM_BIN_TARJETA);
 
         vAnulacionDto.setCodAutorizacion(NettyUtil.hex2a(vCodigoAutorizacion));
-        vAnulacionDto.setMontoCompra(Float.parseFloat(NettyUtil.hex2a(vMontoCompra)));
+        //vAnulacionDto.setMontoCompra(Float.parseFloat(NettyUtil.hex2a(vMontoCompra)));
+        vAnulacionDto.setMontoCompra(NettyUtil.hex2a(vMontoCompra));
         vAnulacionDto.setNumeroRecibo(NettyUtil.hex2a(vNumeroRecibo));
         vAnulacionDto.setRrn(NettyUtil.hex2a(vRrn));
         vAnulacionDto.setTerminalId(NettyUtil.hex2a(vTerminalId));
         vAnulacionDto.setFechaTransaccion(NettyUtil.hex2a(vFechaTransaccion));
         vAnulacionDto.setHoraTransaccion(NettyUtil.hex2a(vHoraTransaccion));
         vAnulacionDto.setCodigoRespuesta(NettyUtil.hex2a(vCodigoRespuesta));
-        vAnulacionDto.setUltimosDigitos(Integer.parseInt(NettyUtil.hex2a(vUltimosDigitos)));
+        vAnulacionDto.setUltimosDigitos(NettyUtil.hex2a(vUltimosDigitos));
+        //vAnulacionDto.setUltimosDigitos(Integer.parseInt(NettyUtil.hex2a(vUltimosDigitos)));
         vAnulacionDto.setMensajeError(NettyUtil.hex2a(vMensajeError));
-        vAnulacionDto.setBinTarjeta(Integer.parseInt(NettyUtil.hex2a(vBinTarjeta)));
+        vAnulacionDto.setBinTarjeta(NettyUtil.hex2a(vBinTarjeta));
+        //vAnulacionDto.setBinTarjeta(Integer.parseInt(NettyUtil.hex2a(vBinTarjeta)));
 
         return vAnulacionDto;
     }
