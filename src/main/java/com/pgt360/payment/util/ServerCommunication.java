@@ -95,7 +95,7 @@ public class ServerCommunication {
         log.info("****************************");
         log.info("***ENVIANDO CHIP MULTICOM***");
         log.info("****************************");
-        String vComercioId = "00" + pComercioId;
+        String vComercioId = "00" + String.valueOf(pComercioId);
         vComercioId = vComercioId.substring(vComercioId.length()-2);
         String inicio = "002436303030303030303030313030303030301C";
         String comercio = "37390002" + NettyUtil.asciiToHex(vComercioId);
@@ -106,11 +106,11 @@ public class ServerCommunication {
         return tramaFinal;
     }
 
-    public static String sendConnectionCtlMulticom(ChannelHandlerContext pCtx, String pComercioId){
+    public static String sendConnectionCtlMulticom(ChannelHandlerContext pCtx, int pComercioId){
         log.info("***********************************");
         log.info("***ENVIANDO CONTACTLESS MULTICOM***");
         log.info("***********************************");
-        String vComercioId = "00" + pComercioId;
+        String vComercioId = "00" + String.valueOf(pComercioId);;
         vComercioId = vComercioId.substring(vComercioId.length() - 2);
         String inicio = "002436303030303030303030313030363030301C";
         String comercio = "37390002" + NettyUtil.asciiToHex(vComercioId);
@@ -121,11 +121,11 @@ public class ServerCommunication {
         return tramaFinal;
     }
 
-    public static String sendSolicitudAnulacionMulticom(ChannelHandlerContext pCtx, String pComercioId){
+    public static String sendSolicitudAnulacionMulticom(ChannelHandlerContext pCtx, int pComercioId){
         log.info("*********************************");
         log.info("***ENVIANDO ANULACION MULTICOM***");
         log.info("*********************************");
-        String vComercioId = "00" + pComercioId;
+        String vComercioId = "00" + String.valueOf(pComercioId);;
         vComercioId = vComercioId.substring(vComercioId.length() - 2);
         String inicio = "002436303030303030303030313030353030301C";
         String comercio = "37390002" + NettyUtil.asciiToHex(vComercioId);
@@ -136,11 +136,11 @@ public class ServerCommunication {
         return tramaFinal;
     }
 
-    public static String sendSolicitudCierreMulticom(ChannelHandlerContext pCtx, String pComercioId){
+    public static String sendSolicitudCierreMulticom(ChannelHandlerContext pCtx, int pComercioId){
         log.info("******************************");
         log.info("***ENVIANDO CIERRE MULTICOM***");
         log.info("******************************");
-        String vComercioId = "00" + pComercioId;
+        String vComercioId = "00" + String.valueOf(pComercioId);;
         vComercioId = vComercioId.substring(vComercioId.length() - 2);
         String inicio = "002436303030303030303030313030313030301C";
         String comercio = "37390002" + NettyUtil.asciiToHex(vComercioId);
