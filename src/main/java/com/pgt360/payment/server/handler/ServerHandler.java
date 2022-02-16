@@ -37,6 +37,7 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
 
     }
 
+
     @Override
     public void handlerRemoved(ChannelHandlerContext ctx){
         Channel incoming = ctx.channel();

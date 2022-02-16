@@ -27,7 +27,7 @@ public class PagoServiceImpl implements PagoService {
             ServerHandler.vResponseDto = this.vResponseDto;
         }else {
             float montob = NettyUtil.redondearMonto(pAmount);
-            log.info("MONTO:"+montob);
+            log.info("MONTO REDONDEADO:"+montob);
             String montoBoB = NettyUtil.validarMonto(montob);
             log.info("MONTO VALIDADO:"+montoBoB);
             this.vRequestDto = new RequestDto();

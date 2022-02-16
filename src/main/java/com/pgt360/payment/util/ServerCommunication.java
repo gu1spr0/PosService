@@ -157,7 +157,9 @@ public class ServerCommunication {
     public static String sendDataToPos(String pMontoBob, ChannelHandlerContext pCtx){
         log.info("[KIOSCO]:Enviando datos de venta");
         String inicio = "007736303030303030303030313030303030321C";
+        log.warn("El monto para enviar es: "+pMontoBob);
         String monto = "3430000C" + NettyUtil.asciiToHex(pMontoBob)+"1C";
+        log.warn("El monto codificado de ascii es :"+monto);
         String mpkh = "720"+"          ";
         mpkh = mpkh.substring(0,10);
         String numCaja = "3432000A"+NettyUtil.asciiToHex(mpkh)+"1C";
