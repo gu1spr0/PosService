@@ -38,7 +38,7 @@ public class PagoServiceImpl implements PagoService {
             this.vRequestDto.setTamaño(0);
             ServerHandler.selectProcess(this.vRequestDto);
         }
-        synchronized (ServerHandler.vResponseDto){
+        /*synchronized (ServerHandler.vResponseDto){
             try{
                 System.out.println("::NOMBRE DEL HILO ACTUAL::"+Thread.currentThread().getName());
                 ServerHandler.vResponseDto.wait();
@@ -46,7 +46,8 @@ public class PagoServiceImpl implements PagoService {
                 log.error(e.toString());
             }
 
-        }
+        }*/
+        Thread.currentThread().suspend();
         return ServerHandler.vResponseDto;
     }
 

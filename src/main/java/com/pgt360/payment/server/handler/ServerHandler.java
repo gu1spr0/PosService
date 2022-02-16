@@ -95,10 +95,10 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
     public void channelInactive(ChannelHandlerContext ctx) throws Exception {
         log.info("Canal con id:"+ctx.channel().id()+" inactivo");
         //TODO: Notificar que termino la transacción
-        ServerHandler.vResponseDto.notify();
+        //ServerHandler.vResponseDto.notify();
     }
 
-    public static void selectProcess(RequestDto vRequestDto) {
+    public static void selectProcess(RequestDto vRequestDto) throws InterruptedException {
         log.info("*******************************");
         log.info("********GENERANDO FLUJO********");
         log.info("*******************************");
@@ -111,9 +111,11 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
                 break;
             case Constants.NUMBER_FLOW_CHIP:
                 ServerCommunication.sendConnectionChip(ServerHandler.ctx);
+                Thread.currentThread().join();
                 break;
             case Constants.NUMBER_FLOW_CHIP_MULTI:
                 ServerCommunication.sendConnectionChipMulticom(ServerHandler.ctx, ServerHandler.vRequestDto.getIdComercio());
+                Thread.currentThread().join();
                 break;
             case Constants.NUMBER_FLOW_CTL:
                 ServerCommunication.sendConnectionCtl(ServerHandler.ctx);
