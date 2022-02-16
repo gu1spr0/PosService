@@ -50,9 +50,9 @@ public class PagoServiceImpl implements PagoService {
             this.vResponseDto.setEstado(false);
             ServerHandler.vResponseDto = this.vResponseDto;
         }else {
-            float montob = NettyUtil.redondearMonto(pAmount);
-            log.info("MONTO:"+montob);
-            String montoBoB = NettyUtil.validarMonto(montob);
+            //float montob = NettyUtil.redondearMonto(pAmount);
+            //log.info("MONTO:"+montob);
+            String montoBoB = NettyUtil.validarMonto(pAmount);
             log.info("MONTO VALIDADO:"+montoBoB);
             this.vRequestDto = new RequestDto();
             this.vRequestDto.setFlujo(Constants.NUMBER_FLOW_CHIP_MULTI);
@@ -75,9 +75,9 @@ public class PagoServiceImpl implements PagoService {
             this.vResponseDto.setEstado(false);
             ServerHandler.vResponseDto = this.vResponseDto;
         }else{
-            float montob = NettyUtil.redondearMonto(pAmount);
-            log.info("MONTO:"+montob);
-            String montoBoB = NettyUtil.validarMonto(montob);
+            //float montob = NettyUtil.redondearMonto(pAmount);
+            //log.info("MONTO:"+montob);
+            String montoBoB = NettyUtil.validarMonto(pAmount);
             log.info("MONTO VALIDADO:"+montoBoB);
             this.vRequestDto = new RequestDto();
             this.vRequestDto.setFlujo(Constants.NUMBER_FLOW_CTL);
@@ -99,9 +99,9 @@ public class PagoServiceImpl implements PagoService {
             this.vResponseDto.setEstado(false);
             ServerHandler.vResponseDto = this.vResponseDto;
         }else{
-            float montob = NettyUtil.redondearMonto(pAmount);
-            log.info("MONTO:"+montob);
-            String montoBoB = NettyUtil.validarMonto(montob);
+            //float montob = NettyUtil.redondearMonto(pAmount);
+            //log.info("MONTO:"+montob);
+            String montoBoB = NettyUtil.validarMonto(pAmount);
             log.info("MONTO VALIDADO:"+montoBoB);
             this.vRequestDto = new RequestDto();
             this.vRequestDto.setFlujo(Constants.NUMBER_FLOW_CTL_MULTI);
