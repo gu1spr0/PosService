@@ -5,6 +5,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.util.ObjectUtils;
 
 import java.io.*;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.nio.charset.StandardCharsets;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
@@ -121,7 +123,7 @@ public class NettyUtil {
         return (v != v);
     }
     public static String validarMonto(float monto){
-        String montos = String.valueOf(monto);
+        String montos = String.valueOf(new BigDecimal(monto).setScale(2, RoundingMode.HALF_UP));
         String[] n = montos.split("\\.");
         log.error("[0]="+n[0]);
         log.error("[1]="+n[1]);
@@ -140,7 +142,7 @@ public class NettyUtil {
         log.info("[TAREA]: Validando referencia para anulacion = "+ substring);
         return substring;
     }
-    public static float redondearMonto(float numero){
+    public static float formatearMonto(float numero){
         String format = new DecimalFormat("##.##").format(numero);
         log.info("[TAREA]: Monto redondeado = "+format);
         return Float.parseFloat(format);
