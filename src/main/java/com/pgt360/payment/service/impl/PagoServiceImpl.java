@@ -47,7 +47,7 @@ public class PagoServiceImpl implements PagoService {
             }
 
         }*/
-        Thread.currentThread().suspend();
+        //Thread.currentThread().suspend();
         return ServerHandler.vResponseDto;
     }
 
