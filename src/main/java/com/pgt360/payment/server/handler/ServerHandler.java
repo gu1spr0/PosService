@@ -98,7 +98,7 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
         //ServerHandler.vResponseDto.notify();
     }
 
-    public static void selectProcess(RequestDto vRequestDto) throws InterruptedException {
+    public static void selectProcess(RequestDto vRequestDto) {
         log.info("*******************************");
         log.info("********GENERANDO FLUJO********");
         log.info("*******************************");
@@ -111,11 +111,19 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
                 break;
             case Constants.NUMBER_FLOW_CHIP:
                 ServerCommunication.sendConnectionChip(ServerHandler.ctx);
-                Thread.currentThread().join();
+                try {
+                    Thread.currentThread().join();
+                }catch (InterruptedException ie){
+                    log.error(ie.getMessage());
+                }
                 break;
             case Constants.NUMBER_FLOW_CHIP_MULTI:
                 ServerCommunication.sendConnectionChipMulticom(ServerHandler.ctx, ServerHandler.vRequestDto.getIdComercio());
-                Thread.currentThread().join();
+                try {
+                    Thread.currentThread().join();
+                }catch (InterruptedException ie){
+                    log.error(ie.getMessage());
+                }
                 break;
             case Constants.NUMBER_FLOW_CTL:
                 ServerCommunication.sendConnectionCtl(ServerHandler.ctx);
