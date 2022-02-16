@@ -123,7 +123,7 @@ public class NettyUtil {
         return (v != v);
     }
     public static String validarMonto(float monto){
-        String montos = String.valueOf(new BigDecimal(monto).setScale(2, RoundingMode.HALF_UP));
+        String montos = String.valueOf(new BigDecimal(monto).setScale(4, RoundingMode.HALF_UP));
         String[] n = montos.split("\\.");
         log.error("[0]="+n[0]);
         log.error("[1]="+n[1]);
