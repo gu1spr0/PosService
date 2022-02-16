@@ -20,7 +20,7 @@ public class Server {
         try{
             ChannelFuture serverChannelFuture = serverBootstrap.bind(tcpSocketAddress).sync();
             log.info("*************************************************");
-            log.info("**********Server iniciado : port {}**********", tcpSocketAddress.getPort());
+            log.info("***********Server iniciado : port {}***********", tcpSocketAddress.getPort());
             log.info("*************************************************");
             //channel = (Channel)channelFuture.channel().closeFuture().sync();
             //channelFuture.channel().closeFuture().sync();
