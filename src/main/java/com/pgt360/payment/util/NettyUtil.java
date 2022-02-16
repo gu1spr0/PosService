@@ -123,7 +123,10 @@ public class NettyUtil {
     public static String validarMonto(float monto){
         String montos = String.valueOf(monto);
         String[] n = montos.split("\\.");
+        log.error("[0]="+n[0]);
+        log.error("[1]="+n[1]);
         String num = n[0]+n[1];
+        log.error("NUMERO DESCOMPUESTO:"+num);
         num = "000000000000"+num;
         final String substring = num.substring(num.length() - 12);
         log.info("[TAREA]: Validando monto = "+ substring);
