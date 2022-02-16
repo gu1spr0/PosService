@@ -124,12 +124,12 @@ public class NettyUtil {
     }
     public static String validarMonto(float monto){
         String montos = String.valueOf(new BigDecimal(monto).setScale(2, RoundingMode.HALF_UP));
-        log.error("MONTO REDONDEADO="+montos);
+        log.warn("MONTO REDONDEADO="+montos);
         String[] n = montos.split("\\.");
-        log.error("[0]="+n[0]);
-        log.error("[1]="+n[1]);
+        log.warn("[0]="+n[0]);
+        log.warn("[1]="+n[1]);
         String num = n[0]+n[1];
-        log.error("NUMERO DESCOMPUESTO:"+num);
+        log.warn("NUMERO DESCOMPUESTO:"+num);
         num = "000000000000"+num;
         final String substring = num.substring(num.length() - 12);
         log.info("[TAREA]: Validando monto = "+ substring);
