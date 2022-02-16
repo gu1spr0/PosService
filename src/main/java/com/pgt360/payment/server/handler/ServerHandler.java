@@ -119,11 +119,6 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
                 break;
             case Constants.NUMBER_FLOW_CHIP_MULTI:
                 ServerCommunication.sendConnectionChipMulticom(ServerHandler.ctx, ServerHandler.vRequestDto.getIdComercio());
-                try {
-                    Thread.currentThread().join();
-                }catch (InterruptedException ie){
-                    log.error(ie.getMessage());
-                }
                 break;
             case Constants.NUMBER_FLOW_CTL:
                 ServerCommunication.sendConnectionCtl(ServerHandler.ctx);
