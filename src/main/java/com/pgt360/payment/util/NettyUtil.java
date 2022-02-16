@@ -142,9 +142,9 @@ public class NettyUtil {
         log.info("[TAREA]: Validando referencia para anulacion = "+ substring);
         return substring;
     }
-    public static float formatearMonto(float numero){
+    /*public static float formatearMonto(float numero){
         String format = new DecimalFormat("##.##").format(numero);
         log.info("[TAREA]: Monto redondeado = "+format);
         return Float.parseFloat(format);
-    }
+    }*/
 }
