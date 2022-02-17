@@ -2,11 +2,13 @@ package com.pgt360.payment.service.dto.netty;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import java.util.Date;
 
 @Setter
 @Getter
+@ToString
 public class VentaDto {
     /*private String codAutorizacion;
     private float montoCompra;

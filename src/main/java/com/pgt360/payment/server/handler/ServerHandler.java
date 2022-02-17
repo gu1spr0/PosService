@@ -82,6 +82,10 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
             //this.flujoChip(msg.toString(),ctx);
             //System.out.println("TAMAÑO:"+NettyUtil.hex2a(msg.toString()).length());
             //System.out.println("ACK1:"+this.isAck1);
+            log.info("*************************************************");
+            log.info("**********RESPUESTA FINAL DEL PROCESO************");
+            log.info("*************************************************");
+            log.info(ServerHandler.vResponseDto.toString());
         }catch (StringIndexOutOfBoundsException ex){
             log.error(ex.getMessage());
         }
