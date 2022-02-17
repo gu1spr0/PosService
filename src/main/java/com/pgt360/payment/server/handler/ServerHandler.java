@@ -96,7 +96,7 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
     public void channelInactive(ChannelHandlerContext ctx) throws Exception {
         log.info("Canal con id:"+ctx.channel().id()+" inactivo");
         //TODO: Notificar que termino la transacción
-        ServerHandler.vResponseDto.notify();
+        //ServerHandler.vResponseDto.notify();
     }
 
     public static void selectProcess(RequestDto vRequestDto) {

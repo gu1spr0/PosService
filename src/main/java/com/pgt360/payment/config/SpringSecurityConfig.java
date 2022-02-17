@@ -28,8 +28,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
             "/swagger-ui.html",
             "/v2/api-docs",
             "/webjars/**",
-            //"/",
-            "/**",
+            "/",
             "/locale",
             "/api/login"
     };

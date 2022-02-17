@@ -38,11 +38,11 @@ public class PagoServiceImpl implements PagoService {
             this.vRequestDto.setTamaño(0);
             ServerHandler.selectProcess(this.vRequestDto);
         }
-        try{
+        /*try{
             ServerHandler.vResponseDto.wait();
         }catch (InterruptedException ie){
             log.error(ie.getMessage());
-        }
+        }*/
         return ServerHandler.vResponseDto;
     }
 
