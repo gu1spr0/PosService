@@ -1,0 +1,26 @@
+[33m17--02-2022 14:03:39.134[0;39m [restartedMain] INFO  c.pgt360.payment.PaymentApplication - Starting PaymentApplication using Java 1.8.0_202 on NDTLPZ0371 with PID 8856 (C:\Users\iquispe\Desktop\projects\PosService\target\classes started by iquispe in C:\Users\iquispe\Desktop\projects\PosService)
+[33m17--02-2022 14:03:39.137[0;39m [restartedMain] INFO  c.pgt360.payment.PaymentApplication - No active profile set, falling back to default profiles: default
+[33m17--02-2022 14:03:42.048[0;39m [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+[33m17--02-2022 14:03:42.049[0;39m [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.56]
+[33m17--02-2022 14:03:42.342[0;39m [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+[33m17--02-2022 14:03:42.562[0;39m [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+[33m17--02-2022 14:03:42.620[0;39m [restartedMain] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.4.33
+[33m17--02-2022 14:03:42.782[0;39m [restartedMain] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+[33m17--02-2022 14:03:42.957[0;39m [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+[33m17--02-2022 14:03:45.617[0;39m [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+[33m17--02-2022 14:03:45.683[0;39m [restartedMain] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+[33m17--02-2022 14:03:48.475[0;39m [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+[33m17--02-2022 14:03:50.762[0;39m [restartedMain] INFO  s.d.s.w.PropertySourcedRequestMappingHandlerMapping - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+[33m17--02-2022 14:03:51.668[0;39m [restartedMain] INFO  s.d.s.w.p.DocumentationPluginsBootstrapper - Context refreshed
+[33m17--02-2022 14:03:51.688[0;39m [restartedMain] INFO  s.d.s.w.p.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
+[33m17--02-2022 14:03:51.722[0;39m [restartedMain] INFO  s.d.s.w.s.ApiListingReferenceScanner - Scanning for api listing references
+[33m17--02-2022 14:03:51.961[0;39m [restartedMain] INFO  c.pgt360.payment.PaymentApplication - Started PaymentApplication in 13.715 seconds (JVM running for 17.468)
+[33m17--02-2022 14:03:52.721[0;39m [restartedMain] INFO  com.pgt360.payment.server.Server - *************************************************
+[33m17--02-2022 14:03:52.730[0;39m [restartedMain] INFO  com.pgt360.payment.server.Server - ***********Server iniciado : port 8090***********
+[33m17--02-2022 14:03:52.733[0;39m [restartedMain] INFO  com.pgt360.payment.server.Server - *************************************************
+[33m17--02-2022 14:03:56.867[0;39m [http-nio-9070-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+[33m17--02-2022 14:03:56.869[0;39m [http-nio-9070-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+[33m17--02-2022 14:03:56.879[0;39m [http-nio-9070-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 4 ms
+[33m17--02-2022 14:04:16.242[0;39m [http-nio-9070-exec-8] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [java.lang.NullPointerException]
+[33m17--02-2022 14:04:36.070[0;39m [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+[33m17--02-2022 14:04:36.087[0;39m [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.

@@ -79,9 +79,6 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
                 ServerHandler.vResponseDto.setMensaje("Sin tipo de flujo definido");
                 ServerHandler.vResponseDto.setData(null);
             }
-            //this.flujoChip(msg.toString(),ctx);
-            //System.out.println("TAMAÑO:"+NettyUtil.hex2a(msg.toString()).length());
-            //System.out.println("ACK1:"+this.isAck1);
             log.info("*************************************************");
             log.info("**********RESPUESTA FINAL DEL PROCESO************");
             log.info("*************************************************");
@@ -99,7 +96,7 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
     public void channelInactive(ChannelHandlerContext ctx) throws Exception {
         log.info("Canal con id:"+ctx.channel().id()+" inactivo");
         //TODO: Notificar que termino la transacción
-        //ServerHandler.vResponseDto.notify();
+        ServerHandler.vResponseDto.notify();
     }
 
     public static void selectProcess(RequestDto vRequestDto) {
