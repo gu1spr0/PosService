@@ -46,17 +46,17 @@ public class ResponseUtil {
 
     public static AnulacionDto getRespuestaAnulacion(String pRespuestaHost){
         AnulacionDto vAnulacionDto = new AnulacionDto();
-        String vCodigoAutorizacion = pRespuestaHost.substring(Constants.BEGIN_COD_AUTORIZACION, Constants.BEGIN_COD_AUTORIZACION+Constants.TAM_COD_AUTORIZACION);
-        String vMontoCompra = pRespuestaHost.substring(Constants.BEGIN_MONTO_COMPRA, Constants.BEGIN_MONTO_COMPRA+Constants.TAM_MONTO_COMPRA);
-        String vNumeroRecibo = pRespuestaHost.substring(Constants.BEGIN_NUM_RECIBO, Constants.BEGIN_NUM_RECIBO+Constants.TAM_NUM_RECIBO);
-        String vRrn = pRespuestaHost.substring(Constants.BEGIN_RRN, Constants.BEGIN_RRN+Constants.TAM_RRN);
-        String vTerminalId = pRespuestaHost.substring(Constants.BEGIN_TERMINAL_ID, Constants.BEGIN_TERMINAL_ID+Constants.TAM_TERMINAL_ID);
-        String vFechaTransaccion = pRespuestaHost.substring(Constants.BEGIN_FECHA_TRANSAC, Constants.BEGIN_FECHA_TRANSAC+Constants.TAM_FECHA_TRANSAC);
-        String vHoraTransaccion = pRespuestaHost.substring(Constants.BEGIN_HORA_TRANSAC, Constants.BEGIN_HORA_TRANSAC+Constants.TAM_HORA_TRANSAC);
-        String vCodigoRespuesta = pRespuestaHost.substring(Constants.BEGIN_COD_RESPUESTA, Constants.BEGIN_COD_RESPUESTA+Constants.TAM_COD_RESPUESTA);
-        String vUltimosDigitos = pRespuestaHost.substring(Constants.BEGIN_ULT_DIGITOS, Constants.BEGIN_ULT_DIGITOS+Constants.TAM_ULT_DIGITOS);
-        String vMensajeError = pRespuestaHost.substring(Constants.BEGIN_MSG_ERROR, Constants.BEGIN_MSG_ERROR+Constants.TAM_MSG_ERROR);
-        String vBinTarjeta = pRespuestaHost.substring(Constants.BEGIN_BIN_TARJETA, Constants.BEGIN_BIN_TARJETA+Constants.TAM_BIN_TARJETA);
+        String vCodigoAutorizacion = pRespuestaHost.substring(Constants.AN_IAUTORIZACION, Constants.AN_IAUTORIZACION+Constants.AN_LAUTORIZACION);
+        String vMontoCompra = pRespuestaHost.substring(Constants.AN_ICOMPRA, Constants.AN_ICOMPRA+Constants.AN_LCOMPRA);
+        String vNumeroRecibo = pRespuestaHost.substring(Constants.AN_IRECIBO, Constants.AN_IRECIBO+Constants.AN_LRECIBO);
+        String vRrn = pRespuestaHost.substring(Constants.AN_IRRN, Constants.AN_IRRN+Constants.AN_LRRN);
+        String vTerminalId = pRespuestaHost.substring(Constants.AN_ITERMINAL, Constants.AN_ITERMINAL+Constants.AN_LTERMINAL);
+        String vFechaTransaccion = pRespuestaHost.substring(Constants.AN_IFECHA, Constants.AN_IFECHA+Constants.AN_LFECHA);
+        String vHoraTransaccion = pRespuestaHost.substring(Constants.AN_IHORA, Constants.AN_IHORA+Constants.AN_LHORA);
+        String vCodigoRespuesta = pRespuestaHost.substring(Constants.AN_IRESPUESTA, Constants.AN_IRESPUESTA+Constants.AN_LRESPUESTA);
+        String vUltimosDigitos = pRespuestaHost.substring(Constants.AN_IDIGITOS, Constants.AN_IDIGITOS+Constants.AN_LDIGITOS);
+        String vMensajeError = pRespuestaHost.substring(Constants.AN_IERROR, Constants.AN_IERROR+Constants.AN_LERROR);
+        String vBinTarjeta = pRespuestaHost.substring(Constants.AN_IBIN, Constants.AN_IBIN+Constants.AN_LBIN);
 
         vAnulacionDto.setCodAutorizacion(NettyUtil.hex2a(vCodigoAutorizacion));
         //vAnulacionDto.setMontoCompra(Float.parseFloat(NettyUtil.hex2a(vMontoCompra)));
@@ -78,8 +78,8 @@ public class ResponseUtil {
 
     public static CierreTransaccionDto getRespuestaCierreTransaccion(String pRespuestaHost){
         CierreTransaccionDto vCierreTransaccionDto = new CierreTransaccionDto();
-        String vCodigoAutorizacion = pRespuestaHost.substring(Constants.BEGIN_COD_AUTORIZACION, Constants.BEGIN_COD_AUTORIZACION+Constants.TAM_COD_AUTORIZACION);
-        String vCodigoRespuesta = pRespuestaHost.substring(Constants.BEGIN_COD_RESPUESTA, Constants.BEGIN_COD_RESPUESTA+Constants.TAM_COD_RESPUESTA);
+        String vCodigoAutorizacion = pRespuestaHost.substring(Constants.CT_IAUTORIZACION, Constants.CT_IAUTORIZACION+Constants.CT_LAUTORIZACION);
+        String vCodigoRespuesta = pRespuestaHost.substring(Constants.CT_IRESPUESTA, Constants.CT_IRESPUESTA+Constants.CT_LRESPUESTA);
 
         vCierreTransaccionDto.setCodAutorizacion(NettyUtil.hex2a(vCodigoAutorizacion));
         if(!vCierreTransaccionDto.getCodAutorizacion().isEmpty()){
@@ -98,7 +98,7 @@ public class ResponseUtil {
 
     public static InicializacionDto getRespuestaInicializacion(String pRespuestaHost){
         InicializacionDto vInicializacionDto = new InicializacionDto();
-        String vCodigoRespuesta = pRespuestaHost.substring(Constants.BEGIN_COD_RESPUESTA, Constants.BEGIN_COD_RESPUESTA+Constants.TAM_COD_RESPUESTA);
+        String vCodigoRespuesta = pRespuestaHost.substring(Constants.IN_IRESPUESTA, Constants.IN_IRESPUESTA+Constants.IN_LRESPUESTA);
 
         vInicializacionDto.setCodigoRespuesta(NettyUtil.hex2a(vCodigoRespuesta));
 

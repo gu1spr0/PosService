@@ -60,6 +60,43 @@ public class Constants {
     public static final int TAM_MSG_ERROR = 138;
     public static final int TAM_BIN_TARJETA = 12;
 
+    //DATA RESPUESTA ANULACION
+    public static final int AN_IAUTORIZACION = 52;
+    public static final int AN_ICOMPRA = 74;
+    public static final int AN_IRECIBO = 108;
+    public static final int AN_IRRN = 130;
+    public static final int AN_ITERMINAL = 164;
+    public static final int AN_IFECHA = 190;
+    public static final int AN_IHORA = 208;
+    public static final int AN_IRESPUESTA = 226;
+    public static final int AN_IDIGITOS = 240;
+    public static final int AN_IERROR = 258;
+    public static final int AN_IBIN = 406;
+
+    public static final int AN_LAUTORIZACION = 12;
+    public static final int AN_LCOMPRA = 24;
+    public static final int AN_LRECIBO = 23;
+    public static final int AN_LRRN = 24;
+    public static final int AN_LTERMINAL = 16;
+    public static final int AN_LFECHA = 8;
+    public static final int AN_LHORA = 8;
+    public static final int AN_LRESPUESTA = 4;
+    public static final int AN_LDIGITOS = 8;
+    public static final int AN_LERROR = 138;
+    public static final int AN_LBIN = 12;
+
+    //DATA RESPUESTA CIERRE CON TRANSACCION
+    public static final int CT_IAUTORIZACION = 50;
+    public static final int CT_IRESPUESTA = 72;
+
+    public static final int CT_LAUTORIZACION = 12;
+    public static final int CT_LRESPUESTA = 4;
+
+    //DATA RESPUESTA INICIALIZACION
+    public static final int IN_IRESPUESTA = 50;
+
+    public static final int IN_LRESPUESTA = 4;
+
     //MENSAJES
     public static final String RES_1 = "Proceso en paso 1";
     public static final String RES_2 = "Proceso en paso 2";
