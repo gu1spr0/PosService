@@ -106,6 +106,13 @@ public class PagoServiceImpl implements PagoService {
             this.vRequestDto.setTamaño(0);
             ServerHandler.selectProcess(this.vRequestDto);
         }
+        do {
+            try{
+                Thread.sleep(3000);
+            }catch (InterruptedException ie){
+                log.error(ie.getMessage());
+            }
+        }while (ServerHandler.procesoFinalizado);
         return ServerHandler.vResponseDto;
     }
 
@@ -131,6 +138,13 @@ public class PagoServiceImpl implements PagoService {
             this.vRequestDto.setIdComercio(pCommerceId);
             ServerHandler.selectProcess(this.vRequestDto);
         }
+        do {
+            try{
+                Thread.sleep(3000);
+            }catch (InterruptedException ie){
+                log.error(ie.getMessage());
+            }
+        }while (ServerHandler.procesoFinalizado);
         return ServerHandler.vResponseDto;
     }
 
@@ -151,6 +165,13 @@ public class PagoServiceImpl implements PagoService {
             this.vRequestDto.setTamaño(0);
             ServerHandler.selectProcess(this.vRequestDto);
         }
+        do {
+            try{
+                Thread.sleep(3000);
+            }catch (InterruptedException ie){
+                log.error(ie.getMessage());
+            }
+        }while (ServerHandler.procesoFinalizado);
         return ServerHandler.vResponseDto;
     }
 
@@ -172,6 +193,13 @@ public class PagoServiceImpl implements PagoService {
             this.vRequestDto.setIdComercio(pCommerceId);
             ServerHandler.selectProcess(this.vRequestDto);
         }
+        do {
+            try{
+                Thread.sleep(3000);
+            }catch (InterruptedException ie){
+                log.error(ie.getMessage());
+            }
+        }while (ServerHandler.procesoFinalizado);
         return ServerHandler.vResponseDto;
     }
 
@@ -191,6 +219,13 @@ public class PagoServiceImpl implements PagoService {
             this.vRequestDto.setConfirm(pConfirm);
             ServerHandler.selectProcess(this.vRequestDto);
         }
+        do {
+            try{
+                Thread.sleep(3000);
+            }catch (InterruptedException ie){
+                log.error(ie.getMessage());
+            }
+        }while (ServerHandler.procesoFinalizado);
         return ServerHandler.vResponseDto;
     }
 
@@ -211,6 +246,13 @@ public class PagoServiceImpl implements PagoService {
             this.vRequestDto.setIdComercio(pCommerceId);
             ServerHandler.selectProcess(this.vRequestDto);
         }
+        do {
+            try{
+                Thread.sleep(3000);
+            }catch (InterruptedException ie){
+                log.error(ie.getMessage());
+            }
+        }while (ServerHandler.procesoFinalizado);
         return ServerHandler.vResponseDto;
     }
 
@@ -228,9 +270,13 @@ public class PagoServiceImpl implements PagoService {
             this.vRequestDto.setPaso(1);
             ServerHandler.selectProcess(this.vRequestDto);
         }
-        while (ServerHandler.vResponseDto.getMensaje().isEmpty()){
-            log.info("Esperando tarea a completar..");
-        }
+        do {
+            try{
+                Thread.sleep(3000);
+            }catch (InterruptedException ie){
+                log.error(ie.getMessage());
+            }
+        }while (ServerHandler.procesoFinalizado);
         return ServerHandler.vResponseDto;
     }
 }
