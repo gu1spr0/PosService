@@ -27,6 +27,7 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
     public static ResponseDto vResponseDto = null;
     public static ChannelGroup clients = new DefaultChannelGroup(GlobalEventExecutor.INSTANCE);
     public static  ChannelHandlerContext ctx;
+    public static boolean procesoFinalizado = true;
 
     @Override
     public void handlerAdded(ChannelHandlerContext ctx){
@@ -44,6 +45,7 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
         ServerHandler.ctx = null;
         clients.remove(incoming);
         log.info("[SERVER] - "+incoming.remoteAddress() + " SE DESCONECTÓ DISPOSITIVO CON EL ID:"+incoming.id()+"\n");
+        ServerHandler.procesoFinalizado = false;
     }
 
     @Override

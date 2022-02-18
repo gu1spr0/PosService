@@ -49,7 +49,7 @@ public class PagoServiceImpl implements PagoService {
             }catch (InterruptedException ie){
                 log.error(ie.getMessage());
             }
-        }while (ServerHandler.ctx.isRemoved());
+        }while (ServerHandler.procesoFinalizado);
         return ServerHandler.vResponseDto;
     }
 
@@ -81,7 +81,7 @@ public class PagoServiceImpl implements PagoService {
             }catch (InterruptedException ie){
                 log.error(ie.getMessage());
             }
-        }while (ServerHandler.ctx.isRemoved());
+        }while (ServerHandler.procesoFinalizado);
         return ServerHandler.vResponseDto;
     }
 
