@@ -43,6 +43,9 @@ public class PagoServiceImpl implements PagoService {
         }catch (InterruptedException ie){
             log.error(ie.getMessage());
         }*/
+        do {
+            log.info("Esperando respuesta...");
+        }while (!(ServerHandler.ctx.isRemoved()));
         return ServerHandler.vResponseDto;
     }
 
