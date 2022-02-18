@@ -533,7 +533,7 @@ public class ProcesoUtil {
                     vResponseDto.setMensaje(Constants.RES_INCOMPLETE);
                     break;
                 } else {
-                    //ServerHandler.statePos = Constants.STATE_REALIZADO;
+                    ServerHandler.statePos = Constants.STATE_REALIZADO;
                     break;
                 }
             }
@@ -555,7 +555,7 @@ public class ProcesoUtil {
                     vResponseDto.setMensaje(Constants.RES_INCOMPLETE);
                     break;
                 } else {
-                    //ServerHandler.statePos = Constants.STATE_REALIZADO;
+                    ServerHandler.statePos = Constants.STATE_REALIZADO;
                     break;
                 }
             }
