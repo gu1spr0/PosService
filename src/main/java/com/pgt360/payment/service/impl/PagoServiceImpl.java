@@ -42,7 +42,7 @@ public class PagoServiceImpl implements PagoService {
             }catch (InterruptedException ie){
                 log.error(ie.getMessage());
             }
-        }while (!ServerHandler.statePos);
+        }while (ServerHandler.statePos);
         return ServerHandler.vResponseDto;
     }
 
@@ -72,7 +72,7 @@ public class PagoServiceImpl implements PagoService {
             }catch (InterruptedException ie){
                 log.error(ie.getMessage());
             }
-        }while (!ServerHandler.statePos);
+        }while (ServerHandler.statePos);
         return ServerHandler.vResponseDto;
     }
 
@@ -101,7 +101,7 @@ public class PagoServiceImpl implements PagoService {
             }catch (InterruptedException ie){
                 log.error(ie.getMessage());
             }
-        }while (!ServerHandler.statePos);
+        }while (ServerHandler.statePos);
         return ServerHandler.vResponseDto;
     }
 
@@ -131,7 +131,7 @@ public class PagoServiceImpl implements PagoService {
             }catch (InterruptedException ie){
                 log.error(ie.getMessage());
             }
-        }while (!ServerHandler.statePos);
+        }while (ServerHandler.statePos);
         return ServerHandler.vResponseDto;
     }
 
@@ -158,7 +158,7 @@ public class PagoServiceImpl implements PagoService {
             }catch (InterruptedException ie){
                 log.error(ie.getMessage());
             }
-        }while (!ServerHandler.statePos);
+        }while (ServerHandler.statePos);
         return ServerHandler.vResponseDto;
     }
 
@@ -186,7 +186,7 @@ public class PagoServiceImpl implements PagoService {
             }catch (InterruptedException ie){
                 log.error(ie.getMessage());
             }
-        }while (!ServerHandler.statePos);
+        }while (ServerHandler.statePos);
         return ServerHandler.vResponseDto;
     }
 
@@ -212,7 +212,7 @@ public class PagoServiceImpl implements PagoService {
             }catch (InterruptedException ie){
                 log.error(ie.getMessage());
             }
-        }while (!ServerHandler.statePos);
+        }while (ServerHandler.statePos);
         return ServerHandler.vResponseDto;
     }
 
@@ -239,7 +239,7 @@ public class PagoServiceImpl implements PagoService {
             }catch (InterruptedException ie){
                 log.error(ie.getMessage());
             }
-        }while (!ServerHandler.statePos);
+        }while (ServerHandler.statePos);
         return ServerHandler.vResponseDto;
     }
 
@@ -263,7 +263,7 @@ public class PagoServiceImpl implements PagoService {
             }catch (InterruptedException ie){
                 log.error(ie.getMessage());
             }
-        }while (!ServerHandler.statePos);
+        }while (ServerHandler.statePos);
         return ServerHandler.vResponseDto;
     }
 }

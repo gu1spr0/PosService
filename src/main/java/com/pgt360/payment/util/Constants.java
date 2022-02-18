@@ -8,8 +8,8 @@ public class Constants {
     public static final String STATE_DELETED = "EL";
 
     //STATES POS
-    public static final boolean STATE_PENDIENTE = false;
-    public static final boolean STATE_REALIZADO = true;
+    public static final boolean STATE_PENDIENTE = true;
+    public static final boolean STATE_REALIZADO = false;
 
     //FLUJO POS LITERAL
     public static final String FLOW_NONE="NONE";
