@@ -188,6 +188,15 @@ public class ServerCommunication {
         return  tramaFinal;
     }
 
+    public static String sendEstadoPos(ChannelHandlerContext pCtx){
+        log.info("***************************");
+        log.info("****ENVIANDO ESTADO POS****");
+        log.info("***************************");
+        String msg = "02001736303030303030303030313030333030300320";
+        sendMessageToPOS(pCtx, msg);
+        return msg;
+    }
+
     public static void sendMessageToPOS(ChannelHandlerContext ctx, String msg) {
         if (ctx == null)
             return;
