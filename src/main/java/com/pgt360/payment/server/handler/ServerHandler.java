@@ -57,6 +57,7 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg){
         try{
+            log.info("Inicio read...");
             log.info("[POS]:"+msg);
             if(ProcesoUtil.isAck(msg.toString())){
                 log.info("POS:OK!");
