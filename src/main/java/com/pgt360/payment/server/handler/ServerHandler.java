@@ -39,12 +39,13 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
 
     }
 
+
     @Override
     public void handlerRemoved(ChannelHandlerContext ctx){
         Channel incoming = ctx.channel();
         ServerHandler.ctx = null;
         clients.remove(incoming);
-        log.info("[SERVER] - "+incoming.remoteAddress() + " SE DESCONECTÓ DISPOSITIVO CON EL ID:"+incoming.id()+"\n");
+        log.info("[SERVER] - "+incoming.localAddress() + " SE DESCONECTÓ DISPOSITIVO CON EL ID:"+incoming.id()+"\n");
         ServerHandler.statePos = Constants.STATE_REALIZADO;
     }
 
