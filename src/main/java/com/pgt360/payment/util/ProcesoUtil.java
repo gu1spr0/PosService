@@ -35,9 +35,6 @@ public class ProcesoUtil {
                     vResponseDto.setMensaje(Constants.RES_INCOMPLETE);
                     vResponseDto.setData(pStrReply);
                     break;
-                } else {
-                    ServerHandler.statePos = Constants.STATE_REALIZADO;
-                    break;
                 }
 
             }
@@ -57,9 +54,6 @@ public class ProcesoUtil {
                     vResponseDto.setMensaje(Constants.RES_INCOMPLETE);
                     vResponseDto.setData(pStrReply);
                     break;
-                } else {
-                    ServerHandler.statePos = Constants.STATE_REALIZADO;
-                    break;
                 }
             }
             case 3: {
@@ -76,7 +70,6 @@ public class ProcesoUtil {
                     vResponseDto.setEstado(false);
                     vResponseDto.setMensaje(Constants.RES_INCOMPLETE);
                     vResponseDto.setData(pStrReply);
-                    ServerHandler.statePos = Constants.STATE_REALIZADO;
                     break;
                 }
 
@@ -96,9 +89,6 @@ public class ProcesoUtil {
                     vResponseDto.setEstado(false);
                     vResponseDto.setMensaje(Constants.RES_INCOMPLETE);
                     vResponseDto.setData(pStrReply);
-                    break;
-                } else {
-                    ServerHandler.statePos = Constants.STATE_REALIZADO;
                     break;
                 }
             }
@@ -122,7 +112,6 @@ public class ProcesoUtil {
                     vResponseDto.setData(pStrReply);
                     vResponseDto.setEstado(false);
                     vResponseDto.setMensaje(Constants.RES_INCOMPLETE);
-                    ServerHandler.statePos = Constants.STATE_REALIZADO;
                     break;
                 }
             }
@@ -130,7 +119,6 @@ public class ProcesoUtil {
                 vResponseDto.setData(pStrReply);
                 vResponseDto.setEstado(false);
                 vResponseDto.setMensaje(Constants.RES_NOT_VALID);
-                ServerHandler.statePos = Constants.STATE_REALIZADO;
                 break;
 
         }
@@ -157,9 +145,6 @@ public class ProcesoUtil {
                     vResponseDto.setMensaje(Constants.RES_INCOMPLETE);
                     vResponseDto.setData(pStrReply);
                     break;
-                } else {
-                    ServerHandler.statePos = Constants.STATE_REALIZADO;
-                    break;
                 }
             }
             case 2:{
@@ -178,9 +163,6 @@ public class ProcesoUtil {
                     vResponseDto.setMensaje(Constants.RES_INCOMPLETE);
                     vResponseDto.setData(pStrReply);
                     break;
-                } else {
-                    ServerHandler.statePos = Constants.STATE_REALIZADO;
-                    break;
                 }
             }
             case 3:{
@@ -197,7 +179,6 @@ public class ProcesoUtil {
                     vResponseDto.setEstado(false);
                     vResponseDto.setMensaje(Constants.RES_INCOMPLETE);
                     vResponseDto.setData(null);
-                    ServerHandler.statePos = Constants.STATE_REALIZADO;
                     break;
                 }
             }
@@ -217,11 +198,7 @@ public class ProcesoUtil {
                     vResponseDto.setMensaje(Constants.RES_INCOMPLETE);
                     vResponseDto.setData(pStrReply);
                     break;
-                } else {
-                    ServerHandler.statePos = Constants.STATE_REALIZADO;
-                    break;
                 }
-
             }
             case 5:{
                 if(ServerHandler.vRequestDto.getTamaño() >= 223){
@@ -237,13 +214,11 @@ public class ProcesoUtil {
                     isAck4 = false;
                     ServerHandler.vRequestDto.setStrFlujo(Constants.FLOW_NONE);
                     ServerHandler.vRequestDto.setFlujo(Constants.NUMBER_FLOW_NONE);
-                    ServerHandler.statePos = Constants.STATE_REALIZADO;
                     break;
                 } else {
                     vResponseDto.setData(pStrReply);
                     vResponseDto.setEstado(false);
                     vResponseDto.setMensaje(Constants.RES_INCOMPLETE);
-                    ServerHandler.statePos = Constants.STATE_REALIZADO;
                     break;
                 }
             }
@@ -251,7 +226,6 @@ public class ProcesoUtil {
                 vResponseDto.setData(pStrReply);
                 vResponseDto.setEstado(false);
                 vResponseDto.setMensaje(Constants.RES_NOT_VALID);
-                ServerHandler.statePos = Constants.STATE_REALIZADO;
                 break;
 
         }
@@ -278,9 +252,6 @@ public class ProcesoUtil {
                     vResponseDto.setMensaje(Constants.RES_INCOMPLETE);
                     vResponseDto.setData(pStrReply);
                     break;
-                } else {
-                    ServerHandler.statePos = Constants.STATE_REALIZADO;
-                    break;
                 }
             }
             case 2:{
@@ -299,9 +270,6 @@ public class ProcesoUtil {
                     vResponseDto.setEstado(false);
                     vResponseDto.setMensaje(Constants.RES_INCOMPLETE);
                     vResponseDto.setData(pStrReply);
-                    break;
-                } else {
-                    ServerHandler.statePos = Constants.STATE_REALIZADO;
                     break;
                 }
             }
@@ -322,9 +290,6 @@ public class ProcesoUtil {
                     vResponseDto.setMensaje(Constants.RES_3);
                     vResponseDto.setData(pStrReply);
                     break;
-                } else {
-                    ServerHandler.statePos = Constants.STATE_REALIZADO;
-                    break;
                 }
             }
 
@@ -344,9 +309,6 @@ public class ProcesoUtil {
                     vResponseDto.setMensaje(Constants.RES_INCOMPLETE);
                     vResponseDto.setData(pStrReply);
                     break;
-                } else {
-                    ServerHandler.statePos = Constants.STATE_REALIZADO;
-                    break;
                 }
             }
             case 5:{
@@ -363,13 +325,11 @@ public class ProcesoUtil {
                     isAck4 = false;
                     ServerHandler.vRequestDto.setStrFlujo(Constants.FLOW_NONE);
                     ServerHandler.vRequestDto.setFlujo(Constants.NUMBER_FLOW_NONE);
-                    ServerHandler.statePos = Constants.STATE_REALIZADO;
                     break;
                 } else {
                     vResponseDto.setEstado(false);
                     vResponseDto.setMensaje(Constants.RES_INCOMPLETE);
                     vResponseDto.setData(pStrReply);
-                    ServerHandler.statePos = Constants.STATE_REALIZADO;
                     break;
                 }
 
@@ -378,7 +338,6 @@ public class ProcesoUtil {
                 vResponseDto.setEstado(false);
                 vResponseDto.setMensaje(Constants.RES_NOT_VALID);
                 vResponseDto.setData(pStrReply);
-                ServerHandler.statePos = Constants.STATE_REALIZADO;
                 break;
 
         }
@@ -405,9 +364,6 @@ public class ProcesoUtil {
                     vResponseDto.setMensaje(Constants.RES_INCOMPLETE);
                     vResponseDto.setData(pStrReply);
                     break;
-                } else {
-                    ServerHandler.statePos = Constants.STATE_REALIZADO;
-                    break;
                 }
             }
             case 2:{
@@ -426,9 +382,6 @@ public class ProcesoUtil {
                     vResponseDto.setEstado(false);
                     vResponseDto.setMensaje(Constants.RES_INCOMPLETE);
                     vResponseDto.setData(pStrReply);
-                    break;
-                } else {
-                    ServerHandler.statePos = Constants.STATE_REALIZADO;
                     break;
                 }
             }
@@ -449,9 +402,6 @@ public class ProcesoUtil {
                     vResponseDto.setMensaje(Constants.RES_INCOMPLETE);
                     vResponseDto.setData(pStrReply);
                     break;
-                } else {
-                    ServerHandler.statePos = Constants.STATE_REALIZADO;
-                    break;
                 }
             }
 
@@ -471,9 +421,6 @@ public class ProcesoUtil {
                     vResponseDto.setMensaje(Constants.RES_INCOMPLETE);
                     vResponseDto.setData(pStrReply);
                     break;
-                } else {
-                    ServerHandler.statePos = Constants.STATE_REALIZADO;
-                    break;
                 }
             }
             case 5:{
@@ -490,13 +437,11 @@ public class ProcesoUtil {
                     isAck4 = false;
                     ServerHandler.vRequestDto.setStrFlujo(Constants.FLOW_NONE);
                     ServerHandler.vRequestDto.setFlujo(Constants.NUMBER_FLOW_NONE);
-                    ServerHandler.statePos = Constants.STATE_REALIZADO;
                     break;
                 } else {
                     vResponseDto.setEstado(false);
                     vResponseDto.setMensaje(Constants.RES_INCOMPLETE);
                     vResponseDto.setData(pStrReply);
-                    ServerHandler.statePos = Constants.STATE_REALIZADO;
                     break;
                 }
 
@@ -505,7 +450,6 @@ public class ProcesoUtil {
                 vResponseDto.setEstado(false);
                 vResponseDto.setMensaje(Constants.RES_NOT_VALID);
                 vResponseDto.setData(pStrReply);
-                ServerHandler.statePos = Constants.STATE_REALIZADO;
                 break;
 
         }
@@ -532,9 +476,6 @@ public class ProcesoUtil {
                     vResponseDto.setEstado(false);
                     vResponseDto.setMensaje(Constants.RES_INCOMPLETE);
                     break;
-                } else {
-                    ServerHandler.statePos = Constants.STATE_REALIZADO;
-                    break;
                 }
             }
             case 2:{
@@ -553,9 +494,6 @@ public class ProcesoUtil {
                     vResponseDto.setData(pStrReply);
                     vResponseDto.setEstado(false);
                     vResponseDto.setMensaje(Constants.RES_INCOMPLETE);
-                    break;
-                } else {
-                    ServerHandler.statePos = Constants.STATE_REALIZADO;
                     break;
                 }
             }
@@ -576,13 +514,11 @@ public class ProcesoUtil {
                     vResponseDto.setData(pStrReply);
                     vResponseDto.setEstado(true);
                     vResponseDto.setMensaje(Constants.RES_FINAL);
-                    ServerHandler.statePos = Constants.STATE_REALIZADO;
                     break;
                 } else {
                     vResponseDto.setData(pStrReply);
                     vResponseDto.setEstado(false);
                     vResponseDto.setMensaje(Constants.RES_INCOMPLETE);
-                    ServerHandler.statePos = Constants.STATE_REALIZADO;
                     break;
                 }
             }
@@ -590,7 +526,6 @@ public class ProcesoUtil {
                 vResponseDto.setData(pStrReply);
                 vResponseDto.setEstado(false);
                 vResponseDto.setMensaje(Constants.RES_NOT_VALID);
-                ServerHandler.statePos = Constants.STATE_REALIZADO;
                 break;
             }
         }
@@ -617,9 +552,6 @@ public class ProcesoUtil {
                     vResponseDto.setEstado(false);
                     vResponseDto.setMensaje(Constants.RES_INCOMPLETE);
                     break;
-                } else {
-                    ServerHandler.statePos = Constants.STATE_REALIZADO;
-                    break;
                 }
             }
             case 2:{
@@ -639,9 +571,6 @@ public class ProcesoUtil {
                     vResponseDto.setEstado(false);
                     vResponseDto.setMensaje(Constants.RES_INCOMPLETE);
                     break;
-                } else {
-                    ServerHandler.statePos = Constants.STATE_REALIZADO;
-                    break;
                 }
             }
             case 3:{
@@ -658,13 +587,11 @@ public class ProcesoUtil {
                     isAck4 = false;
                     ServerHandler.vRequestDto.setStrFlujo(Constants.FLOW_NONE);
                     ServerHandler.vRequestDto.setFlujo(Constants.NUMBER_FLOW_NONE);
-                    ServerHandler.statePos = Constants.STATE_REALIZADO;
                     break;
                 } else {
                     vResponseDto.setData(pStrReply);
                     vResponseDto.setEstado(false);
                     vResponseDto.setMensaje(Constants.RES_INCOMPLETE);
-                    ServerHandler.statePos = Constants.STATE_REALIZADO;
                     break;
                 }
             }
@@ -672,7 +599,6 @@ public class ProcesoUtil {
                 vResponseDto.setData(null);
                 vResponseDto.setEstado(false);
                 vResponseDto.setMensaje(Constants.RES_NOT_VALID);
-                ServerHandler.statePos = Constants.STATE_REALIZADO;
                 break;
             }
         }
@@ -712,7 +638,6 @@ public class ProcesoUtil {
                     vResponseDto.setMensaje(Constants.RES_INCOMPLETE);
                     vResponseDto.setEstado(false);
                     vResponseDto.setData(null);
-                    ServerHandler.statePos = Constants.STATE_REALIZADO;
                     break;
                 }
             }
@@ -736,13 +661,11 @@ public class ProcesoUtil {
                     isAck2 = false;
                     ServerHandler.vRequestDto.setFlujo(Constants.NUMBER_FLOW_NONE);
                     ServerHandler.vRequestDto.setStrFlujo(Constants.FLOW_NONE);
-                    ServerHandler.statePos = Constants.STATE_REALIZADO;
                     break;
                 } else {
                     vResponseDto.setMensaje(Constants.RES_INCOMPLETE);
                     vResponseDto.setEstado(false);
                     vResponseDto.setData(pStrReply);
-                    ServerHandler.statePos = Constants.STATE_REALIZADO;
                     break;
                 }
             }
@@ -750,7 +673,6 @@ public class ProcesoUtil {
                 vResponseDto.setMensaje(Constants.RES_NOT_VALID);
                 vResponseDto.setEstado(false);
                 vResponseDto.setData(pStrReply);
-                ServerHandler.statePos = Constants.STATE_REALIZADO;
                 break;
             }
 
@@ -791,7 +713,6 @@ public class ProcesoUtil {
                     vResponseDto.setMensaje(Constants.RES_INCOMPLETE);
                     vResponseDto.setEstado(false);
                     vResponseDto.setData(pStrReply);
-                    ServerHandler.statePos = Constants.STATE_REALIZADO;
                     break;
                 }
             }
@@ -802,7 +723,6 @@ public class ProcesoUtil {
                     vResponseDto.setData(pStrReply);
                     vResponseDto.setMensaje(Constants.RES_NOT_VALID);
                     vResponseDto.setEstado(false);
-                    ServerHandler.statePos = Constants.STATE_REALIZADO;
                     break;
                 } else if (ServerHandler.vRequestDto.getTamaño() == 40){
                     ServerCommunication.sendAck(pCtx);
@@ -815,13 +735,11 @@ public class ProcesoUtil {
                     isAck2 = false;
                     ServerHandler.vRequestDto.setFlujo(Constants.NUMBER_FLOW_NONE);
                     ServerHandler.vRequestDto.setStrFlujo(Constants.FLOW_NONE);
-                    ServerHandler.statePos = Constants.STATE_REALIZADO;
                     break;
                 } else {
                     vResponseDto.setMensaje(Constants.RES_INCOMPLETE);
                     vResponseDto.setEstado(false);
                     vResponseDto.setData(pStrReply);
-                    ServerHandler.statePos = Constants.STATE_REALIZADO;
                     break;
                 }
             }
@@ -863,7 +781,6 @@ public class ProcesoUtil {
                     vResponseDto.setMensaje(Constants.RES_INCOMPLETE);
                     vResponseDto.setEstado(false);
                     vResponseDto.setData(pStrReply);
-                    ServerHandler.statePos = Constants.STATE_REALIZADO;
                     break;
                 }
             }
@@ -871,7 +788,6 @@ public class ProcesoUtil {
                 vResponseDto.setMensaje(Constants.RES_NOT_VALID);
                 vResponseDto.setEstado(false);
                 vResponseDto.setData(pStrReply);
-                ServerHandler.statePos = Constants.STATE_REALIZADO;
                 break;
             }
         }
