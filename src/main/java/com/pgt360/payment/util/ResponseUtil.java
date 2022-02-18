@@ -29,15 +29,15 @@ public class ResponseUtil {
         vVentaDto.setNumeroRecibo(NettyUtil.hex2a(vNumeroRecibo));
         vVentaDto.setRrn(NettyUtil.hex2a(vRrn));
         vVentaDto.setTerminalId(NettyUtil.hex2a(vTerminalId));
-        vVentaDto.setFechaTransaccion(NettyUtil.hex2a(vFechaTransaccion));
-        vVentaDto.setHoraTransaccion(NettyUtil.hex2a(vHoraTransaccion));
+        vVentaDto.setFechaTransaccion(NettyUtil.formatearFecha(NettyUtil.hex2a(vFechaTransaccion)));
+        vVentaDto.setHoraTransaccion(NettyUtil.formatearHora(NettyUtil.hex2a(vHoraTransaccion)));
         vVentaDto.setCodigoRespuesta(NettyUtil.hex2a(vCodigoRespuesta));
         vVentaDto.setTipoCuenta(NettyUtil.hex2a(vTipoCuenta));
         //vVentaDto.setNumeroCuotas(Integer.parseInt(NettyUtil.hex2a(vNumeroCuotas)));
         //vVentaDto.setUltimosDigitos(Integer.parseInt(NettyUtil.hex2a(vUltimosDigitos)));
         vVentaDto.setNumeroCuotas(NettyUtil.hex2a(vNumeroCuotas));
         vVentaDto.setUltimosDigitos(NettyUtil.hex2a(vUltimosDigitos));
-        vVentaDto.setMensajeError(NettyUtil.hex2a(vMensajeError));
+        vVentaDto.setMensajeError(NettyUtil.cleanData(NettyUtil.hex2a(vMensajeError)));
         //vVentaDto.setBinTarjeta(Integer.parseInt(NettyUtil.hex2a(vBinTarjeta)));
         vVentaDto.setBinTarjeta(NettyUtil.hex2a(vBinTarjeta));
 
@@ -69,7 +69,7 @@ public class ResponseUtil {
         vAnulacionDto.setCodigoRespuesta(NettyUtil.hex2a(vCodigoRespuesta));
         vAnulacionDto.setUltimosDigitos(NettyUtil.hex2a(vUltimosDigitos));
         //vAnulacionDto.setUltimosDigitos(Integer.parseInt(NettyUtil.hex2a(vUltimosDigitos)));
-        vAnulacionDto.setMensajeError(NettyUtil.hex2a(vMensajeError));
+        vAnulacionDto.setMensajeError(NettyUtil.cleanData(NettyUtil.hex2a(vMensajeError)));
         vAnulacionDto.setBinTarjeta(NettyUtil.hex2a(vBinTarjeta));
         //vAnulacionDto.setBinTarjeta(Integer.parseInt(NettyUtil.hex2a(vBinTarjeta)));
 

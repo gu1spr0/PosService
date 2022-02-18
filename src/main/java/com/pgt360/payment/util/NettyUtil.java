@@ -1,14 +1,17 @@
 package com.pgt360.payment.util;
 
+import io.netty.util.internal.StringUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.util.ObjectUtils;
+import org.springframework.util.StringUtils;
 
 import java.io.*;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.nio.charset.StandardCharsets;
 import java.text.DecimalFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Base64;
 import java.util.Date;
@@ -143,9 +146,18 @@ public class NettyUtil {
         log.info("[TAREA]: Validando referencia para anulacion = "+ substring);
         return substring;
     }
-    /*public static float formatearMonto(float numero){
-        String format = new DecimalFormat("##.##").format(numero);
-        log.info("[TAREA]: Monto redondeado = "+format);
-        return Float.parseFloat(format);
-    }*/
+    public static String formatearFecha(String pFecha){
+        String mes = pFecha.substring(0, 2);
+        String dia = pFecha.substring(2,4);
+        return dia.concat("/").concat(mes);
+    }
+    public static String formatearHora(String pHora){
+        String hora = pHora.substring(0, 2);
+        String minutos = pHora.substring(2,4);
+        return hora.concat(":").concat(minutos);
+    }
+    public static String cleanData(String pParameter){
+        String data = pParameter.trim();
+        return StringUtil.isNullOrEmpty(data) ? null : data;
+    }
 }

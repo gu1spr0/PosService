@@ -75,7 +75,7 @@ public class Constants {
 
     public static final int AN_LAUTORIZACION = 12;
     public static final int AN_LCOMPRA = 24;
-    public static final int AN_LRECIBO = 23;
+    public static final int AN_LRECIBO = 12;
     public static final int AN_LRRN = 24;
     public static final int AN_LTERMINAL = 16;
     public static final int AN_LFECHA = 8;
