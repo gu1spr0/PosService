@@ -35,11 +35,7 @@ public class ProcesoUtil {
                     vResponseDto.setMensaje(Constants.RES_INCOMPLETE);
                     vResponseDto.setData(pStrReply);
                     break;
-                } else {
-                    ServerHandler.statePos = Constants.STATE_REALIZADO;
-                    break;
                 }
-
             }
             case 2: {
                 if (isAck2 && ServerHandler.vRequestDto.getTamaño() == 36) {
@@ -57,9 +53,6 @@ public class ProcesoUtil {
                     vResponseDto.setMensaje(Constants.RES_INCOMPLETE);
                     vResponseDto.setData(pStrReply);
                     break;
-                } else {
-                    ServerHandler.statePos = Constants.STATE_REALIZADO;
-                    break;
                 }
             }
             case 3: {
@@ -76,7 +69,6 @@ public class ProcesoUtil {
                     vResponseDto.setEstado(false);
                     vResponseDto.setMensaje(Constants.RES_INCOMPLETE);
                     vResponseDto.setData(pStrReply);
-                    ServerHandler.statePos = Constants.STATE_REALIZADO;
                     break;
                 }
 
@@ -97,9 +89,6 @@ public class ProcesoUtil {
                     vResponseDto.setMensaje(Constants.RES_INCOMPLETE);
                     vResponseDto.setData(pStrReply);
                     break;
-                } else {
-                    ServerHandler.statePos = Constants.STATE_REALIZADO;
-                    break;
                 }
             }
             case 5: {
@@ -116,20 +105,17 @@ public class ProcesoUtil {
                     isAck4 = false;
                     ServerHandler.vRequestDto.setFlujo(Constants.NUMBER_FLOW_NONE);
                     ServerHandler.vRequestDto.setStrFlujo(Constants.FLOW_NONE);
-                    ServerHandler.statePos = Constants.STATE_REALIZADO;
                     break;
                 } else {
                     vResponseDto.setData(pStrReply);
                     vResponseDto.setEstado(false);
                     vResponseDto.setMensaje(Constants.RES_INCOMPLETE);
-                    ServerHandler.statePos = Constants.STATE_REALIZADO;
                     break;
                 }
             }
             default:
                 vResponseDto.setData(pStrReply);
                 vResponseDto.setEstado(false);
-                vResponseDto.setMensaje(Constants.RES_NOT_VALID);
                 break;
 
         }
