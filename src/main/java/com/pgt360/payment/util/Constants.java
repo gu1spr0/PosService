@@ -7,6 +7,10 @@ public class Constants {
     public static final String STATE_BLOCKED = "BL";
     public static final String STATE_DELETED = "EL";
 
+    //STATES POS
+    public static final boolean STATE_PENDIENTE = false;
+    public static final boolean STATE_REALIZADO = true;
+
     //FLUJO POS LITERAL
     public static final String FLOW_NONE="NONE";
     public static final String FLOW_CHIP="CHIP";
@@ -106,7 +110,4 @@ public class Constants {
     public static final String RES_FINAL = "Proceso finalizado!";
     public static final String RES_INCOMPLETE = "Datos incompletos";
     public static final String RES_NOT_VALID = "Paso no válido";
-
-
-
 }

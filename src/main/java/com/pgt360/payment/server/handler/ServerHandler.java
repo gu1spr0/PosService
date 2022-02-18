@@ -26,8 +26,8 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
     public static RequestDto vRequestDto=null;
     public static ResponseDto vResponseDto = null;
     public static ChannelGroup clients = new DefaultChannelGroup(GlobalEventExecutor.INSTANCE);
-    public static  ChannelHandlerContext ctx;
-    public static boolean procesoFinalizado = true;
+    public static ChannelHandlerContext ctx;
+    public static boolean statePos = Constants.STATE_PENDIENTE;
 
     @Override
     public void handlerAdded(ChannelHandlerContext ctx){
@@ -35,10 +35,9 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
         ServerHandler.ctx = ctx;
         clients.add(incoming);
         log.info("[SERVER]-"+incoming.remoteAddress()+" SE CONECTÓ DISPOSITIVO CON EL ID:"+incoming.id());
-        ServerHandler.procesoFinalizado = true;
+        ServerHandler.statePos = Constants.STATE_PENDIENTE;
 
     }
-
 
     @Override
     public void handlerRemoved(ChannelHandlerContext ctx){
@@ -46,7 +45,7 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
         ServerHandler.ctx = null;
         clients.remove(incoming);
         log.info("[SERVER] - "+incoming.remoteAddress() + " SE DESCONECTÓ DISPOSITIVO CON EL ID:"+incoming.id()+"\n");
-        ServerHandler.procesoFinalizado = false;
+        ServerHandler.statePos = Constants.STATE_REALIZADO;
     }
 
     @Override

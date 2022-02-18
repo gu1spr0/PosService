@@ -26,8 +26,6 @@ public class PagoServiceImpl implements PagoService {
             this.vResponseDto.setEstado(false);
             ServerHandler.vResponseDto = this.vResponseDto;
         }else {
-            //float montob = NettyUtil.redondearMonto(pAmount);
-            //log.info("MONTO REDONDEADO:"+montob);
             String montoBoB = NettyUtil.validarMonto(pAmount);
             log.info("MONTO VALIDADO:"+montoBoB);
             this.vRequestDto = new RequestDto();
@@ -38,18 +36,13 @@ public class PagoServiceImpl implements PagoService {
             this.vRequestDto.setTamaño(0);
             ServerHandler.selectProcess(this.vRequestDto);
         }
-        /*try{
-            ServerHandler.vResponseDto.wait();
-        }catch (InterruptedException ie){
-            log.error(ie.getMessage());
-        }*/
         do {
             try{
                 Thread.sleep(3000);
             }catch (InterruptedException ie){
                 log.error(ie.getMessage());
             }
-        }while (ServerHandler.procesoFinalizado);
+        }while (!ServerHandler.statePos);
         return ServerHandler.vResponseDto;
     }
 
@@ -62,8 +55,6 @@ public class PagoServiceImpl implements PagoService {
             this.vResponseDto.setEstado(false);
             ServerHandler.vResponseDto = this.vResponseDto;
         }else {
-            //float montob = NettyUtil.redondearMonto(pAmount);
-            //log.info("MONTO:"+montob);
             String montoBoB = NettyUtil.validarMonto(pAmount);
             log.info("MONTO VALIDADO:"+montoBoB);
             this.vRequestDto = new RequestDto();
@@ -81,7 +72,7 @@ public class PagoServiceImpl implements PagoService {
             }catch (InterruptedException ie){
                 log.error(ie.getMessage());
             }
-        }while (ServerHandler.procesoFinalizado);
+        }while (!ServerHandler.statePos);
         return ServerHandler.vResponseDto;
     }
 
@@ -94,8 +85,6 @@ public class PagoServiceImpl implements PagoService {
             this.vResponseDto.setEstado(false);
             ServerHandler.vResponseDto = this.vResponseDto;
         }else{
-            //float montob = NettyUtil.redondearMonto(pAmount);
-            //log.info("MONTO:"+montob);
             String montoBoB = NettyUtil.validarMonto(pAmount);
             log.info("MONTO VALIDADO:"+montoBoB);
             this.vRequestDto = new RequestDto();
@@ -112,7 +101,7 @@ public class PagoServiceImpl implements PagoService {
             }catch (InterruptedException ie){
                 log.error(ie.getMessage());
             }
-        }while (ServerHandler.procesoFinalizado);
+        }while (!ServerHandler.statePos);
         return ServerHandler.vResponseDto;
     }
 
@@ -125,8 +114,6 @@ public class PagoServiceImpl implements PagoService {
             this.vResponseDto.setEstado(false);
             ServerHandler.vResponseDto = this.vResponseDto;
         }else{
-            //float montob = NettyUtil.redondearMonto(pAmount);
-            //log.info("MONTO:"+montob);
             String montoBoB = NettyUtil.validarMonto(pAmount);
             log.info("MONTO VALIDADO:"+montoBoB);
             this.vRequestDto = new RequestDto();
@@ -144,7 +131,7 @@ public class PagoServiceImpl implements PagoService {
             }catch (InterruptedException ie){
                 log.error(ie.getMessage());
             }
-        }while (ServerHandler.procesoFinalizado);
+        }while (!ServerHandler.statePos);
         return ServerHandler.vResponseDto;
     }
 
@@ -171,7 +158,7 @@ public class PagoServiceImpl implements PagoService {
             }catch (InterruptedException ie){
                 log.error(ie.getMessage());
             }
-        }while (ServerHandler.procesoFinalizado);
+        }while (!ServerHandler.statePos);
         return ServerHandler.vResponseDto;
     }
 
@@ -199,7 +186,7 @@ public class PagoServiceImpl implements PagoService {
             }catch (InterruptedException ie){
                 log.error(ie.getMessage());
             }
-        }while (ServerHandler.procesoFinalizado);
+        }while (!ServerHandler.statePos);
         return ServerHandler.vResponseDto;
     }
 
@@ -225,7 +212,7 @@ public class PagoServiceImpl implements PagoService {
             }catch (InterruptedException ie){
                 log.error(ie.getMessage());
             }
-        }while (ServerHandler.procesoFinalizado);
+        }while (!ServerHandler.statePos);
         return ServerHandler.vResponseDto;
     }
 
@@ -252,7 +239,7 @@ public class PagoServiceImpl implements PagoService {
             }catch (InterruptedException ie){
                 log.error(ie.getMessage());
             }
-        }while (ServerHandler.procesoFinalizado);
+        }while (!ServerHandler.statePos);
         return ServerHandler.vResponseDto;
     }
 
@@ -276,7 +263,7 @@ public class PagoServiceImpl implements PagoService {
             }catch (InterruptedException ie){
                 log.error(ie.getMessage());
             }
-        }while (ServerHandler.procesoFinalizado);
+        }while (!ServerHandler.statePos);
         return ServerHandler.vResponseDto;
     }
 }
