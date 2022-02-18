@@ -35,12 +35,14 @@ public class PagoServiceImpl implements PagoService {
             this.vRequestDto.setTamaño(0);
             ServerHandler.selectProcess(this.vRequestDto);
         }
+
+        log.info("Esperando Datos.......................");
         do {
-            try{
+            /*try{
                 Thread.sleep(3000);
             }catch (InterruptedException ie){
                 log.error(ie.getMessage());
-            }
+            }*/
         }while (ServerHandler.statePos);
         return ServerHandler.vResponseDto;
     }
