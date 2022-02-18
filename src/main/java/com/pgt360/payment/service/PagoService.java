@@ -7,8 +7,8 @@ public interface PagoService {
     ResponseDto payChipMultiCommerce(float pAmount, int pCommerceId);
     ResponseDto payContactlessSingleCommerce(float pAmount);
     ResponseDto payContactlessMultiCommerce(float pAmount, int pCommerceId);
-    ResponseDto cancelTransactionSingleCommerce(String pTransaction);
-    ResponseDto cancelTransactionMultiCommerce(String pTransaction, int pCommerceId);
+    ResponseDto cancelTransactionSingleCommerce(int pTransaction);
+    ResponseDto cancelTransactionMultiCommerce(int pTransaction, int pCommerceId);
     ResponseDto closeSingleCommerce(int pConfirm);
     ResponseDto closeMultiCommerce(int pConfirm, int pCommerceId);
     ResponseDto initDevice(int pCommerceId, int pConfirm);

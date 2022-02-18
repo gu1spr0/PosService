@@ -7,7 +7,6 @@ import com.pgt360.payment.service.dto.netty.ResponseDto;
 import com.pgt360.payment.util.Constants;
 import com.pgt360.payment.util.NettyUtil;
 import io.netty.util.internal.StringUtil;
-import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -136,18 +135,19 @@ public class PagoServiceImpl implements PagoService {
     }
 
     @Override
-    public ResponseDto cancelTransactionSingleCommerce(String pTransaction) {
+    public ResponseDto cancelTransactionSingleCommerce(int pTransaction) {
         this.vResponseDto = new ResponseDto();
-        if(StringUtil.isNullOrEmpty(pTransaction)){
+        if(NettyUtil.isNaN(pTransaction)){
             this.vResponseDto.setData(null);
-            this.vResponseDto.setMensaje("El identificador de transacción no es válido");
+            this.vResponseDto.setMensaje("El numero de transacción debe ser un número mayor a cero");
             this.vResponseDto.setEstado(false);
             ServerHandler.vResponseDto = this.vResponseDto;
         }else{
+            String vRef = NettyUtil.validarRef(pTransaction);
             this.vRequestDto = new RequestDto();
             this.vRequestDto.setFlujo(Constants.NUMBER_FLOW_DELETED);
             this.vRequestDto.setStrFlujo(Constants.FLOW_DELETED);
-            this.vRequestDto.setReferenciaAnulacion(pTransaction);
+            this.vRequestDto.setReferenciaAnulacion(vRef);
             this.vRequestDto.setPaso(1);
             this.vRequestDto.setTamaño(0);
             ServerHandler.selectProcess(this.vRequestDto);
@@ -163,18 +163,19 @@ public class PagoServiceImpl implements PagoService {
     }
 
     @Override
-    public ResponseDto cancelTransactionMultiCommerce(String pTransaction, int pCommerceId) {
+    public ResponseDto cancelTransactionMultiCommerce(int pTransaction, int pCommerceId) {
         this.vResponseDto = new ResponseDto();
-        if(StringUtil.isNullOrEmpty(pTransaction)){
+        if(NettyUtil.isNaN(pTransaction)){
             this.vResponseDto.setData(null);
-            this.vResponseDto.setMensaje("El identificador de transacción no es válido");
+            this.vResponseDto.setMensaje("El numero de transacción debe ser un número mayor a cero");
             this.vResponseDto.setEstado(false);
             ServerHandler.vResponseDto = this.vResponseDto;
         }else{
+            String vRef = NettyUtil.validarRef(pTransaction);
             this.vRequestDto = new RequestDto();
             this.vRequestDto.setFlujo(Constants.NUMBER_FLOW_DELETED_MULTI);
             this.vRequestDto.setStrFlujo(Constants.FLOW_DELETED_MULTI);
-            this.vRequestDto.setReferenciaAnulacion(pTransaction);
+            this.vRequestDto.setReferenciaAnulacion(vRef);
             this.vRequestDto.setPaso(1);
             this.vRequestDto.setTamaño(0);
             this.vRequestDto.setIdComercio(pCommerceId);

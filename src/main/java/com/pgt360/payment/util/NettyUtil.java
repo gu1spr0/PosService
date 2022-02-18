@@ -139,8 +139,8 @@ public class NettyUtil {
         return substring;
 
     }
-    public static String validarRef(String pId){
-        String recibo = pId.toString();
+    public static String validarRef(int pId){
+        String recibo = String.valueOf(pId);
         recibo = "000000" + recibo;
         final String substring = recibo.substring(recibo.length() - 6);
         log.info("[TAREA]: Validando referencia para anulacion = "+ substring);

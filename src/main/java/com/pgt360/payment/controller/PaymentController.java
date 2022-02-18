@@ -49,14 +49,14 @@ public class PaymentController {
     @ApiOperation(value = "Realizar anulación de transacción de comercio único", authorizations = @Authorization(value = "Bearer"))
     @GetMapping(path = "/cancel/{transaction}")
     @ResponseStatus(HttpStatus.OK)
-    public ResponseDto cancelTransactionSingleCommerce(@PathVariable(value = "transaction", required = true) String transaction){
+    public ResponseDto cancelTransactionSingleCommerce(@PathVariable(value = "transaction", required = true) int transaction){
         return this.pagoService.cancelTransactionSingleCommerce(transaction);
     }
 
     @ApiOperation(value = "Realizar anulación de transacción multicomercio", authorizations = @Authorization(value = "Bearer"))
     @GetMapping(path = "/cancel/{transaction}/{commerceId}")
     @ResponseStatus(HttpStatus.OK)
-    public ResponseDto cancelTransactionMultiCommerce(@PathVariable(value = "transaction", required = true) String transaction,
+    public ResponseDto cancelTransactionMultiCommerce(@PathVariable(value = "transaction", required = true) int transaction,
                                                       @PathVariable(value = "commerceId", required = true) int commerceId){
         return this.pagoService.cancelTransactionMultiCommerce(transaction, commerceId);
     }
