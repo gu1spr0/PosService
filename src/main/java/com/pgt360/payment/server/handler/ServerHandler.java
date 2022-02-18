@@ -49,6 +49,12 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
     }
 
     @Override
+    public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
+        log.error(cause.getMessage());
+        ServerHandler.statePos = Constants.STATE_REALIZADO;
+    }
+
+    @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg){
         try{
             log.info("[POS]:"+msg);
