@@ -44,8 +44,12 @@ public class PagoServiceImpl implements PagoService {
             log.error(ie.getMessage());
         }*/
         do {
-            log.info("Esperando respuesta...");
-        }while (!(ServerHandler.ctx.isRemoved()));
+            try{
+                Thread.sleep(3000);
+            }catch (InterruptedException ie){
+                log.error(ie.getMessage());
+            }
+        }while (ServerHandler.vResponseDto.getData()== null);
         return ServerHandler.vResponseDto;
     }
 
@@ -71,6 +75,13 @@ public class PagoServiceImpl implements PagoService {
             this.vRequestDto.setIdComercio(pCommerceId);
             ServerHandler.selectProcess(this.vRequestDto);
         }
+        do {
+            try{
+                Thread.sleep(3000);
+            }catch (InterruptedException ie){
+                log.error(ie.getMessage());
+            }
+        }while (ServerHandler.vResponseDto.getData()== null);
         return ServerHandler.vResponseDto;
     }
 

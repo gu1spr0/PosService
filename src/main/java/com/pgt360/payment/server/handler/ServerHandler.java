@@ -79,12 +79,8 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
                 ServerHandler.vResponseDto.setMensaje("Sin tipo de flujo definido");
                 ServerHandler.vResponseDto.setData(null);
             }
-            log.info("*************************************************");
-            log.info("**********RESPUESTA FINAL DEL PROCESO************");
-            log.info("*************************************************");
-            log.info(ServerHandler.vResponseDto.toString());
         }catch (StringIndexOutOfBoundsException ex){
-            log.error(ex.getMessage());
+            log.error("ERROR EN LA COPIA DE DATOS:"+ex.getMessage());
         }
     }
 
@@ -95,8 +91,6 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
     @Override
     public void channelInactive(ChannelHandlerContext ctx) throws Exception {
         log.info("Canal con id:"+ctx.channel().id()+" inactivo");
-        //TODO: Notificar que termino la transacción
-        //ServerHandler.vResponseDto.notify();
     }
 
     public static void selectProcess(RequestDto vRequestDto) {
