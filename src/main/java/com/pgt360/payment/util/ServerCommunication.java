@@ -192,7 +192,7 @@ public class ServerCommunication {
         log.info("***************************");
         log.info("****ENVIANDO ESTADO POS****");
         log.info("***************************");
-        String msg = "02001736303030303030303030313030333030300320";
+        String msg = "02001736303030303030303030313030303030330320";
         sendMessageToPOS(pCtx, msg);
         return msg;
     }
