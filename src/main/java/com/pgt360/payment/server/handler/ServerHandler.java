@@ -35,7 +35,7 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
         ServerHandler.ctx = ctx;
         clients.add(incoming);
         log.info("[SERVER]-"+incoming.remoteAddress()+" SE CONECTÓ DISPOSITIVO CON EL ID:"+incoming.id());
-        ServerCommunication.sendEstadoPos(ServerHandler.ctx);
+        ServerCommunication.sendTest(ServerHandler.ctx);
         ServerHandler.statePos = Constants.STATE_PENDIENTE;
 
     }
