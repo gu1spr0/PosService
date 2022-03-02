@@ -48,7 +48,7 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
         SocketAddress vSocketAddress = incoming.remoteAddress();
         log.info("[SERVER]-"+vSocketAddress.toString()+" SE CONECTÓ DISPOSITIVO CON EL ID:"+incoming.id());
         ServerHandler.statePos = Constants.STATE_PENDIENTE;
-        String ip = vSocketAddress.toString().substring(1,vSocketAddress.toString().length()-1).split(":")[0];
+        /*String ip = vSocketAddress.toString().substring(1,vSocketAddress.toString().length()-1).split(":")[0];
         DispositivoQueryDto vDispositivoQueryDto = dispositivoService.buscarDispositivoIp(ip);
         if(vDispositivoQueryDto == null){
             log.error("Dispositivo no encontrado!");
@@ -68,7 +68,7 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
                 throw Message.GetBadRequest(MessageDescription.notExists, obj);
             }
             log.info("Conexion registrada id:"+vConexionQueryDto.getId());
-        }
+        }*/
     }
 
     @Override
@@ -79,8 +79,8 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
         SocketAddress vSocketAddress = incoming.remoteAddress();
         log.info("[SERVER] - "+vSocketAddress.toString()+ " SE DESCONECTÓ DISPOSITIVO CON EL ID:"+incoming.id()+"\n");
         ServerHandler.statePos = Constants.STATE_REALIZADO;
-        ConexionQueryDto vConexionQueryDto = conexionService.modificarConexionPorCanal(incoming.id().toString());
-        log.info(vConexionQueryDto.toString());
+        /*ConexionQueryDto vConexionQueryDto = conexionService.modificarConexionPorCanal(incoming.id().toString());
+        log.info(vConexionQueryDto.toString());*/
     }
 
     @Override
