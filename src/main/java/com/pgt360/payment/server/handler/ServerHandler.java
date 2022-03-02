@@ -35,7 +35,7 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
     public static ChannelGroup clients = new DefaultChannelGroup(GlobalEventExecutor.INSTANCE);
     public static ChannelHandlerContext ctx;
     public static boolean statePos = Constants.STATE_PENDIENTE;
-    public static boolean comPos = false;
+    //public static boolean comPos = false;
 
     private final ConexionService conexionService;
     private final DispositivoService dispositivoService;
@@ -95,7 +95,7 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
             log.info("[POS]:"+msg);
             if(ProcesoUtil.isAck(msg.toString())){
                 log.info("POS:OK!");
-                comPos = true;
+                //comPos = true;
             }else{
                 ServerHandler.vRequestDto.setTamaño(ServerHandler.vRequestDto.getTamaño()+ NettyUtil.hex2a(msg.toString()).length());
             }
@@ -138,7 +138,7 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
     }
 
     public static void selectProcess(RequestDto vRequestDto) {
-        if(comPos){
+        //if(comPos){
             log.info("*******************************");
             log.info("********GENERANDO FLUJO********");
             log.info("*******************************");
@@ -177,9 +177,9 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
                     log.info("[KIOSKO]: Flujo no definido!");
                     break;
             }
-        } else {
-            log.error("PROCESO NO REALIZADO!");
-        }
+        //} else {
+        //    log.error("PROCESO NO REALIZADO!");
+        //}
 
     }
 }
