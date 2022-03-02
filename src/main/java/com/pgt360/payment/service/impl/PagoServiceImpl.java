@@ -202,6 +202,7 @@ public class PagoServiceImpl implements PagoService {
             this.vResponseDto.setEstado(false);
             ServerHandler.vResponseDto = this.vResponseDto;
         }else{
+            this.vRequestDto = new RequestDto();
             this.vRequestDto.setFlujo(Constants.NUMBER_FLOW_CLOSE);
             this.vRequestDto.setStrFlujo(Constants.FLOW_CLOSE);
             this.vRequestDto.setTamaño(0);
@@ -228,6 +229,7 @@ public class PagoServiceImpl implements PagoService {
             this.vResponseDto.setEstado(false);
             ServerHandler.vResponseDto = this.vResponseDto;
         }else{
+            this.vRequestDto = new RequestDto();
             this.vRequestDto.setFlujo(Constants.NUMBER_FLOW_CLOSE_MULTI);
             this.vRequestDto.setStrFlujo(Constants.FLOW_CLOSE_MULTI);
             this.vRequestDto.setTamaño(0);
