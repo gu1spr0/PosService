@@ -14,6 +14,7 @@ public enum MessageDescription {
     repeated,
     notExists,
     EntityDuplicated,
+    notInserted,
 
     // contraseñas  251-300
     ContraseniaIncorrecta,

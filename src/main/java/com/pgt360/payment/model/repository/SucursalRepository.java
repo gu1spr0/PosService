@@ -16,12 +16,21 @@ public interface SucursalRepository extends CrudRepository<Sucursal, Long> {
     @Query(value = "select count(s) from Sucursal s where s.estado=?1")
     Long getCountSucursalByState(String pEstado);
 
+    @Query(value = "select count(s) from Sucursal s where s.estado=?1 and s.comercio.id=?2")
+    Long getCountSucursalByStateAndComercio(String pEstado, int pSucursalId);
+
     @Query(value = "select s from Sucursal s where s.estado=?1")
     List<Sucursal> getSucursalPageableByState(String pEstado, Pageable pPageable);
+
+    @Query(value = "select s from Sucursal s where s.estado=?1 and s.comercio.id=?2")
+    List<Sucursal> getSucursalsByStateAndComercio(String pEstado, int pSucursalId);
 
     @Query(value = "select s from Sucursal s where s.estado=?1")
     List<Sucursal> getSucursalByState(String pEstado);
 
+    @Query(value = "select s from Sucursal s where s.id = ?1")
+    Optional<Sucursal> getSucursalById(int pSucursalId);
+
     @Query(value = "select s from Sucursal s where s.id = ?1 and s.estado=?2")
-    Optional<Sucursal> getSucursalByIdAndState(long pConexionId, String pEstado);
+    Optional<Sucursal> getSucursalByIdAndState(int pSucursalId, String pEstado);
 }

@@ -3,9 +3,13 @@ package com.pgt360.payment.security.filter;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.pgt360.payment.exception.BadRequestException;
+import com.pgt360.payment.exception.Message;
+import com.pgt360.payment.exception.MessageDescription;
 import com.pgt360.payment.security.service.JWTService;
 import com.pgt360.payment.security.service.JWTServiceImpl;
 import com.pgt360.payment.service.UsuarioService;
+import org.jboss.logging.Logger;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -26,6 +30,8 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
     private final AuthenticationManager authenticationManager;
     private final JWTService jwtService;
     private final UsuarioService usuarioService;
+    Logger log = Logger.getLogger(JWTAuthenticationFilter.class);
+
     public JWTAuthenticationFilter(AuthenticationManager authenticationManager,
                                    JWTService jwtService,
                                    UsuarioService usuarioService){
@@ -64,7 +70,9 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         }
         username = username.trim();
         UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(username, password);
-        return authenticationManager.authenticate(authToken);
+        Authentication vAuthentication = null;
+        vAuthentication = authenticationManager.authenticate(authToken);
+        return vAuthentication;
 
     }
 

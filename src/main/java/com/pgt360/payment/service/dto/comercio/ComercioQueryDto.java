@@ -15,6 +15,7 @@ public class ComercioQueryDto {
     private String telefonoFijo;
     private String telefonoMovil;
     private String email;
+    private String sitioWeb;
     private Date fechaAlta;
     private int usuarioAlta;
     private String estado;

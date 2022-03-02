@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 @Api(description = "Endpoint para la gestión de pagos con dispositivo POS")
 @RestController
-@RequestMapping("/payments")
+@RequestMapping("/pagos")
 public class PagoController {
     private final PagoService pagoService;
     public PagoController(PagoService pagoService){

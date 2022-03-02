@@ -7,15 +7,15 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 @ResponseStatus(HttpStatus.BAD_REQUEST)
 public class BadRequestException extends RuntimeException {
     @Getter
-    private String code;
+    private String codigo;
 
-    public BadRequestException(String pCode){
+    public BadRequestException(String pCodigo){
         super("Error en la solicitud");
-        this.code = code;
+        this.codigo = pCodigo;
     }
-    public BadRequestException(String pCode, String pMessage){
-        super(pMessage);
-        this.code = pCode;
+    public BadRequestException(String pCodigo, String pMensaje){
+        super(pMensaje);
+        this.codigo = pCodigo;
     }
 
 }

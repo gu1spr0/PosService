@@ -28,8 +28,8 @@ public class DispositivoServiceImpl implements DispositivoService {
         }
         Dispositivo vDispositivo = dispositivoRepository.getDispositivoByIdAndState(pDispositivoId, Constants.STATE_ACTIVE).orElse(null);
         if(vDispositivo == null){
-            Object[] obj = {vDispositivo};
-            throw Message.GetBadRequest(MessageDescription.objectNull, obj);
+            Object[] obj = {"Dispositivo","Id",pDispositivoId};
+            throw Message.GetBadRequest(MessageDescription.notExists, obj);
         }
         DispositivoQueryDto vDispositivoQueryDto = new DispositivoQueryDto();
         BeanUtils.copyProperties(vDispositivo,vDispositivoQueryDto);

@@ -14,4 +14,5 @@ public class ComercioUpdateDto {
     private String telefonoMovil;
     private String email;
     private String estado;
+    private String sitioWeb;
 }

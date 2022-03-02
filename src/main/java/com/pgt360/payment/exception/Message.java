@@ -17,7 +17,7 @@ public class Message {
         // Entitys 101-150
         put(MessageDescription.repeated, new ExceptionResponse("101","Existe un registro activo con el %s: %s", "detalle -_-"));
         put(MessageDescription.notExists, new ExceptionResponse("102","No se encontró %s con el %s: %s", "detalle -_-"));
-
+        put(MessageDescription.notInserted, new ExceptionResponse("103", "No se pudo realizar el registro de la entidad [%s]","detalle -_-"));
         // Carga Masiva 151-200
 
         // contraseñas  251-300
@@ -36,39 +36,39 @@ public class Message {
     public static BadRequestException GetBadRequest(MessageDescription vMessageDescription, String value)
     {
         ExceptionResponse vMessageDetail = vMessageTypes.get(vMessageDescription);
-        String vNewMessage = vMessageDetail.getMessage();
+        String vNewMessage = vMessageDetail.getMensaje();
         vNewMessage = String.format(vNewMessage, value);
-        return new BadRequestException(vMessageDetail.getCode(), vNewMessage);
+        return new BadRequestException(vMessageDetail.getCodigo(), vNewMessage);
     }
 
     public static BadRequestException GetBadRequest(MessageDescription tipo)
     {
         ExceptionResponse vMessageDetail = vMessageTypes.get(tipo);
-        String vNewMessage = vMessageDetail.getMessage();
-        return new BadRequestException(vMessageDetail.getCode(), vNewMessage);
+        String vNewMessage = vMessageDetail.getMensaje();
+        return new BadRequestException(vMessageDetail.getCodigo(), vNewMessage);
     }
 
     public static BadRequestException GetBadRequest(MessageDescription pMessageDescription, Object[] pArgs)
     {
         ExceptionResponse vMessageDetail = vMessageTypes.get(pMessageDescription);
-        String vNewMessage = vMessageDetail.getMessage();
+        String vNewMessage = vMessageDetail.getMensaje();
         vNewMessage = String.format(vNewMessage, pArgs);
-        return new BadRequestException(vMessageDetail.getCode(), vNewMessage);
+        return new BadRequestException(vMessageDetail.getCodigo(), vNewMessage);
     }
     public static NotFoundException GetNotFound(MessageDescription pMessageDescription, Object[] pArgs)
     {
         ExceptionResponse vMessageDetail = vMessageTypes.get(pMessageDescription);
-        String vNewMessage = vMessageDetail.getMessage();
+        String vNewMessage = vMessageDetail.getMensaje();
         vNewMessage = String.format(vNewMessage, pArgs);
-        return new NotFoundException(vMessageDetail.getCode(), vNewMessage);
+        return new NotFoundException(vMessageDetail.getCodigo(), vNewMessage);
     }
 
     public static NotFoundException GetNotFound(MessageDescription pMessageDescription, String pArgs)
     {
         ExceptionResponse messageDetail = vMessageTypes.get(pMessageDescription);
-        String newMessage = messageDetail.getMessage();
+        String newMessage = messageDetail.getMensaje();
         newMessage = String.format(newMessage, pArgs);
-        return new NotFoundException(messageDetail.getCode(), newMessage);
+        return new NotFoundException(messageDetail.getCodigo(), newMessage);
     }
 
 }

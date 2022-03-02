@@ -11,7 +11,7 @@ import java.util.List;
 @EqualsAndHashCode(callSuper = true)
 @Data
 @Entity
-@Table(name = "pg_sucursal")
+@Table(name = "pg_sucursales")
 public class Sucursal extends Base{
     @ApiModelProperty(notes = "Describe el nit de la sucursal")
     @NotNull(message = "El nit no puede ser nulo")
@@ -36,7 +36,7 @@ public class Sucursal extends Base{
     @Column(name = "telefono", length = 20)
     private String telefono;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "id_comercio")
     private Comercio comercio;
 

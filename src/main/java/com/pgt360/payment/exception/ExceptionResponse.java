@@ -6,13 +6,13 @@ import lombok.Setter;
 @Getter
 @Setter
 public class ExceptionResponse {
-    private String code;
-    private String message;
-    private String details;
-    public ExceptionResponse(String pCode, String pMessage, String pDetails){
+    private String codigo;
+    private String mensaje;
+    private String detalle;
+    public ExceptionResponse(String pCodigo, String pMensaje, String pDetalle){
         super();
-        this.code = pCode;
-        this.message = pMessage;
-        this.details = pDetails;
+        this.codigo = pCodigo;
+        this.mensaje = pMensaje;
+        this.detalle = pDetalle;
     }
 }

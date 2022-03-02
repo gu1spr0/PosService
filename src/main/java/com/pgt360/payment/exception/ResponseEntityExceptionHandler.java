@@ -28,7 +28,7 @@ public class ResponseEntityExceptionHandler extends org.springframework.web.serv
 
     @ExceptionHandler(BadRequestException.class)
     public final ResponseEntity<Object> handleServerBadRequestException(BadRequestException pEx, WebRequest pRequest){
-        ExceptionResponse vExceptionResponse = new ExceptionResponse(pEx.getCode(), pEx.getMessage(), pEx.getStackTrace().toString());
+        ExceptionResponse vExceptionResponse = new ExceptionResponse(pEx.getCodigo(), pEx.getMessage(), pEx.getStackTrace().toString());
         return new ResponseEntity(vExceptionResponse, HttpStatus.NOT_FOUND);
     }
 

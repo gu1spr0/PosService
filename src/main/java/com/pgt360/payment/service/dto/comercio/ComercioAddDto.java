@@ -15,4 +15,5 @@ public class ComercioAddDto {
     private String telefonoFijo;
     private String telefonoMovil;
     private String email;
+    private String sitioWeb;
 }

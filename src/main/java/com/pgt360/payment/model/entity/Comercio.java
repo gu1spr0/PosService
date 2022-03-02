@@ -49,6 +49,10 @@ public class Comercio extends Base{
     @Column(name = "email", length = 150)
     private String email;
 
-    @OneToMany(mappedBy = "comercio",fetch = FetchType.LAZY)
+    @ApiModelProperty(notes = "Describe el sitio web del comercio")
+    @Column(name = "sitio_web", length = 150)
+    private String sitioWeb;
+
+    @OneToMany(mappedBy = "comercio",fetch = FetchType.EAGER)
     private List<Sucursal> sucursalList;
 }

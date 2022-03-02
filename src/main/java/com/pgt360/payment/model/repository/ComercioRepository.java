@@ -23,8 +23,8 @@ public interface ComercioRepository extends CrudRepository<Comercio, Long> {
     List<Comercio> getComercioByState(String pEstado);
 
     @Query(value = "select c from Comercio c where c.id = ?1 and c.estado=?2")
-    Optional<Comercio> getComercioByIdAndState(long pComercioId, String pEstado);
+    Optional<Comercio> getComercioByIdAndState(int pComercioId, String pEstado);
 
     @Query(value = "select c from Comercio c where c.id = ?1")
-    Optional<Comercio> getComercioById(long pComercioId);
+    Optional<Comercio> getComercioById(int pComercioId);
 }
