@@ -12,7 +12,7 @@ public class UsuarioQueryDto {
     private String nombre;
     private String paterno;
     private String materno;
-    private String celular;
+    private String telcel;
     private long id;
     private Date fechaAlta;
     private int usuarioAlta;

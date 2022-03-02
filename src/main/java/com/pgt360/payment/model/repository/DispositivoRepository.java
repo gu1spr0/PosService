@@ -1,6 +1,5 @@
 package com.pgt360.payment.model.repository;
 
-import com.pgt360.payment.model.entity.Conexion;
 import com.pgt360.payment.model.entity.Dispositivo;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.domain.Pageable;
@@ -24,8 +23,13 @@ public interface DispositivoRepository extends CrudRepository<Dispositivo, Long>
     List<Dispositivo> getDospositivoByState(String pEstado);
 
     @Query(value = "select d from Dispositivo d where d.id = ?1 and d.estado=?2")
-    Optional<Dispositivo> getDispositivoByIdAndState(long pDispositivoId, String pEstado);
+    Optional<Dispositivo> getDispositivoByIdAndState(Integer pDispositivoId, String pEstado);
+
+    @Query(value = "select d from Dispositivo d where d.ip = ?1 and d.estado=?2")
+    Optional<Dispositivo> getDispositivoByIpAndEstado(String pIp, String pEstado);
 
     @Query(value = "select d from Dispositivo d where d.id = ?1")
-    Optional<Dispositivo> getDispositivoById(long pDispositivoId);
+    Optional<Dispositivo> getDispositivoById(Integer pDispositivoId);
+
+
 }

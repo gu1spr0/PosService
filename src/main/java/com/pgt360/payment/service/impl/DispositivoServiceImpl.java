@@ -7,9 +7,11 @@ import com.pgt360.payment.model.repository.DispositivoRepository;
 import com.pgt360.payment.service.DispositivoService;
 import com.pgt360.payment.service.dto.dispositivo.DispositivoQueryDto;
 import com.pgt360.payment.util.Constants;
+import io.netty.util.internal.StringUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 @Slf4j
 @Service
@@ -33,5 +35,21 @@ public class DispositivoServiceImpl implements DispositivoService {
         BeanUtils.copyProperties(vDispositivo,vDispositivoQueryDto);
         return vDispositivoQueryDto;
 
+    }
+
+    @Override
+    public DispositivoQueryDto buscarDispositivoIp(String pIp) {
+        if(StringUtil.isNullOrEmpty(pIp)){
+            Object[] obj = {pIp};
+            throw Message.GetBadRequest(MessageDescription.PropertyNullOrEmpty, obj);
+        }
+        Dispositivo vDispositivo = dispositivoRepository.getDispositivoByIpAndEstado(pIp, Constants.STATE_ACTIVE).orElse(null);
+        if(vDispositivo == null){
+            Object[] obj = {vDispositivo};
+            throw Message.GetBadRequest(MessageDescription.objectNull, obj);
+        }
+        DispositivoQueryDto vDispositivoQueryDto = new DispositivoQueryDto();
+        BeanUtils.copyProperties(vDispositivo, vDispositivoQueryDto);
+        return vDispositivoQueryDto;
     }
 }

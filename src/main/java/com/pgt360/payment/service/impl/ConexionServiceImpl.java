@@ -12,9 +12,14 @@ import com.pgt360.payment.service.dto.conexion.ConexionQueryDto;
 import com.pgt360.payment.service.dto.conexion.ConexionUpdateDto;
 import com.pgt360.payment.service.dto.dispositivo.DispositivoQueryDto;
 import com.pgt360.payment.util.Constants;
+import io.netty.util.internal.StringUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 @Service
 @Slf4j
@@ -34,7 +39,7 @@ public class ConexionServiceImpl implements ConexionService {
         }
         Conexion vConexion = new Conexion();
         BeanUtils.copyProperties(pConexionAddDto, vConexion);
-        DispositivoQueryDto vDispositivoQueryDto = dispositivoService.buscarDispositivo(pConexionAddDto.getDispositivo());
+        DispositivoQueryDto vDispositivoQueryDto = dispositivoService.buscarDispositivo(pConexionAddDto.getIdDispositivo());
         if(vDispositivoQueryDto == null){
             Object[] obj = {"Objeto Dispositivo"};
             throw Message.GetBadRequest(MessageDescription.objectNull, obj);
@@ -51,7 +56,7 @@ public class ConexionServiceImpl implements ConexionService {
     }
 
     @Override
-    public ConexionQueryDto modificarConexion(int pConexionId, ConexionUpdateDto pConexionUpdateDto) {
+    public ConexionQueryDto modificarConexionPorId(int pConexionId, ConexionUpdateDto pConexionUpdateDto) {
         if((Integer)pConexionId==null){
             Object[] obj = {"Id:"+pConexionId};
             throw Message.GetBadRequest(MessageDescription.objectNull, obj);
@@ -72,6 +77,25 @@ public class ConexionServiceImpl implements ConexionService {
     }
 
     @Override
+    public ConexionQueryDto modificarConexionPorCanal(String pCanalId) {
+        if(StringUtil.isNullOrEmpty(pCanalId)){
+            Object[] obj = {pCanalId};
+            throw Message.GetBadRequest(MessageDescription.DataEmptyOrNull, obj);
+        }
+        Conexion vConexion = conexionRepository.getConexionByIdCanal(pCanalId).orElse(null);
+        if(vConexion == null){
+            Object[] obj = {vConexion};
+            throw Message.GetBadRequest(MessageDescription.notExists, obj);
+        }
+        vConexion.setFechaDesconexion(new Date());
+        vConexion.setEstado(Constants.STATE_INACTIVE);
+        Conexion vNewConexion = conexionRepository.save(vConexion);
+        ConexionQueryDto vConexionQueryDto = new ConexionQueryDto();
+        BeanUtils.copyProperties(vNewConexion, vConexionQueryDto);
+        return vConexionQueryDto;
+    }
+
+    @Override
     public ConexionQueryDto buscarConexion(int pConexionId) {
         if((Integer)pConexionId == null){
             Object[] obj = {"Id Conexion"};
@@ -88,12 +112,30 @@ public class ConexionServiceImpl implements ConexionService {
     }
 
     @Override
+    public void verificarConexiones(String pIp) {
+        if(StringUtil.isNullOrEmpty(pIp)){
+            Object[] obj = {pIp};
+            throw  Message.GetBadRequest(MessageDescription.DataEmptyOrNull);
+        }
+        List<Conexion> vConexionList = new ArrayList<>();
+        vConexionList = conexionRepository.getConexionByDispositivoAndEstado(pIp, Constants.STATE_ACTIVE);
+        if(vConexionList.size()>0){
+            for(Conexion vConexion : vConexionList){
+                vConexion.setFechaDesconexion(new Date());
+                vConexion.setEstado(Constants.STATE_INACTIVE);
+                conexionRepository.save(vConexion);
+            }
+        }
+
+    }
+
+    @Override
     public ConexionQueryDto buscarConexionPorCodigo(String pCanalId) {
         if(pCanalId == null){
             Object[] obj = {"Id de Canal"};
             throw Message.GetBadRequest(MessageDescription.objectNull, obj);
         }
-        Conexion vConexion = conexionRepository.getConexioByIdCanalAndEstado(pCanalId, Constants.STATE_ACTIVE).orElse(null);
+        Conexion vConexion = conexionRepository.getConexionByIdCanalAndEstado(pCanalId, Constants.STATE_ACTIVE).orElse(null);
         if(vConexion == null){
             Object[] obj = {"Objeto consulta Conexion"};
             throw Message.GetBadRequest(MessageDescription.objectNull, obj);

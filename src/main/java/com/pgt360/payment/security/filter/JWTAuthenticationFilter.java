@@ -78,7 +78,7 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         body.put("token", token);
         body.put("user", authResult.getPrincipal());
         body.put("name", (user.getNombre() + " " + user.getPaterno()));
-        body.put("phone", (user.getCelular()));
+        body.put("telcel", (user.getTelcel()));
         body.put("mensaje", String.format("Hola %s, has iniciado sesión con éxito!", ((User)authResult.getPrincipal()).getUsername()) );
         response.getWriter().write(new ObjectMapper().writeValueAsString(body));
         response.setStatus(200);

@@ -26,8 +26,11 @@ public interface ConexionRepository extends CrudRepository<Conexion, Long> {
     Optional<Conexion> getConexionByIdAndState(long pConexionId, String pEstado);
 
     @Query(value = "select c from Conexion c where c.idCanal = ?1 and c.estado=?2")
-    Optional<Conexion> getConexioByIdCanalAndEstado(String pCanalId, String pEstado);
+    Optional<Conexion> getConexionByIdCanalAndEstado(String pCanalId, String pEstado);
 
-    @Query(value = "select c from Conexion c where c.id = ?1")
-    Optional<Conexion> getConexionById(long pConexionId);
+    @Query(value = "select c from Conexion c where c.idCanal = ?1")
+    Optional<Conexion> getConexionByIdCanal(String pCanalId);
+
+    @Query(value = "select c from Conexion c where c.dispositivo.ip = ?1 and c.estado =?2")
+    List<Conexion> getConexionByDispositivoAndEstado(String pIp, String pEstado);
 }

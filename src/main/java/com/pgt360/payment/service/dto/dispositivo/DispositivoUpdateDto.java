@@ -13,6 +13,5 @@ public class DispositivoUpdateDto {
     private String pnr;
     private String idTerminal;
     private int caja;
-    //private List<Conexion> conexionList;
     private String estado;
 }

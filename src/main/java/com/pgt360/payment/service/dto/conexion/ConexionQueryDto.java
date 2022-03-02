@@ -1,13 +1,14 @@
 package com.pgt360.payment.service.dto.conexion;
 
-import com.pgt360.payment.model.entity.Dispositivo;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import java.util.Date;
 
 @Setter
 @Getter
+@ToString
 public class ConexionQueryDto {
     private int id;
     private String idCanal;
