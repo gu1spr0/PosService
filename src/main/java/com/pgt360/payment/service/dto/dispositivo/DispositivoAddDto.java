@@ -6,12 +6,11 @@ import lombok.Setter;
 @Setter
 @Getter
 public class DispositivoAddDto {
-    private String name;
+    private String nombre;
     private String modelo;
     private String ip;
+    private String mac;
     private int mpk;
     private String pnr;
-    private String idTerminal;
-    private int caja;
-    private String estado;
+    private boolean multi;
 }

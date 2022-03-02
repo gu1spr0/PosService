@@ -49,6 +49,9 @@ public class Dispositivo extends Base{
     @OneToMany(mappedBy = "dispositivo",fetch = FetchType.LAZY)
     private List<Transaccion> transaccionList;
 
-    @OneToOne(mappedBy = "dispositivo")
-    private Caja caja;
+    /*@OneToOne(mappedBy = "dispositivo")
+    private Caja caja;*/
+
+    @OneToMany(mappedBy = "dispositivo",fetch = FetchType.LAZY)
+    private List<Caja> cajaList;
 }

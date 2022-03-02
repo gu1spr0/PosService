@@ -12,10 +12,8 @@ import java.util.Date;
 public class ConexionQueryDto {
     private int id;
     private String idCanal;
-    private int dispositivo;
+    private Integer idDispositivo;
     private Date fechaConexion;
-    private Date horaConexion;
     private Date fechaDesconexion;
-    private Date horaDesconexion;
     private String estado;
 }

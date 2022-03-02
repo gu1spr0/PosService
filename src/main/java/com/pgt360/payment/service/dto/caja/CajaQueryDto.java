@@ -9,9 +9,11 @@ import java.util.Date;
 @Getter
 public class CajaQueryDto {
     private int id;
-    private int correlativo;
+    private int numero;
     private String descripcion;
+    private Integer idDispositivo;
+    private Integer idSucursal;
     private Date fechaAlta;
-    private Integer usuarioAlta;
+    private int usuarioAlta;
     private String estado;
 }

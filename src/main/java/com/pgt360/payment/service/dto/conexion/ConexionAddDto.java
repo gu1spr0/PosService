@@ -8,10 +8,8 @@ import java.util.Date;
 @Getter
 public class ConexionAddDto {
     private String idCanal;
-    private int idDispositivo;
+    private Integer idDispositivo;
     private Date fechaConexion;
-    private Date horaConexion;
     private Date fechaDesconexion;
-    private Date horaDesconexion;
     private String estado;
 }

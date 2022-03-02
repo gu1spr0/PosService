@@ -6,7 +6,9 @@ import lombok.Setter;
 @Setter
 @Getter
 public class CajaUpdateDto {
-    private int correlativo;
+    private int numero;
     private String descripcion;
+    private Integer idDispositivo;
+    private Integer idSucursal;
     private String estado;
 }

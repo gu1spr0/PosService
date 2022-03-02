@@ -4,18 +4,21 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.util.Date;
+
 @Setter
 @Getter
 @ToString
 public class DispositivoQueryDto {
     private int id;
-    private String name;
+    private String nombre;
     private String modelo;
     private String ip;
     private String mac;
     private int mpk;
     private String pnr;
-    private String idTerminal;
-    private int caja;
+    private boolean multi;
+    private Date fechaAlta;
+    private int usuarioAlta;
     private String estado;
 }

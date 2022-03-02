@@ -22,9 +22,9 @@ public class Caja extends Base{
     @Column(name = "descripcion", length = 300)
     private String descripcion;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    /*@OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_dispositivo", referencedColumnName = "id")
-    private Dispositivo dispositivo;
+    private Dispositivo dispositivo;*/
 
     @OneToMany(mappedBy = "caja",fetch = FetchType.LAZY)
     private List<Usuario> usuarioList;
@@ -32,4 +32,8 @@ public class Caja extends Base{
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
     @JoinColumn(name = "id_sucursal")
     private Sucursal sucursal;
+
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
+    @JoinColumn(name = "id_dispositivo")
+    private Dispositivo dispositivo;
 }
