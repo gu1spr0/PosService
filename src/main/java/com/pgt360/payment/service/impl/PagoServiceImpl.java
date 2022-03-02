@@ -208,14 +208,14 @@ public class PagoServiceImpl implements PagoService {
             this.vRequestDto.setPaso(1);
             this.vRequestDto.setConfirm(pConfirm);
             ServerHandler.selectProcess(this.vRequestDto);
+            do {
+                try{
+                    Thread.sleep(3000);
+                }catch (InterruptedException ie){
+                    log.error(ie.getMessage());
+                }
+            }while (ServerHandler.statePos);
         }
-        do {
-            try{
-                Thread.sleep(3000);
-            }catch (InterruptedException ie){
-                log.error(ie.getMessage());
-            }
-        }while (ServerHandler.statePos);
         return ServerHandler.vResponseDto;
     }
 
@@ -235,14 +235,14 @@ public class PagoServiceImpl implements PagoService {
             this.vRequestDto.setConfirm(pConfirm);
             this.vRequestDto.setIdComercio(pCommerceId);
             ServerHandler.selectProcess(this.vRequestDto);
+            do {
+                try{
+                    Thread.sleep(3000);
+                }catch (InterruptedException ie){
+                    log.error(ie.getMessage());
+                }
+            }while (ServerHandler.statePos);
         }
-        do {
-            try{
-                Thread.sleep(3000);
-            }catch (InterruptedException ie){
-                log.error(ie.getMessage());
-            }
-        }while (ServerHandler.statePos);
         return ServerHandler.vResponseDto;
     }
 
@@ -259,14 +259,15 @@ public class PagoServiceImpl implements PagoService {
             this.vRequestDto.setTamaño(0);
             this.vRequestDto.setPaso(1);
             ServerHandler.selectProcess(this.vRequestDto);
+
+            do {
+                try{
+                    Thread.sleep(3000);
+                }catch (InterruptedException ie){
+                    log.error(ie.getMessage());
+                }
+            }while (ServerHandler.statePos);
         }
-        do {
-            try{
-                Thread.sleep(3000);
-            }catch (InterruptedException ie){
-                log.error(ie.getMessage());
-            }
-        }while (ServerHandler.statePos);
         return ServerHandler.vResponseDto;
     }
 }
