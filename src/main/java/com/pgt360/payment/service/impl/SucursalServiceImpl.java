@@ -9,7 +9,6 @@ import com.pgt360.payment.model.repository.SucursalRepository;
 import com.pgt360.payment.service.ComercioService;
 import com.pgt360.payment.service.SucursalService;
 import com.pgt360.payment.service.dto.comercio.ComercioQueryDto;
-import com.pgt360.payment.service.dto.comercio.ComercioQueryPageableDto;
 import com.pgt360.payment.service.dto.sucursal.SucursalComercioQueryDto;
 import com.pgt360.payment.service.dto.sucursal.SucursalQueryDto;
 import com.pgt360.payment.service.dto.sucursal.SucursalQueryPageableDto;

@@ -29,11 +29,11 @@ public class Caja extends Base{
     @OneToMany(mappedBy = "caja",fetch = FetchType.LAZY)
     private List<Usuario> usuarioList;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     @JoinColumn(name = "id_sucursal")
     private Sucursal sucursal;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     @JoinColumn(name = "id_dispositivo")
     private Dispositivo dispositivo;
 }

@@ -11,7 +11,6 @@ import com.pgt360.payment.service.dto.comercio.ComercioQueryDto;
 import com.pgt360.payment.service.dto.comercio.ComercioQueryPageableDto;
 import com.pgt360.payment.service.dto.comercio.ComercioUpdateDto;
 import com.pgt360.payment.util.Constants;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;

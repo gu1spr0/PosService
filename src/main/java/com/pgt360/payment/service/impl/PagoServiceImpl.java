@@ -6,7 +6,6 @@ import com.pgt360.payment.service.dto.netty.RequestDto;
 import com.pgt360.payment.service.dto.netty.ResponseDto;
 import com.pgt360.payment.util.Constants;
 import com.pgt360.payment.util.NettyUtil;
-import io.netty.util.internal.StringUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;

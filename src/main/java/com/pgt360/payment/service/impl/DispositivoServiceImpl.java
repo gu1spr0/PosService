@@ -8,12 +8,9 @@ import com.pgt360.payment.service.DispositivoService;
 import com.pgt360.payment.service.dto.dispositivo.DispositivoQueryDto;
 import com.pgt360.payment.util.Constants;
 import io.netty.util.internal.StringUtil;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
 
-@Slf4j
 @Service
 public class DispositivoServiceImpl implements DispositivoService {
     private final DispositivoRepository dispositivoRepository;

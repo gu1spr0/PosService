@@ -4,15 +4,18 @@ import com.google.common.base.Strings;
 import com.pgt360.payment.exception.Message;
 import com.pgt360.payment.exception.MessageDescription;
 import com.pgt360.payment.model.entity.Caja;
-import com.pgt360.payment.model.entity.Comercio;
+import com.pgt360.payment.model.entity.Dispositivo;
+import com.pgt360.payment.model.entity.Sucursal;
 import com.pgt360.payment.model.repository.CajaRepository;
 import com.pgt360.payment.service.CajaService;
+import com.pgt360.payment.service.DispositivoService;
+import com.pgt360.payment.service.SucursalService;
 import com.pgt360.payment.service.dto.caja.CajaAddDto;
 import com.pgt360.payment.service.dto.caja.CajaQueryDto;
 import com.pgt360.payment.service.dto.caja.CajaQueryPageableDto;
 import com.pgt360.payment.service.dto.caja.CajaUpdateDto;
-import com.pgt360.payment.service.dto.comercio.ComercioQueryDto;
-import com.pgt360.payment.service.dto.comercio.ComercioQueryPageableDto;
+import com.pgt360.payment.service.dto.dispositivo.DispositivoQueryDto;
+import com.pgt360.payment.service.dto.sucursal.SucursalQueryDto;
 import com.pgt360.payment.util.Constants;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
@@ -28,8 +31,15 @@ public class CajaServiceImpl implements CajaService {
 
     private final CajaRepository cajaRepository;
 
-    public CajaServiceImpl(CajaRepository cajaRepository){
+    private final SucursalService sucursalService;
+    private final DispositivoService dispositivoService;
+
+    public CajaServiceImpl(CajaRepository cajaRepository,
+                           SucursalService sucursalService,
+                           DispositivoService dispositivoService){
         this.cajaRepository = cajaRepository;
+        this.sucursalService = sucursalService;
+        this.dispositivoService = dispositivoService;
     }
 
     @Override
@@ -49,6 +59,8 @@ public class CajaServiceImpl implements CajaService {
             for(Caja vCaja : vCajaList){
                 CajaQueryDto vCajaQueryDto = new CajaQueryDto();
                 BeanUtils.copyProperties(vCaja, vCajaQueryDto);
+                vCajaQueryDto.setIdDispositivo(vCaja.getDispositivo().getId());
+                vCajaQueryDto.setIdSucursal(vCaja.getSucursal().getId());
                 vCajaQueryDtoList.add(vCajaQueryDto);
             }
             vCajaQueryPageableDto.setTotalRows(vTotalRows);

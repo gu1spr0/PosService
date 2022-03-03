@@ -2,7 +2,6 @@ package com.pgt360.payment.controller;
 
 import com.pgt360.payment.service.DispositivoService;
 import com.pgt360.payment.service.dto.dispositivo.DispositivoQueryDto;
-import com.pgt360.payment.service.dto.netty.ResponseDto;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.Authorization;
