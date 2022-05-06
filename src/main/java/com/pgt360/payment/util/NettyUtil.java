@@ -1,5 +1,7 @@
 package com.pgt360.payment.util;
 
+import io.netty.channel.Channel;
+import io.netty.channel.ChannelHandlerContext;
 import io.netty.util.internal.StringUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,68 +17,11 @@ import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Base64;
+import java.util.Calendar;
 import java.util.Date;
 
 public class NettyUtil {
     public static Logger log = LoggerFactory.getLogger(NettyUtil.class);
-    public static byte[] convertObjectToByteArray(Object obj) throws IOException {
-        ByteArrayOutputStream out = new ByteArrayOutputStream();
-        ObjectOutputStream os = new ObjectOutputStream(out);
-        os.writeObject(obj);
-        return out.toByteArray();
-    }
-
-    public static Object convertByteArrayToObject(byte[] data) throws IOException, ClassNotFoundException {
-        ByteArrayInputStream in = new ByteArrayInputStream(data);
-        ObjectInputStream is = new ObjectInputStream(in);
-        return is.readObject();
-    }
-    public static String convertNullToEmptyString(String valor){
-        if(ObjectUtils.isEmpty(valor) || valor.equals("null"))
-            return "";
-        return valor;
-    }
-    public static String convertDate(Date date){
-        String format = "dd/MM/yyyy HH:mm:ss aa";
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(format);
-        return simpleDateFormat.format(date);
-    }
-    public static String convertFileToBase64(String path){
-        File file =  new File(path);
-        byte[] bytesFile = convertFileToByteArray(file);
-        return Base64.getEncoder().encodeToString(bytesFile);
-    }
-    public static byte[] convertFileToByteArray(File file){
-        FileInputStream fis =  null;
-        byte[] fileArray = new byte[(int) file.length()];
-        try{
-            fis = new FileInputStream(file);
-            fis.read(fileArray);
-            fis.close();
-        } catch(IOException ioExp) {
-            ioExp.printStackTrace();
-        } finally {
-            if(fis != null){
-                try{
-                    fis.close();
-                } catch (IOException e){
-                    e.printStackTrace();
-                }
-            }
-        }
-        return fileArray;
-    }
-    public static String currentPath(){
-        return new File("").getAbsolutePath();
-    }
-    public static Date currentDate(){
-        return new Date();
-    }
-    public static String decodeBase64String(String encodedString){
-        byte[] decodedBytes = Base64.getDecoder().decode(encodedString);
-        return new String(decodedBytes);
-    }
-
 
     public static String bytesToHex(byte[] bytes) {
         char[] HEX_ARRAY = "0123456789ABCDEF".toCharArray();
@@ -89,7 +34,6 @@ public class NettyUtil {
         log.info("[TAREA]: Conversion BYTES a HEX = "+new String(hexChars));
         return new String(hexChars);
     }
-
     public static String hex2a(String hexx){
         String result = "";
         char[] charArray = hexx.toCharArray();
@@ -128,12 +72,12 @@ public class NettyUtil {
     }
     public static String validarMonto(float monto){
         String montos = String.valueOf(new BigDecimal(monto).setScale(2, RoundingMode.HALF_UP));
-        log.warn("MONTO REDONDEADO="+montos);
+        log.info("MONTO REDONDEADO="+montos);
         String[] n = montos.split("\\.");
-        log.warn("[0]="+n[0]);
-        log.warn("[1]="+n[1]);
+        log.info("[0]="+n[0]);
+        log.info("[1]="+n[1]);
         String num = n[0]+n[1];
-        log.warn("NUMERO DESCOMPUESTO:"+num);
+        log.info("NUMERO DESCOMPUESTO:"+num);
         num = "000000000000"+num;
         final String substring = num.substring(num.length() - 12);
         log.info("[TAREA]: Validando monto = "+ substring);
@@ -160,5 +104,21 @@ public class NettyUtil {
     public static String cleanData(String pParameter){
         String data = pParameter.trim();
         return StringUtil.isNullOrEmpty(data) ? null : data;
+    }
+    public static String getChannelAddress(ChannelHandlerContext ctx){
+        Channel vChannel = ctx.channel();
+        SocketAddress vSocketAddress = vChannel.remoteAddress();
+        return vSocketAddress.toString();
+    }
+    public static String getChannelId(ChannelHandlerContext ctx){
+        Channel vChannel = ctx.channel();
+        return vChannel.id().toString();
+    }
+    public static Date getGlobalDate(String fecha, String hora){
+        Calendar c = Calendar.getInstance();
+        String[] fechas = fecha.split("/");
+        String[] horas = hora.split(":");
+        c.set(c.get(Calendar.YEAR),Integer.parseInt(fechas[1]),Integer.parseInt(fechas[0]),Integer.parseInt(horas[0]),Integer.parseInt(horas[1]));
+        return c.getTime();
     }
 }

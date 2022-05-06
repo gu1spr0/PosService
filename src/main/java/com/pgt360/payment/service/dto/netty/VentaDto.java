@@ -10,30 +10,22 @@ import java.util.Date;
 @Getter
 @ToString
 public class VentaDto {
-    /*private String codAutorizacion;
-    private float montoCompra;
-    private String numeroRecibo;
-    private String rrn;
-    private String terminalId;
-    private String fechaTransaccion;
-    private String horaTransaccion;
-    private String codigoRespuesta;
-    private String tipoCuenta;
-    private int numeroCuotas;
-    private int ultimosDigitos;
-    private String mensajeError;
-    private int binTarjeta;*/
     private String codAutorizacion;
-    private String montoCompra;
+    private float montoCompra;
+    private String montoCompraTransaccion;
     private String numeroRecibo;
     private String rrn;
     private String terminalId;
     private String fechaTransaccion;
     private String horaTransaccion;
+    private Date fechaLocal;
     private String codigoRespuesta;
     private String tipoCuenta;
-    private String numeroCuotas;
-    private String ultimosDigitos;
+    private String numeroCuotasTransaccion;
+    private String tipoCuentaTransaccion;
+    private int ultimosDigitos;
+    private String ultimosDigitosTransasccion;
     private String mensajeError;
-    private String binTarjeta;
+    private String binTarjetaTransaccion;
+    private int binTarjeta;
 }

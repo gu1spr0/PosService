@@ -10,7 +10,8 @@ public class RequestDto {
     private int flujo;
     private String strFlujo;
     private int confirm;
-    private String monto;
+    private String montoTransaccion;
+    private float monto;
     private int paso;
     private int tamaño;
     private String referenciaAnulacion;

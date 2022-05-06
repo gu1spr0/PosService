@@ -3,13 +3,13 @@ package com.pgt360.payment.service;
 import com.pgt360.payment.service.dto.netty.ResponseDto;
 
 public interface PagoService {
-    ResponseDto payChipSingleCommerce(float pAmount);
+    public ResponseDto payChipSingleCommerce(float pAmount);
     ResponseDto payChipMultiCommerce(float pAmount, int pCommerceId);
-    ResponseDto payContactlessSingleCommerce(float pAmount);
-    ResponseDto payContactlessMultiCommerce(float pAmount, int pCommerceId);
-    ResponseDto cancelTransactionSingleCommerce(int pTransaction);
-    ResponseDto cancelTransactionMultiCommerce(int pTransaction, int pCommerceId);
-    ResponseDto closeSingleCommerce(int pConfirm);
-    ResponseDto closeMultiCommerce(int pConfirm, int pCommerceId);
-    ResponseDto initDevice(int pCommerceId, int pConfirm);
+    public ResponseDto payContactlessSingleCommerce(float pAmount);
+    public ResponseDto payContactlessMultiCommerce(float pAmount, int pCommerceId);
+    public ResponseDto cancelTransactionSingleCommerce(int pTransaction);
+    public ResponseDto cancelTransactionMultiCommerce(int pTransaction, int pCommerceId);
+    public ResponseDto closeSingleCommerce(int pConfirm);
+    public ResponseDto closeMultiCommerce(int pConfirm, int pCommerceId);
+    public ResponseDto initDevice(int pCommerceId, int pConfirm);
 }

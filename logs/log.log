@@ -1,49 +1,22 @@
-[33m03--03-2022 09:24:15.100[0;39m [restartedMain] INFO  c.pgt360.payment.PaymentApplication - Starting PaymentApplication using Java 1.8.0_202 on NDTLPZ0371 with PID 23476 (C:\Users\iquispe\Desktop\projects\PosService\target\classes started by iquispe in C:\Users\iquispe\Desktop\projects\PosService)
-[33m03--03-2022 09:24:15.139[0;39m [restartedMain] INFO  c.pgt360.payment.PaymentApplication - No active profile set, falling back to default profiles: default
-[33m03--03-2022 09:24:18.281[0;39m [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
-[33m03--03-2022 09:24:18.281[0;39m [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.56]
-[33m03--03-2022 09:24:18.491[0;39m [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-[33m03--03-2022 09:24:18.745[0;39m [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
-[33m03--03-2022 09:24:18.817[0;39m [restartedMain] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.4.33
-[33m03--03-2022 09:24:19.097[0;39m [restartedMain] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-[33m03--03-2022 09:24:19.411[0;39m [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
-[33m03--03-2022 09:24:19.979[0;39m [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
-[33m03--03-2022 09:24:20.003[0;39m [restartedMain] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
-[33m03--03-2022 09:24:21.106[0;39m [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-[33m03--03-2022 09:24:22.670[0;39m [restartedMain] INFO  s.d.s.w.PropertySourcedRequestMappingHandlerMapping - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
-[33m03--03-2022 09:24:23.707[0;39m [restartedMain] INFO  s.d.s.w.p.DocumentationPluginsBootstrapper - Context refreshed
-[33m03--03-2022 09:24:23.733[0;39m [restartedMain] INFO  s.d.s.w.p.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
-[33m03--03-2022 09:24:23.777[0;39m [restartedMain] INFO  s.d.s.w.s.ApiListingReferenceScanner - Scanning for api listing references
-[33m03--03-2022 09:24:23.972[0;39m [restartedMain] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: obtenerComercioPorEstadoUsingGET_1
-[33m03--03-2022 09:24:24.031[0;39m [restartedMain] INFO  c.pgt360.payment.PaymentApplication - Started PaymentApplication in 10.065 seconds (JVM running for 12.104)
-[33m03--03-2022 09:24:24.812[0;39m [restartedMain] INFO  com.pgt360.payment.server.Server - *************************************************
-[33m03--03-2022 09:24:24.813[0;39m [restartedMain] INFO  com.pgt360.payment.server.Server - ***********Server iniciado : port 8090***********
-[33m03--03-2022 09:24:24.814[0;39m [restartedMain] INFO  com.pgt360.payment.server.Server - *************************************************
-[33m03--03-2022 09:24:33.627[0;39m [http-nio-9070-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
-[33m03--03-2022 09:24:33.628[0;39m [http-nio-9070-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
-[33m03--03-2022 09:24:33.630[0;39m [http-nio-9070-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 2 ms
-[33m03--03-2022 09:24:56.447[0;39m [http-nio-9070-exec-3] INFO  c.p.p.s.f.JWTAuthenticationFilter - Login desde request InputStream (raw): iquispe
-[33m03--03-2022 09:38:42.330[0;39m [restartedMain] INFO  c.pgt360.payment.PaymentApplication - Starting PaymentApplication using Java 1.8.0_202 on NDTLPZ0371 with PID 19132 (C:\Users\iquispe\Desktop\projects\PosService\target\classes started by iquispe in C:\Users\iquispe\Desktop\projects\PosService)
-[33m03--03-2022 09:38:42.332[0;39m [restartedMain] INFO  c.pgt360.payment.PaymentApplication - No active profile set, falling back to default profiles: default
-[33m03--03-2022 09:38:44.668[0;39m [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
-[33m03--03-2022 09:38:44.668[0;39m [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.56]
-[33m03--03-2022 09:38:44.842[0;39m [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-[33m03--03-2022 09:38:45.057[0;39m [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
-[33m03--03-2022 09:38:45.098[0;39m [restartedMain] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.4.33
-[33m03--03-2022 09:38:45.238[0;39m [restartedMain] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-[33m03--03-2022 09:38:45.351[0;39m [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
-[33m03--03-2022 09:38:45.655[0;39m [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
-[33m03--03-2022 09:38:45.669[0;39m [restartedMain] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
-[33m03--03-2022 09:38:46.653[0;39m [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-[33m03--03-2022 09:38:48.384[0;39m [restartedMain] INFO  s.d.s.w.PropertySourcedRequestMappingHandlerMapping - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
-[33m03--03-2022 09:38:49.800[0;39m [restartedMain] INFO  s.d.s.w.p.DocumentationPluginsBootstrapper - Context refreshed
-[33m03--03-2022 09:38:49.832[0;39m [restartedMain] INFO  s.d.s.w.p.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
-[33m03--03-2022 09:38:49.894[0;39m [restartedMain] INFO  s.d.s.w.s.ApiListingReferenceScanner - Scanning for api listing references
-[33m03--03-2022 09:38:50.240[0;39m [restartedMain] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: obtenerComercioPorEstadoUsingGET_1
-[33m03--03-2022 09:38:50.330[0;39m [restartedMain] INFO  c.pgt360.payment.PaymentApplication - Started PaymentApplication in 8.746 seconds (JVM running for 10.753)
-[33m03--03-2022 09:38:51.585[0;39m [restartedMain] INFO  com.pgt360.payment.server.Server - *************************************************
-[33m03--03-2022 09:38:51.585[0;39m [restartedMain] INFO  com.pgt360.payment.server.Server - ***********Server iniciado : port 8090***********
-[33m03--03-2022 09:38:51.586[0;39m [restartedMain] INFO  com.pgt360.payment.server.Server - *************************************************
-[33m03--03-2022 09:38:58.938[0;39m [http-nio-9070-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
-[33m03--03-2022 09:38:58.938[0;39m [http-nio-9070-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
-[33m03--03-2022 09:38:58.941[0;39m [http-nio-9070-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 3 ms
+[33m05--05-2022 09:55:48.427[0;39m [restartedMain] INFO  c.pgt360.payment.PaymentApplication - Starting PaymentApplication using Java 1.8.0_202 on NDTLPZ0371 with PID 16224 (C:\Users\iquispe\Desktop\projects\PosService\target\classes started by iquispe in C:\Users\iquispe\Desktop\projects\PosService)
+[33m05--05-2022 09:55:48.435[0;39m [restartedMain] INFO  c.pgt360.payment.PaymentApplication - No active profile set, falling back to default profiles: default
+[33m05--05-2022 09:55:51.416[0;39m [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+[33m05--05-2022 09:55:51.417[0;39m [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.56]
+[33m05--05-2022 09:55:51.623[0;39m [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+[33m05--05-2022 09:55:52.075[0;39m [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+[33m05--05-2022 09:55:52.186[0;39m [restartedMain] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.4.33
+[33m05--05-2022 09:55:52.418[0;39m [restartedMain] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+[33m05--05-2022 09:55:52.659[0;39m [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+[33m05--05-2022 09:55:53.000[0;39m [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+[33m05--05-2022 09:55:53.019[0;39m [restartedMain] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+[33m05--05-2022 09:55:54.789[0;39m [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+[33m05--05-2022 09:55:56.925[0;39m [restartedMain] INFO  s.d.s.w.PropertySourcedRequestMappingHandlerMapping - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+[33m05--05-2022 09:55:57.931[0;39m [restartedMain] INFO  s.d.s.w.p.DocumentationPluginsBootstrapper - Context refreshed
+[33m05--05-2022 09:55:57.949[0;39m [restartedMain] INFO  s.d.s.w.p.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
+[33m05--05-2022 09:55:57.987[0;39m [restartedMain] INFO  s.d.s.w.s.ApiListingReferenceScanner - Scanning for api listing references
+[33m05--05-2022 09:55:58.198[0;39m [restartedMain] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: obtenerComercioPorEstadoUsingGET_1
+[33m05--05-2022 09:55:58.260[0;39m [restartedMain] INFO  c.pgt360.payment.PaymentApplication - Started PaymentApplication in 10.448 seconds (JVM running for 13.609)
+[33m05--05-2022 09:55:59.840[0;39m [restartedMain] INFO  com.pgt360.payment.server.Server - *************************************************
+[33m05--05-2022 09:55:59.841[0;39m [restartedMain] INFO  com.pgt360.payment.server.Server - ***********Server iniciado : port 8090***********
+[33m05--05-2022 09:55:59.841[0;39m [restartedMain] INFO  com.pgt360.payment.server.Server - *************************************************
+[33m05--05-2022 14:12:26.756[0;39m [HikariPool-1 housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1h29s941ms118µs599ns).

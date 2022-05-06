@@ -19,6 +19,9 @@ public interface CajaRepository extends CrudRepository<Caja, Long> {
     @Query(value = "select c from Caja c where c.estado=?1")
     List<Caja> getCajaPageableByState(String pEstado, Pageable pPageable);
 
+    @Query(value = "select c from Caja c where c.estado=?1 and c.sucursal.id=?2")
+    List<Caja> getCajaByStateAndSucursal(String pEstado, int pSucursalId, Pageable pPageable);
+
     @Query(value = "select c from Caja c where c.estado=?1 and c.sucursal.comercio=?2")
     List<Caja> getCajaPageableByStateAndComercio(String pEstado, int pComercioId, Pageable pPageable);
 
