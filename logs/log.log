@@ -19,3 +19,160 @@
 [33m06--05-2022 15:18:35.128[0;39m [restartedMain] INFO  com.pgt360.payment.server.Server - *************************************************
 [33m06--05-2022 15:18:35.128[0;39m [restartedMain] INFO  com.pgt360.payment.server.Server - ***********Server iniciado : port 8090***********
 [33m06--05-2022 15:18:35.128[0;39m [restartedMain] INFO  com.pgt360.payment.server.Server - *************************************************
+[33m06--05-2022 17:36:42.148[0;39m [restartedMain] INFO  c.pgt360.payment.PaymentApplication - Starting PaymentApplication using Java 1.8.0_202 on NDTLPZ0371 with PID 52796 (C:\Users\iquispe\Desktop\projects\PosService\target\classes started by iquispe in C:\Users\iquispe\Desktop\projects\PosService)
+[33m06--05-2022 17:36:42.149[0;39m [restartedMain] INFO  c.pgt360.payment.PaymentApplication - No active profile set, falling back to default profiles: default
+[33m06--05-2022 17:36:45.165[0;39m [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+[33m06--05-2022 17:36:45.166[0;39m [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.56]
+[33m06--05-2022 17:36:45.380[0;39m [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+[33m06--05-2022 17:36:45.669[0;39m [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+[33m06--05-2022 17:36:45.715[0;39m [restartedMain] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.4.33
+[33m06--05-2022 17:36:45.831[0;39m [restartedMain] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+[33m06--05-2022 17:36:45.957[0;39m [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+[33m06--05-2022 17:36:49.134[0;39m [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+[33m06--05-2022 17:36:49.163[0;39m [restartedMain] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+[33m06--05-2022 17:36:52.952[0;39m [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+[33m06--05-2022 17:36:58.002[0;39m [restartedMain] INFO  s.d.s.w.PropertySourcedRequestMappingHandlerMapping - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+[33m06--05-2022 17:37:00.035[0;39m [restartedMain] INFO  s.d.s.w.p.DocumentationPluginsBootstrapper - Context refreshed
+[33m06--05-2022 17:37:00.099[0;39m [restartedMain] INFO  s.d.s.w.p.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
+[33m06--05-2022 17:37:00.224[0;39m [restartedMain] INFO  s.d.s.w.s.ApiListingReferenceScanner - Scanning for api listing references
+[33m06--05-2022 17:37:00.528[0;39m [restartedMain] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: obtenerComercioPorEstadoUsingGET_1
+[33m06--05-2022 17:37:00.628[0;39m [restartedMain] INFO  c.pgt360.payment.PaymentApplication - Started PaymentApplication in 19.235 seconds (JVM running for 22.386)
+[33m06--05-2022 17:37:03.491[0;39m [restartedMain] INFO  com.pgt360.payment.server.Server - *************************************************
+[33m06--05-2022 17:37:03.493[0;39m [restartedMain] INFO  com.pgt360.payment.server.Server - ***********Server iniciado : port 8090***********
+[33m06--05-2022 17:37:03.494[0;39m [restartedMain] INFO  com.pgt360.payment.server.Server - *************************************************
+[33m06--05-2022 17:41:42.447[0;39m [nioEventLoopGroup-3-1] INFO  c.p.p.server.handler.ServerHandler - ###################[OK] CANAL CONECTADO!!#######################
+[33m06--05-2022 17:41:42.451[0;39m [nioEventLoopGroup-3-1] INFO  c.p.p.server.handler.ServerHandler - [CLIENT] CANAL IP:/172.19.6.227:55014
+[33m06--05-2022 17:41:42.464[0;39m [nioEventLoopGroup-3-1] INFO  c.p.p.server.handler.ServerHandler - [CLIENT] CANAL ID:d8256907
+[33m06--05-2022 17:41:42.465[0;39m [nioEventLoopGroup-3-1] INFO  c.p.p.server.handler.ServerHandler - ################################################################
+[33m06--05-2022 17:42:00.873[0;39m [http-nio-9070-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+[33m06--05-2022 17:42:00.874[0;39m [http-nio-9070-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+[33m06--05-2022 17:42:00.877[0;39m [http-nio-9070-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 2 ms
+[33m06--05-2022 17:43:35.956[0;39m [http-nio-9070-exec-1] INFO  c.p.p.s.f.JWTAuthenticationFilter - Login desde request InputStream (raw): iquispe
+[33m06--05-2022 17:44:10.558[0;39m [http-nio-9070-exec-9] WARN  o.s.w.c.r.async.WebAsyncManager - 
+!!!
+An Executor is required to handle java.util.concurrent.Callable return values.
+Please, configure a TaskExecutor in the MVC config under "async support".
+The SimpleAsyncTaskExecutor currently in use is not suitable under load.
+-------------------------------
+Request URI: '/pagos/chip/2'
+!!!
+[33m06--05-2022 17:44:15.579[0;39m [MvcAsync1] INFO  com.pgt360.payment.util.NettyUtil - MONTO REDONDEADO=2.00
+[33m06--05-2022 17:44:15.580[0;39m [MvcAsync1] INFO  com.pgt360.payment.util.NettyUtil - [0]=2
+[33m06--05-2022 17:44:15.580[0;39m [MvcAsync1] INFO  com.pgt360.payment.util.NettyUtil - [1]=00
+[33m06--05-2022 17:44:15.581[0;39m [MvcAsync1] INFO  com.pgt360.payment.util.NettyUtil - NUMERO DESCOMPUESTO:200
+[33m06--05-2022 17:44:15.581[0;39m [MvcAsync1] INFO  com.pgt360.payment.util.NettyUtil - [TAREA]: Validando monto = 000000000200
+[33m06--05-2022 17:44:15.581[0;39m [MvcAsync1] INFO  c.p.p.service.impl.PagoServiceImpl - MONTO VALIDADO:000000000200
+[33m06--05-2022 17:44:15.581[0;39m [MvcAsync1] INFO  com.pgt360.payment.util.ServerCom - *******************************
+[33m06--05-2022 17:44:15.582[0;39m [MvcAsync1] INFO  com.pgt360.payment.util.ServerCom - ********GENERANDO FLUJO********
+[33m06--05-2022 17:44:15.582[0;39m [MvcAsync1] INFO  com.pgt360.payment.util.ServerCom - *******************************
+[33m06--05-2022 17:44:15.582[0;39m [MvcAsync1] INFO  com.pgt360.payment.util.ServerCom - FLUJO STR:CHIP
+[33m06--05-2022 17:44:15.582[0;39m [MvcAsync1] INFO  com.pgt360.payment.util.ServerCom - FLUJO NUM:2
+[33m06--05-2022 17:44:15.583[0;39m [MvcAsync1] INFO  com.pgt360.payment.util.ServerCom - *******************
+[33m06--05-2022 17:44:15.583[0;39m [MvcAsync1] INFO  com.pgt360.payment.util.ServerCom - ***ENVIANDO CHIP***
+[33m06--05-2022 17:44:15.584[0;39m [MvcAsync1] INFO  com.pgt360.payment.util.ServerCom - *******************
+[33m06--05-2022 17:44:15.614[0;39m [MvcAsync1] INFO  com.pgt360.payment.util.NettyUtil - [TAREA]: Conversion HEXA a CADENA =  60000000001000000#
+[33m06--05-2022 17:44:15.616[0;39m [MvcAsync1] INFO  com.pgt360.payment.util.ServerCom - [KIOSCO]:02001736303030303030303030313030303030300323
+[33m06--05-2022 17:44:15.814[0;39m [nioEventLoopGroup-3-1] INFO  com.pgt360.payment.util.NettyUtil - [TAREA]: Conversion BYTES a HEX = 06
+[33m06--05-2022 17:44:15.815[0;39m [nioEventLoopGroup-3-1] INFO  c.p.p.server.handler.ServerHandler - [POS]:06
+[33m06--05-2022 17:44:15.815[0;39m [nioEventLoopGroup-3-1] INFO  c.p.p.server.handler.ServerHandler - POS:OK!
+[33m06--05-2022 17:44:16.065[0;39m [nioEventLoopGroup-3-1] INFO  com.pgt360.payment.util.NettyUtil - [TAREA]: Conversion BYTES a HEX = 02003536303030303030303030313030302020311C343300063030303131311C343800022020030E
+[33m06--05-2022 17:44:16.065[0;39m [nioEventLoopGroup-3-1] INFO  c.p.p.server.handler.ServerHandler - [POS]:02003536303030303030303030313030302020311C343300063030303131311C343800022020030E
+[33m06--05-2022 17:44:16.065[0;39m [nioEventLoopGroup-3-1] INFO  com.pgt360.payment.util.NettyUtil - [TAREA]: Conversion HEXA a CADENA =  560000000001000  143 00011148   
+[33m06--05-2022 17:44:16.065[0;39m [nioEventLoopGroup-3-1] INFO  com.pgt360.payment.util.ServerCom - *********************
+[33m06--05-2022 17:44:16.065[0;39m [nioEventLoopGroup-3-1] INFO  com.pgt360.payment.util.ServerCom - *****ENVIANDO ACK****
+[33m06--05-2022 17:44:16.066[0;39m [nioEventLoopGroup-3-1] INFO  com.pgt360.payment.util.ServerCom - *********************
+[33m06--05-2022 17:44:16.066[0;39m [nioEventLoopGroup-3-1] INFO  com.pgt360.payment.util.NettyUtil - [TAREA]: Conversion HEXA a CADENA = 
+[33m06--05-2022 17:44:16.066[0;39m [nioEventLoopGroup-3-1] INFO  com.pgt360.payment.util.ServerCom - [KIOSCO]:06
+[33m06--05-2022 17:44:16.066[0;39m [nioEventLoopGroup-3-1] INFO  com.pgt360.payment.util.ServerCom - ***************************
+[33m06--05-2022 17:44:16.066[0;39m [nioEventLoopGroup-3-1] INFO  com.pgt360.payment.util.ServerCom - ***ENVIANDO TRANS.REV.NO***
+[33m06--05-2022 17:44:16.066[0;39m [nioEventLoopGroup-3-1] INFO  com.pgt360.payment.util.ServerCom - ***************************
+[33m06--05-2022 17:44:16.066[0;39m [nioEventLoopGroup-3-1] INFO  com.pgt360.payment.util.NettyUtil - [TAREA]: Conversion HEXA a CADENA =  $6000000000100000148 XX
+[33m06--05-2022 17:44:16.067[0;39m [nioEventLoopGroup-3-1] INFO  com.pgt360.payment.util.ServerCom - [KIOSCO]:02002436303030303030303030313030303030311C3438000258580303
+[33m06--05-2022 17:44:40.756[0;39m [http-nio-9070-exec-2] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.web.context.request.async.AsyncRequestTimeoutException]
+[33m06--05-2022 17:44:47.341[0;39m [nioEventLoopGroup-3-1] INFO  com.pgt360.payment.util.NettyUtil - [TAREA]: Conversion BYTES a HEX = 02003136303030303030303030313030342020301C3438000220201C3837000212010311
+[33m06--05-2022 17:44:47.342[0;39m [nioEventLoopGroup-3-1] INFO  c.p.p.server.handler.ServerHandler - [POS]:02003136303030303030303030313030342020301C3438000220201C3837000212010311
+[33m06--05-2022 17:44:47.342[0;39m [nioEventLoopGroup-3-1] INFO  com.pgt360.payment.util.NettyUtil - [TAREA]: Conversion HEXA a CADENA =  160000000001004  048   87 
+[33m06--05-2022 17:44:56.691[0;39m [nioEventLoopGroup-3-1] INFO  com.pgt360.payment.util.NettyUtil - [TAREA]: Conversion BYTES a HEX = 02003136303030303030303030313030342020301C3438000220201C3837000212010311
+[33m06--05-2022 17:44:56.692[0;39m [nioEventLoopGroup-3-1] INFO  c.p.p.server.handler.ServerHandler - [POS]:02003136303030303030303030313030342020301C3438000220201C3837000212010311
+[33m06--05-2022 17:44:56.692[0;39m [nioEventLoopGroup-3-1] INFO  com.pgt360.payment.util.NettyUtil - [TAREA]: Conversion HEXA a CADENA =  160000000001004  048   87 
+[33m06--05-2022 17:45:07.841[0;39m [nioEventLoopGroup-3-1] INFO  com.pgt360.payment.util.NettyUtil - [TAREA]: Conversion BYTES a HEX = 02003136303030303030303030313030342020301C3438000220201C3837000212010311
+[33m06--05-2022 17:45:07.841[0;39m [nioEventLoopGroup-3-1] INFO  c.p.p.server.handler.ServerHandler - [POS]:02003136303030303030303030313030342020301C3438000220201C3837000212010311
+[33m06--05-2022 17:45:07.841[0;39m [nioEventLoopGroup-3-1] INFO  com.pgt360.payment.util.NettyUtil - [TAREA]: Conversion HEXA a CADENA =  160000000001004  048   87 
+[33m06--05-2022 17:45:32.385[0;39m [restartedMain] INFO  c.pgt360.payment.PaymentApplication - Starting PaymentApplication using Java 1.8.0_202 on NDTLPZ0371 with PID 54500 (C:\Users\iquispe\Desktop\projects\PosService\target\classes started by iquispe in C:\Users\iquispe\Desktop\projects\PosService)
+[33m06--05-2022 17:45:32.387[0;39m [restartedMain] INFO  c.pgt360.payment.PaymentApplication - No active profile set, falling back to default profiles: default
+[33m06--05-2022 17:45:34.620[0;39m [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+[33m06--05-2022 17:45:34.620[0;39m [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.56]
+[33m06--05-2022 17:45:34.811[0;39m [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+[33m06--05-2022 17:45:35.069[0;39m [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+[33m06--05-2022 17:45:35.116[0;39m [restartedMain] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.4.33
+[33m06--05-2022 17:45:35.230[0;39m [restartedMain] INFO  o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+[33m06--05-2022 17:45:35.340[0;39m [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+[33m06--05-2022 17:45:38.476[0;39m [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+[33m06--05-2022 17:45:38.503[0;39m [restartedMain] INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+[33m06--05-2022 17:45:41.439[0;39m [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+[33m06--05-2022 17:45:42.822[0;39m [restartedMain] INFO  s.d.s.w.PropertySourcedRequestMappingHandlerMapping - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+[33m06--05-2022 17:45:43.448[0;39m [restartedMain] INFO  s.d.s.w.p.DocumentationPluginsBootstrapper - Context refreshed
+[33m06--05-2022 17:45:43.471[0;39m [restartedMain] INFO  s.d.s.w.p.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
+[33m06--05-2022 17:45:43.504[0;39m [restartedMain] INFO  s.d.s.w.s.ApiListingReferenceScanner - Scanning for api listing references
+[33m06--05-2022 17:45:43.661[0;39m [restartedMain] INFO  s.d.s.w.r.o.CachingOperationNameGenerator - Generating unique operation named: obtenerComercioPorEstadoUsingGET_1
+[33m06--05-2022 17:45:43.717[0;39m [restartedMain] INFO  c.pgt360.payment.PaymentApplication - Started PaymentApplication in 12.07 seconds (JVM running for 14.477)
+[33m06--05-2022 17:45:45.292[0;39m [restartedMain] INFO  com.pgt360.payment.server.Server - *************************************************
+[33m06--05-2022 17:45:45.299[0;39m [restartedMain] INFO  com.pgt360.payment.server.Server - ***********Server iniciado : port 8090***********
+[33m06--05-2022 17:45:45.301[0;39m [restartedMain] INFO  com.pgt360.payment.server.Server - *************************************************
+[33m06--05-2022 17:45:54.484[0;39m [nioEventLoopGroup-3-1] INFO  c.p.p.server.handler.ServerHandler - ###################[OK] CANAL CONECTADO!!#######################
+[33m06--05-2022 17:45:54.515[0;39m [nioEventLoopGroup-3-1] INFO  c.p.p.server.handler.ServerHandler - [CLIENT] CANAL IP:/172.19.6.227:55015
+[33m06--05-2022 17:45:54.529[0;39m [nioEventLoopGroup-3-1] INFO  c.p.p.server.handler.ServerHandler - [CLIENT] CANAL ID:e7e61acc
+[33m06--05-2022 17:45:54.530[0;39m [nioEventLoopGroup-3-1] INFO  c.p.p.server.handler.ServerHandler - ################################################################
+[33m06--05-2022 17:45:58.351[0;39m [http-nio-9070-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+[33m06--05-2022 17:45:58.351[0;39m [http-nio-9070-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+[33m06--05-2022 17:45:58.359[0;39m [http-nio-9070-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 7 ms
+[33m06--05-2022 17:45:58.514[0;39m [http-nio-9070-exec-1] WARN  o.s.w.c.r.async.WebAsyncManager - 
+!!!
+An Executor is required to handle java.util.concurrent.Callable return values.
+Please, configure a TaskExecutor in the MVC config under "async support".
+The SimpleAsyncTaskExecutor currently in use is not suitable under load.
+-------------------------------
+Request URI: '/pagos/chip/2'
+!!!
+[33m06--05-2022 17:46:13.526[0;39m [MvcAsync1] INFO  com.pgt360.payment.util.NettyUtil - MONTO REDONDEADO=2.00
+[33m06--05-2022 17:46:13.527[0;39m [MvcAsync1] INFO  com.pgt360.payment.util.NettyUtil - [0]=2
+[33m06--05-2022 17:46:13.529[0;39m [MvcAsync1] INFO  com.pgt360.payment.util.NettyUtil - [1]=00
+[33m06--05-2022 17:46:13.530[0;39m [MvcAsync1] INFO  com.pgt360.payment.util.NettyUtil - NUMERO DESCOMPUESTO:200
+[33m06--05-2022 17:46:13.531[0;39m [MvcAsync1] INFO  com.pgt360.payment.util.NettyUtil - [TAREA]: Validando monto = 000000000200
+[33m06--05-2022 17:46:13.531[0;39m [MvcAsync1] INFO  c.p.p.service.impl.PagoServiceImpl - MONTO VALIDADO:000000000200
+[33m06--05-2022 17:46:13.532[0;39m [MvcAsync1] INFO  com.pgt360.payment.util.ServerCom - *******************************
+[33m06--05-2022 17:46:13.533[0;39m [MvcAsync1] INFO  com.pgt360.payment.util.ServerCom - ********GENERANDO FLUJO********
+[33m06--05-2022 17:46:13.533[0;39m [MvcAsync1] INFO  com.pgt360.payment.util.ServerCom - *******************************
+[33m06--05-2022 17:46:13.534[0;39m [MvcAsync1] INFO  com.pgt360.payment.util.ServerCom - FLUJO STR:CHIP
+[33m06--05-2022 17:46:13.534[0;39m [MvcAsync1] INFO  com.pgt360.payment.util.ServerCom - FLUJO NUM:2
+[33m06--05-2022 17:46:13.535[0;39m [MvcAsync1] INFO  com.pgt360.payment.util.ServerCom - *******************
+[33m06--05-2022 17:46:13.536[0;39m [MvcAsync1] INFO  com.pgt360.payment.util.ServerCom - ***ENVIANDO CHIP***
+[33m06--05-2022 17:46:13.536[0;39m [MvcAsync1] INFO  com.pgt360.payment.util.ServerCom - *******************
+[33m06--05-2022 17:46:13.572[0;39m [MvcAsync1] INFO  com.pgt360.payment.util.NettyUtil - [TAREA]: Conversion HEXA a CADENA =  60000000001000000#
+[33m06--05-2022 17:46:13.576[0;39m [MvcAsync1] INFO  com.pgt360.payment.util.ServerCom - [KIOSCO]:02001736303030303030303030313030303030300323
+[33m06--05-2022 17:46:13.763[0;39m [nioEventLoopGroup-3-1] INFO  com.pgt360.payment.util.NettyUtil - [TAREA]: Conversion BYTES a HEX = 06
+[33m06--05-2022 17:46:13.764[0;39m [nioEventLoopGroup-3-1] INFO  c.p.p.server.handler.ServerHandler - [POS]:06
+[33m06--05-2022 17:46:13.764[0;39m [nioEventLoopGroup-3-1] INFO  c.p.p.server.handler.ServerHandler - POS:OK!
+[33m06--05-2022 17:46:13.961[0;39m [nioEventLoopGroup-3-1] INFO  com.pgt360.payment.util.NettyUtil - [TAREA]: Conversion BYTES a HEX = 02003536303030303030303030313030302020311C343300063030303131311C343800022020030E
+[33m06--05-2022 17:46:13.962[0;39m [nioEventLoopGroup-3-1] INFO  c.p.p.server.handler.ServerHandler - [POS]:02003536303030303030303030313030302020311C343300063030303131311C343800022020030E
+[33m06--05-2022 17:46:13.962[0;39m [nioEventLoopGroup-3-1] INFO  com.pgt360.payment.util.NettyUtil - [TAREA]: Conversion HEXA a CADENA =  560000000001000  143 00011148   
+[33m06--05-2022 17:46:13.962[0;39m [nioEventLoopGroup-3-1] INFO  com.pgt360.payment.util.ServerCom - *********************
+[33m06--05-2022 17:46:13.962[0;39m [nioEventLoopGroup-3-1] INFO  com.pgt360.payment.util.ServerCom - *****ENVIANDO ACK****
+[33m06--05-2022 17:46:13.962[0;39m [nioEventLoopGroup-3-1] INFO  com.pgt360.payment.util.ServerCom - *********************
+[33m06--05-2022 17:46:13.962[0;39m [nioEventLoopGroup-3-1] INFO  com.pgt360.payment.util.NettyUtil - [TAREA]: Conversion HEXA a CADENA = 
+[33m06--05-2022 17:46:13.962[0;39m [nioEventLoopGroup-3-1] INFO  com.pgt360.payment.util.ServerCom - [KIOSCO]:06
+[33m06--05-2022 17:46:13.963[0;39m [nioEventLoopGroup-3-1] INFO  com.pgt360.payment.util.ServerCom - ***************************
+[33m06--05-2022 17:46:13.963[0;39m [nioEventLoopGroup-3-1] INFO  com.pgt360.payment.util.ServerCom - ***ENVIANDO TRANS.REV.NO***
+[33m06--05-2022 17:46:13.963[0;39m [nioEventLoopGroup-3-1] INFO  com.pgt360.payment.util.ServerCom - ***************************
+[33m06--05-2022 17:46:13.963[0;39m [nioEventLoopGroup-3-1] INFO  com.pgt360.payment.util.NettyUtil - [TAREA]: Conversion HEXA a CADENA =  $6000000000100000148 XX
+[33m06--05-2022 17:46:13.963[0;39m [nioEventLoopGroup-3-1] INFO  com.pgt360.payment.util.ServerCom - [KIOSCO]:02002436303030303030303030313030303030311C3438000258580303
+[33m06--05-2022 17:46:29.495[0;39m [http-nio-9070-exec-2] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.web.context.request.async.AsyncRequestTimeoutException]
+[33m06--05-2022 17:46:45.497[0;39m [nioEventLoopGroup-3-1] INFO  com.pgt360.payment.util.NettyUtil - [TAREA]: Conversion BYTES a HEX = 02003136303030303030303030313030342020301C3438000220201C3837000212010311
+[33m06--05-2022 17:46:45.498[0;39m [nioEventLoopGroup-3-1] INFO  c.p.p.server.handler.ServerHandler - [POS]:02003136303030303030303030313030342020301C3438000220201C3837000212010311
+[33m06--05-2022 17:46:45.498[0;39m [nioEventLoopGroup-3-1] INFO  com.pgt360.payment.util.NettyUtil - [TAREA]: Conversion HEXA a CADENA =  160000000001004  048   87 
+[33m06--05-2022 17:46:55.495[0;39m [nioEventLoopGroup-3-1] INFO  com.pgt360.payment.util.NettyUtil - [TAREA]: Conversion BYTES a HEX = 02003136303030303030303030313030342020301C3438000220201C3837000212010311
+[33m06--05-2022 17:46:55.496[0;39m [nioEventLoopGroup-3-1] INFO  c.p.p.server.handler.ServerHandler - [POS]:02003136303030303030303030313030342020301C3438000220201C3837000212010311
+[33m06--05-2022 17:46:55.497[0;39m [nioEventLoopGroup-3-1] INFO  com.pgt360.payment.util.NettyUtil - [TAREA]: Conversion HEXA a CADENA =  160000000001004  048   87 
+[33m06--05-2022 17:47:05.504[0;39m [nioEventLoopGroup-3-1] INFO  com.pgt360.payment.util.NettyUtil - [TAREA]: Conversion BYTES a HEX = 02003136303030303030303030313030342020301C3438000220201C3837000212010311
+[33m06--05-2022 17:47:05.505[0;39m [nioEventLoopGroup-3-1] INFO  c.p.p.server.handler.ServerHandler - [POS]:02003136303030303030303030313030342020301C3438000220201C3837000212010311
+[33m06--05-2022 17:47:05.505[0;39m [nioEventLoopGroup-3-1] INFO  com.pgt360.payment.util.NettyUtil - [TAREA]: Conversion HEXA a CADENA =  160000000001004  048   87 

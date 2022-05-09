@@ -8,6 +8,8 @@ import io.swagger.annotations.Authorization;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.concurrent.Callable;
+
 @Api(description = "Endpoint para la gestión de pagos con dispositivo POS")
 @RestController
 @RequestMapping("/pagos")
@@ -19,8 +21,11 @@ public class PagoController {
     @ApiOperation(value = "Realizar pago con chip para comercio único", authorizations = @Authorization(value = "Bearer"))
     @GetMapping(path = "/chip/{amount}")
     @ResponseStatus(HttpStatus.OK)
-    public ResponseDto payChipSingleCommerce(@PathVariable(value = "amount", required = true) float amount){
-        return this.pagoService.payChipSingleCommerce(amount);
+    public Callable<ResponseDto> payChipSingleCommerce(@PathVariable(value = "amount", required = true) float amount) throws InterruptedException{
+        return () -> {
+            Thread.sleep(5000);
+            return pagoService.payChipSingleCommerce(amount);
+        };
     }
 
     @ApiOperation(value = "Realizar pago con chip multicomercio", authorizations = @Authorization(value = "Bearer"))
