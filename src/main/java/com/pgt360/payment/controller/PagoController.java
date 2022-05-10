@@ -21,11 +21,8 @@ public class PagoController {
     @ApiOperation(value = "Realizar pago con chip para comercio único", authorizations = @Authorization(value = "Bearer"))
     @GetMapping(path = "/chip/{amount}")
     @ResponseStatus(HttpStatus.OK)
-    public Callable<ResponseDto> payChipSingleCommerce(@PathVariable(value = "amount", required = true) float amount) throws InterruptedException{
-        return () -> {
-            Thread.sleep(5000);
-            return pagoService.payChipSingleCommerce(amount);
-        };
+    public ResponseDto payChipSingleCommerce(@PathVariable(value = "amount", required = true) float amount) throws InterruptedException{
+        return this.pagoService.payChipSingleCommerce(amount);
     }
 
     @ApiOperation(value = "Realizar pago con chip multicomercio", authorizations = @Authorization(value = "Bearer"))

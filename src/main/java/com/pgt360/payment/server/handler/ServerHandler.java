@@ -6,6 +6,7 @@ import com.pgt360.payment.util.*;
 import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
+import io.netty.handler.timeout.ReadTimeoutException;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -66,16 +67,22 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
             }
         }catch (StringIndexOutOfBoundsException ex){
             log.error("[ERROR] Error en la copia de datos:"+ex.getMessage());
+            statePos = Constants.STATE_REALIZADO;
         }
     }
 
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
-        super.exceptionCaught(ctx, cause);
-        log.error("#################[NOK] EXCEPCION!!#################");
-        log.error("[CLIENT] CANAL IP:"+ NettyUtil.getChannelAddress(ctx));
-        log.error("[CLIENT] CANAL ID:"+ NettyUtil.getChannelId(ctx));
-        log.error("[CLIENT] CAUSA:"+ cause.getCause());
-        log.error("############################################################");
+        if(cause instanceof ReadTimeoutException){
+            log.error("[CLIENT] TIMEOUT:"+ NettyUtil.getChannelId(ctx));
+            statePos = Constants.STATE_REALIZADO;
+        } else {
+            super.exceptionCaught(ctx, cause);
+            log.error("#################[NOK] EXCEPCION!!#################");
+            log.error("[CLIENT] CANAL IP:"+ NettyUtil.getChannelAddress(ctx));
+            log.error("[CLIENT] CANAL ID:"+ NettyUtil.getChannelId(ctx));
+            log.error("[CLIENT] CAUSA:"+ cause.getCause());
+            log.error("############################################################");
+        }
     }
 }
