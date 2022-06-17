@@ -30,7 +30,8 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
             "/webjars/**",
             "/",
             "/locale",
-            "/api/login"
+            "/api/login",
+            "/**"
     };
 
     @Autowired
