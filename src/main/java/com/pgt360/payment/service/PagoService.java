@@ -4,7 +4,7 @@ import com.pgt360.payment.service.dto.netty.ResponseDto;
 
 public interface PagoService {
     public ResponseDto payChipSingleCommerce(float pAmount);
-    ResponseDto payChipMultiCommerce(float pAmount, int pCommerceId);
+    public ResponseDto payChipMultiCommerce(float pAmount, int pCommerceId);
     public ResponseDto payContactlessSingleCommerce(float pAmount);
     public ResponseDto payContactlessMultiCommerce(float pAmount, int pCommerceId);
     public ResponseDto cancelTransactionSingleCommerce(int pTransaction);
